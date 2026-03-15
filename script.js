@@ -167,12 +167,80 @@ function initCategoryNav() {
   setActive();
 }
 
+/* ============================================================
+   Cookie Consent + AdSense
+   ============================================================ */
+
+var AYT_CONSENT_KEY = 'ayt_consent';
+
+/**
+ * Dynamically inject the AdSense script after user consent.
+ * Safe to call multiple times — checks for existing script first.
+ */
+function loadAdSense() {
+  if (document.querySelector('script[src*="pagead2.googlesyndication.com"]')) return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.crossOrigin = 'anonymous';
+  s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-ADSENSE-ID';
+  document.head.appendChild(s);
+}
+
+/**
+ * Show a cookie consent banner on first visit.
+ * Stores choice in localStorage so it only appears once.
+ */
+function initCookieConsent() {
+  if (localStorage.getItem(AYT_CONSENT_KEY)) return;
+
+  var banner = document.createElement('div');
+  banner.className = 'cookie-banner';
+  banner.setAttribute('role', 'dialog');
+  banner.setAttribute('aria-label', 'Cookie consent');
+  banner.innerHTML =
+    '<p class="cookie-banner__text">This website uses cookies and third-party services such as <strong>Google AdSense</strong> to improve user experience and display relevant advertisements. ' +
+    'See our <a href="privacy-policy.html">Privacy Policy</a> for details.</p>' +
+    '<div class="cookie-banner__actions">' +
+      '<button class="cookie-banner__btn cookie-banner__btn--accept" type="button">Accept</button>' +
+      '<button class="cookie-banner__btn cookie-banner__btn--decline" type="button">Decline</button>' +
+    '</div>';
+
+  document.body.appendChild(banner);
+
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      banner.classList.add('cookie-banner--visible');
+    });
+  });
+
+  function hideBanner() {
+    banner.classList.remove('cookie-banner--visible');
+    setTimeout(function () { if (banner.parentNode) banner.remove(); }, 350);
+  }
+
+  banner.querySelector('.cookie-banner__btn--accept').addEventListener('click', function () {
+    localStorage.setItem(AYT_CONSENT_KEY, 'accepted');
+    hideBanner();
+    loadAdSense();
+  });
+
+  banner.querySelector('.cookie-banner__btn--decline').addEventListener('click', function () {
+    localStorage.setItem(AYT_CONSENT_KEY, 'declined');
+    hideBanner();
+  });
+}
+
 // Auto-init on every page
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initActiveNavLink();
   initDynamicYear();
   initCategoryNav();
+  initCookieConsent();
+  // If previously accepted, load AdSense immediately
+  if (localStorage.getItem(AYT_CONSENT_KEY) === 'accepted') {
+    loadAdSense();
+  }
 });
 
 /**
