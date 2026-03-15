@@ -178,6 +178,7 @@ var AYT_CONSENT_KEY = 'ayt_consent';
  * Safe to call multiple times — checks for existing script first.
  */
 function loadAdSense() {
+  if (window.location.hostname !== 'allyourtools.net') return;
   if (document.querySelector('script[src*="pagead2.googlesyndication.com"]')) return;
   var s = document.createElement('script');
   s.async = true;
