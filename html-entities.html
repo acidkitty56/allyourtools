@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free HTML Entities Encoder &amp; Decoder – Online Tool | All Your Tools</title>
+  <meta name="description" content="Encode HTML special characters to entities or decode HTML entities back to text. Free, browser-based, no login required.">
+  <link rel="canonical" href="https://allyourtools.com/html-entities.html">
+  <meta property="og:title" content="Free HTML Entities Encoder &amp; Decoder – Online Tool | All Your Tools">
+  <meta property="og:description" content="Encode HTML special characters to entities or decode HTML entities back to text. Free, browser-based, no login required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/html-entities.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free HTML Entities Encoder &amp; Decoder – Online Tool | All Your Tools">
+  <meta name="twitter:description" content="Encode HTML special characters to entities or decode HTML entities back to text. Free, browser-based, no login required.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free HTML Entities Encoder & Decoder",
+    "url": "https://allyourtools.com/html-entities.html",
+    "description": "Encode HTML special characters to entities or decode HTML entities back to text. Free, browser-based, no login required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>HTML Entities Encoder &amp; Decoder</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>HTML Entities Encoder &amp; Decoder</h1>
+          <p class="tool-tagline">Convert HTML special characters to entities for safe display, or decode entities back to readable text.</p>
+
+          <div class="form-group">
+            <label for="html-input">Input Text</label>
+            <textarea id="html-input" rows="6" placeholder="Enter text to encode or HTML entities to decode..." style="resize:vertical;"></textarea>
+          </div>
+
+          <div class="action-row">
+            <button class="btn-primary" id="html-encode-btn" type="button">Encode</button>
+            <button class="btn-secondary" id="html-decode-btn" type="button">Decode</button>
+          </div>
+
+          <p id="html-error" style="color:#dc2626;font-size:0.875rem;min-height:1.2em;margin-top:0.5rem;"></p>
+
+          <div class="result-box" id="html-result-box" style="display:none;margin-top:1.25rem;">
+            <span class="result-output" id="html-output" style="white-space:pre-wrap;word-break:break-all;"></span>
+            <button class="btn-copy" id="html-copy-btn" type="button">Copy</button>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What are HTML entities?</h2>
+          <p>HTML entities are special sequences of characters used to represent characters that have special meaning in HTML, or characters that are difficult to type. They start with an ampersand <code>&amp;</code> and end with a semicolon <code>;</code>. For example, <code>&amp;lt;</code> represents the less-than sign <code>&lt;</code>, and <code>&amp;amp;</code> represents the ampersand itself. Without entities, a browser might misinterpret these characters as HTML tags or attribute delimiters.</p>
+
+          <h2>When to use HTML encoding</h2>
+          <p>You should encode user-supplied content before inserting it into HTML to prevent cross-site scripting (XSS) attacks. If a user types <code>&lt;script&gt;alert('xss')&lt;/script&gt;</code> and you display it without encoding, the browser will execute the script. Encoding converts the angle brackets to <code>&amp;lt;</code> and <code>&amp;gt;</code>, making the input display as literal text rather than executable code. Encoding is also needed when embedding content inside HTML attributes.</p>
+
+          <h2>Common HTML entities</h2>
+          <p>The most frequently used entities are: <code>&amp;amp;</code> (ampersand &amp;), <code>&amp;lt;</code> (less-than &lt;), <code>&amp;gt;</code> (greater-than &gt;), <code>&amp;quot;</code> (double quote "), <code>&amp;#39;</code> (single quote '), <code>&amp;nbsp;</code> (non-breaking space), <code>&amp;copy;</code> (copyright ©), <code>&amp;reg;</code> (registered trademark ®), and <code>&amp;mdash;</code> (em dash —).</p>
+
+          <h2>How this tool works</h2>
+          <p>The encoder replaces the five characters with special HTML meaning (<code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>"</code>, <code>'</code>) with their corresponding entity codes. The decoder uses the browser's own HTML parser — a temporary <code>&lt;textarea&gt;</code> element — to safely convert any entity sequence back to its character, supporting both named entities like <code>&amp;copy;</code> and numeric entities like <code>&amp;#169;</code>. All processing happens locally in your browser.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="url-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                URL Encoder
+              </a>
+              <a href="base64-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Base64 Encoder
+              </a>
+              <a href="text-case-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Text Case Converter
+              </a>
+              <a href="markdown-preview.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                Markdown Preview
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/html-entities.js"></script>
+  <script>initHtmlEntities();</script>
+
+</body>
+</html>

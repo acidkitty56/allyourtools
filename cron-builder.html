@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Cron Expression Builder – Generate Cron Jobs Online | All Your Tools</title>
+  <meta name="description" content="Build and validate cron expressions visually. Generate cron job schedules with a simple form. Free, browser-based, no login.">
+  <link rel="canonical" href="https://allyourtools.com/cron-builder.html">
+  <meta property="og:title" content="Free Cron Expression Builder – Generate Cron Jobs Online | All Your Tools">
+  <meta property="og:description" content="Build and validate cron expressions visually. Generate cron job schedules with a simple form. Free, browser-based, no login.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/cron-builder.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Cron Expression Builder – Generate Cron Jobs Online | All Your Tools">
+  <meta name="twitter:description" content="Build and validate cron expressions visually. Generate cron job schedules with a simple form. Free, browser-based, no login.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Cron Expression Builder",
+    "url": "https://allyourtools.com/cron-builder.html",
+    "description": "Build and validate cron expressions visually. Generate cron job schedules with a simple form. Free, browser-based, no login.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>Cron Expression Builder</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Cron Expression Builder</h1>
+          <p class="tool-tagline">Build cron expressions visually — choose the schedule and get the cron string with a human-readable explanation.</p>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.75rem;margin-bottom:1.25rem;">
+            <div class="form-group" style="margin:0;">
+              <label for="cron-minute">Minute</label>
+              <select id="cron-minute">
+                <option value="*">Every minute (*)</option>
+                <option value="0">At minute 0</option>
+                <option value="15">At minute 15</option>
+                <option value="30">At minute 30</option>
+                <option value="45">At minute 45</option>
+                <option value="*/5">Every 5 minutes</option>
+                <option value="*/10">Every 10 minutes</option>
+                <option value="*/15">Every 15 minutes</option>
+                <option value="*/30">Every 30 minutes</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label for="cron-hour">Hour</label>
+              <select id="cron-hour">
+                <option value="*">Every hour (*)</option>
+                <option value="0">Midnight (0)</option>
+                <option value="6">6 AM</option>
+                <option value="8">8 AM</option>
+                <option value="9">9 AM</option>
+                <option value="12">Noon (12)</option>
+                <option value="17">5 PM</option>
+                <option value="18">6 PM</option>
+                <option value="23">11 PM</option>
+                <option value="*/2">Every 2 hours</option>
+                <option value="*/6">Every 6 hours</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label for="cron-dom">Day of Month</label>
+              <select id="cron-dom">
+                <option value="*">Every day (*)</option>
+                <option value="1">1st</option>
+                <option value="15">15th</option>
+                <option value="L">Last day</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label for="cron-month">Month</label>
+              <select id="cron-month">
+                <option value="*">Every month (*)</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label for="cron-dow">Day of Week</label>
+              <select id="cron-dow">
+                <option value="*">Every day (*)</option>
+                <option value="1">Monday</option>
+                <option value="2">Tuesday</option>
+                <option value="3">Wednesday</option>
+                <option value="4">Thursday</option>
+                <option value="5">Friday</option>
+                <option value="6">Saturday</option>
+                <option value="0">Sunday</option>
+                <option value="1-5">Weekdays (Mon–Fri)</option>
+                <option value="6,0">Weekends</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="result-box" id="cron-result-box" style="flex-direction:column;align-items:stretch;">
+            <code class="result-output" id="cron-output" style="font-size:1.125rem;letter-spacing:0.05em;"></code>
+            <button class="btn-copy" id="cron-copy-btn" type="button" style="align-self:flex-end;margin-top:0.5rem;">Copy</button>
+          </div>
+          <div id="cron-explanation" style="margin-top:0.75rem;font-size:0.9rem;color:#6b7280;padding:0.75rem;background:#f9fafb;border-radius:0.5rem;border:1px solid #e5e7eb;"></div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is a cron expression?</h2>
+          <p>A cron expression is a string made up of five fields separated by spaces that specifies a schedule for recurring tasks. The format comes from the Unix <code>cron</code> daemon, which has been scheduling automated jobs since the 1970s. Today cron syntax is used in Linux/macOS crontabs, GitHub Actions, AWS EventBridge, Kubernetes CronJobs, and many other scheduling systems.</p>
+
+          <h2>Cron syntax explained</h2>
+          <p>Each of the five fields represents a unit of time: <strong>minute</strong> (0–59), <strong>hour</strong> (0–23), <strong>day of month</strong> (1–31), <strong>month</strong> (1–12), and <strong>day of week</strong> (0–7, where both 0 and 7 represent Sunday). An asterisk <code>*</code> means "every value". A slash <code>/</code> means "every N" (e.g. <code>*/5</code> in the minute field means every 5 minutes). A comma separates multiple values, and a hyphen defines a range.</p>
+
+          <h2>Common cron schedule examples</h2>
+          <p><code>0 9 * * 1-5</code> — every weekday at 9 AM. <code>*/15 * * * *</code> — every 15 minutes. <code>0 0 1 * *</code> — midnight on the first of every month. <code>0 12 * * 0</code> — every Sunday at noon. <code>30 6 * * *</code> — every day at 6:30 AM. These patterns cover the vast majority of real-world scheduling needs.</p>
+
+          <h2>Use cases for cron jobs</h2>
+          <p>Cron jobs are ideal for database backups, sending scheduled emails or reports, clearing temporary files, running data sync processes, refreshing caches, triggering CI/CD pipelines, and polling external APIs. Any task that should happen on a fixed schedule — rather than in response to a user action — is a good candidate for a cron job.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="timestamp-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Unix Timestamp Converter
+              </a>
+              <a href="json-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                JSON Formatter
+              </a>
+              <a href="uuid-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h.01M12 7h5M7 12h10M7 17h10"/></svg>
+                UUID Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/cron-builder.js"></script>
+  <script>initCronBuilder();</script>
+
+</body>
+</html>

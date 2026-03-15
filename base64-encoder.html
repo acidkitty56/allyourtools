@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Base64 Encoder &amp; Decoder – Online Tool | All Your Tools</title>
+  <meta name="description" content="Encode text to Base64 or decode Base64 strings instantly. Free online Base64 converter, no login required.">
+  <link rel="canonical" href="https://allyourtools.com/base64-encoder.html">
+  <meta property="og:title" content="Free Base64 Encoder &amp; Decoder – Online Tool | All Your Tools">
+  <meta property="og:description" content="Encode text to Base64 or decode Base64 strings instantly. Free online Base64 converter, no login required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/base64-encoder.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Base64 Encoder &amp; Decoder – Online Tool | All Your Tools">
+  <meta name="twitter:description" content="Encode text to Base64 or decode Base64 strings instantly. Free online Base64 converter, no login required.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Base64 Encoder & Decoder",
+    "url": "https://allyourtools.com/base64-encoder.html",
+    "description": "Encode text to Base64 or decode Base64 strings instantly. Free online Base64 converter, no login required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>Base64 Encoder &amp; Decoder</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Base64 Encoder &amp; Decoder</h1>
+          <p class="tool-tagline">Encode any text to Base64 or decode a Base64 string back to plain text — instantly.</p>
+
+          <div class="form-group">
+            <label for="b64-input">Input Text</label>
+            <textarea id="b64-input" rows="5" placeholder="Enter text to encode, or Base64 to decode..."></textarea>
+          </div>
+          <div class="action-row">
+            <button class="btn-primary" id="b64-encode-btn" type="button">Encode to Base64</button>
+            <button class="btn-secondary" id="b64-decode-btn" type="button">Decode from Base64</button>
+          </div>
+          <p id="b64-error" style="color:#dc2626;font-size:0.875rem;min-height:1.2em;"></p>
+          <div class="result-box" id="b64-result-box" style="flex-direction:column;align-items:stretch;margin-top:1.25rem;display:none;">
+            <span class="result-output" id="b64-output" style="white-space:pre-wrap;word-break:break-all;"></span>
+            <button class="btn-copy" id="b64-copy-btn" type="button" style="align-self:flex-end;margin-top:0.5rem;">Copy</button>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is Base64?</h2>
+          <p>Base64 is an encoding scheme that represents binary data as a sequence of printable ASCII characters. It uses a set of 64 characters (A–Z, a–z, 0–9, +, and /) plus the <code>=</code> padding character. Each group of three bytes of input becomes four Base64 characters in the output, making the encoded result approximately 33% larger than the original.</p>
+
+          <h2>Common uses of Base64</h2>
+          <p>Base64 is used wherever binary data needs to be stored or transferred over systems that handle text. Common examples include embedding images directly in HTML or CSS via data URIs, encoding file attachments in email (MIME), passing binary tokens in JSON payloads, and transmitting cryptographic keys and certificates. Basic HTTP authentication also uses Base64 to encode credentials.</p>
+
+          <h2>How this tool works</h2>
+          <p>For encoding, the tool uses the browser's <code>TextEncoder</code> API to correctly handle Unicode characters before calling <code>btoa()</code>, ensuring that characters outside the ASCII range are encoded properly. For decoding, it uses <code>atob()</code> followed by <code>TextDecoder</code> to reconstruct the original Unicode text. All processing happens locally in your browser — nothing is sent to a server.</p>
+
+          <h2>Examples</h2>
+          <p>The text <code>Hello, World!</code> encodes to <code>SGVsbG8sIFdvcmxkIQ==</code>. A common Base64-encoded JSON web token (JWT) header looks like <code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</code>. You can paste either of these into the input above and click Decode to see the original text.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="json-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                JSON Formatter
+              </a>
+              <a href="url-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                URL Encoder/Decoder
+              </a>
+              <a href="uuid-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h.01M12 7h5M7 12h10M7 17h10"/></svg>
+                UUID Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/base64-encoder.js"></script>
+  <script>initBase64Encoder();</script>
+
+</body>
+</html>

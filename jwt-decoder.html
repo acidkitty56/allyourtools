@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free JWT Decoder – Inspect JSON Web Tokens Online | All Your Tools</title>
+  <meta name="description" content="Decode and inspect JWT tokens instantly. View header, payload, and signature. Free, browser-based, no login required.">
+  <link rel="canonical" href="https://allyourtools.com/jwt-decoder.html">
+  <meta property="og:title" content="Free JWT Decoder – Inspect JSON Web Tokens Online | All Your Tools">
+  <meta property="og:description" content="Decode and inspect JWT tokens instantly. View header, payload, and signature. Free, browser-based, no login required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/jwt-decoder.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free JWT Decoder – Inspect JSON Web Tokens Online | All Your Tools">
+  <meta name="twitter:description" content="Decode and inspect JWT tokens instantly. View header, payload, and signature. Free, browser-based, no login required.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free JWT Decoder",
+    "url": "https://allyourtools.com/jwt-decoder.html",
+    "description": "Decode and inspect JWT tokens instantly. View header, payload, and signature. Free, browser-based, no login required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>JWT Decoder</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>JWT Decoder</h1>
+          <p class="tool-tagline">Paste a JWT token to instantly decode and inspect its header, payload, and expiry.</p>
+
+          <div class="form-group">
+            <label for="jwt-input">JWT Token</label>
+            <textarea id="jwt-input" rows="4" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."></textarea>
+          </div>
+          <p id="jwt-error" style="color:#dc2626;font-size:0.875rem;min-height:1.2em;"></p>
+          <div class="action-row">
+            <button class="btn-primary" id="jwt-decode-btn" type="button">Decode Token</button>
+          </div>
+          <div id="jwt-results" style="display:none;margin-top:1.25rem;">
+            <div style="margin-bottom:0.75rem;">
+              <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;margin-bottom:0.4rem;">Header</div>
+              <div class="result-box" style="flex-direction:column;align-items:stretch;">
+                <span id="jwt-header-out" class="result-output" style="white-space:pre-wrap;word-break:break-word;font-size:0.85rem;"></span>
+                <button class="btn-copy" data-copy="jwt-header-out" style="align-self:flex-end;margin-top:0.5rem;">Copy</button>
+              </div>
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;margin-bottom:0.4rem;">Payload</div>
+              <div class="result-box" style="flex-direction:column;align-items:stretch;">
+                <span id="jwt-payload-out" class="result-output" style="white-space:pre-wrap;word-break:break-word;font-size:0.85rem;"></span>
+                <button class="btn-copy" data-copy="jwt-payload-out" style="align-self:flex-end;margin-top:0.5rem;">Copy</button>
+              </div>
+            </div>
+            <div id="jwt-expiry" style="font-size:0.875rem;padding:0.75rem;background:#f9fafb;border:1px solid #e5e7eb;border-radius:0.5rem;"></div>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is a JWT?</h2>
+          <p>A JSON Web Token (JWT) is a compact, URL-safe means of representing claims between two parties. JWTs are commonly used for authentication and information exchange in web applications and APIs. A JWT is simply a Base64URL-encoded string that contains structured data anyone can read — but only the holder of the secret key can verify.</p>
+
+          <h2>JWT structure explained</h2>
+          <p>Every JWT consists of three dot-separated parts: the <strong>header</strong>, the <strong>payload</strong>, and the <strong>signature</strong>. The header describes the signing algorithm (e.g. HS256, RS256). The payload contains the claims — data like user ID, roles, and expiry time (<code>exp</code>). The signature ensures the token has not been tampered with.</p>
+
+          <h2>When to use JWTs</h2>
+          <p>JWTs are well-suited for stateless authentication: the server issues a signed token on login, and the client presents it with every request. The server verifies the signature without needing to query a database. They are also used in OAuth 2.0 and OpenID Connect flows as ID tokens and access tokens.</p>
+
+          <h2>Security note</h2>
+          <p>Never share JWTs in public forums, logs, or version control. Although the header and payload are only Base64-encoded (not encrypted), they may contain sensitive claims. This tool decodes entirely in your browser — no token data is ever transmitted to a server.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="hash-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+                Hash Generator
+              </a>
+              <a href="uuid-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h.01M12 7h5M7 12h10M7 17h10"/></svg>
+                UUID Generator
+              </a>
+              <a href="password-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Password Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/jwt-decoder.js"></script>
+  <script>initJwtDecoder();</script>
+
+</body>
+</html>

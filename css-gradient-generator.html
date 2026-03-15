@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free CSS Gradient Generator – Create Linear &amp; Radial Gradients | All Your Tools</title>
+  <meta name="description" content="Generate CSS gradients visually. Create linear and radial gradients and copy the CSS code instantly. Free, browser-based.">
+  <link rel="canonical" href="https://allyourtools.com/css-gradient-generator.html">
+  <meta property="og:title" content="Free CSS Gradient Generator – Create Linear &amp; Radial Gradients | All Your Tools">
+  <meta property="og:description" content="Generate CSS gradients visually. Create linear and radial gradients and copy the CSS code instantly. Free, browser-based.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/css-gradient-generator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free CSS Gradient Generator – Create Linear &amp; Radial Gradients | All Your Tools">
+  <meta name="twitter:description" content="Generate CSS gradients visually. Create linear and radial gradients and copy the CSS code instantly. Free, browser-based.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free CSS Gradient Generator",
+    "url": "https://allyourtools.com/css-gradient-generator.html",
+    "description": "Generate CSS gradients visually. Create linear and radial gradients and copy the CSS code instantly. Free, browser-based.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>CSS Gradient Generator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>CSS Gradient Generator</h1>
+          <p class="tool-tagline">Design beautiful CSS gradients visually — choose colors, angle, and type, then copy the CSS.</p>
+
+          <!-- Preview -->
+          <div id="gradient-preview" style="width:100%;height:120px;border-radius:0.75rem;border:1px solid #e5e7eb;margin-bottom:1.25rem;transition:background 0.3s;"></div>
+
+          <div class="form-group">
+            <label for="gradient-type">Gradient Type</label>
+            <select id="gradient-type">
+              <option value="linear" selected>Linear</option>
+              <option value="radial">Radial</option>
+            </select>
+          </div>
+
+          <div id="gradient-angle-group" class="form-group">
+            <div class="range-row">
+              <label for="gradient-angle">Angle</label>
+              <span class="range-value" id="gradient-angle-value">135°</span>
+            </div>
+            <input type="range" id="gradient-angle" min="0" max="360" value="135">
+          </div>
+
+          <div class="form-group">
+            <label>Colors</label>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;">
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <input type="color" id="gradient-color1" value="#2563eb" style="width:48px;height:40px;border:none;border-radius:0.5rem;cursor:pointer;padding:2px;">
+                <span style="font-size:0.875rem;color:#6b7280;">Start</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <input type="color" id="gradient-color2" value="#7c3aed" style="width:48px;height:40px;border:none;border-radius:0.5rem;cursor:pointer;padding:2px;">
+                <span style="font-size:0.875rem;color:#6b7280;">End</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-box" id="gradient-result-box" style="margin-top:1.25rem;flex-direction:column;align-items:stretch;">
+            <span class="result-output" id="gradient-css-output" style="word-break:break-all;font-size:0.875rem;"></span>
+            <button class="btn-copy" id="gradient-copy-btn" type="button" style="align-self:flex-end;margin-top:0.5rem;">Copy CSS</button>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What are CSS gradients?</h2>
+          <p>CSS gradients allow you to display smooth transitions between two or more specified colors. Rather than using an image file, gradients are rendered by the browser itself, resulting in sharp visuals at any resolution and smaller page sizes. They are defined using the <code>background</code> or <code>background-image</code> CSS property.</p>
+
+          <h2>Linear vs radial gradients</h2>
+          <p>A <strong>linear gradient</strong> transitions colors along a straight line at a specified angle — 0° goes from bottom to top, 90° goes from left to right, and 135° goes diagonally from top-left to bottom-right. A <strong>radial gradient</strong> radiates outward from a center point in a circular or elliptical shape, making it great for spotlight and vignette effects.</p>
+
+          <h2>How to use gradients in CSS</h2>
+          <p>Copy the generated CSS and paste it directly into your stylesheet. For example: <code>background: linear-gradient(135deg, #2563eb, #7c3aed);</code>. You can apply gradients to any element that accepts a background, including <code>div</code>, <code>header</code>, <code>button</code>, and even <code>body</code>. Gradients can also be layered with other backgrounds using comma-separated values.</p>
+
+          <h2>Tips and tricks</h2>
+          <p>Use complementary colors (opposite on the color wheel) for vibrant gradients, or analogous colors (adjacent on the wheel) for subtle, harmonious transitions. For text effects, apply a gradient with <code>background-clip: text</code> and <code>-webkit-background-clip: text</code> alongside <code>color: transparent</code>. Always test contrast ratios when placing text on gradient backgrounds to ensure accessibility.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="color-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 1 7 7c0 3.87-3.13 7-7 7s-7-3.13-7-7a7 7 0 0 1 7-7z"/></svg>
+                Color Converter
+              </a>
+              <a href="number-base-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h5"/></svg>
+                Number Base Converter
+              </a>
+              <a href="json-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                JSON Formatter
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/css-gradient-generator.js"></script>
+  <script>initCssGradientGenerator();</script>
+
+</body>
+</html>

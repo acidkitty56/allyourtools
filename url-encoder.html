@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free URL Encoder &amp; Decoder – Online Tool | All Your Tools</title>
+  <meta name="description" content="Encode or decode URLs and query strings instantly. Free URL encoder/decoder, browser-based, no login required.">
+  <link rel="canonical" href="https://allyourtools.com/url-encoder.html">
+  <meta property="og:title" content="Free URL Encoder &amp; Decoder – Online Tool | All Your Tools">
+  <meta property="og:description" content="Encode or decode URLs and query strings instantly. Free URL encoder/decoder, browser-based, no login required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/url-encoder.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free URL Encoder &amp; Decoder – Online Tool | All Your Tools">
+  <meta name="twitter:description" content="Encode or decode URLs and query strings instantly. Free URL encoder/decoder, browser-based, no login required.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free URL Encoder & Decoder",
+    "url": "https://allyourtools.com/url-encoder.html",
+    "description": "Encode or decode URLs and query strings instantly. Free URL encoder/decoder, browser-based, no login required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>URL Encoder &amp; Decoder</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>URL Encoder &amp; Decoder</h1>
+          <p class="tool-tagline">Encode special characters in URLs, or decode encoded URL strings back to readable text.</p>
+
+          <div class="form-group">
+            <label for="url-input">Input Text</label>
+            <textarea id="url-input" rows="5" placeholder="Enter URL or text to encode, or encoded URL to decode..."></textarea>
+          </div>
+          <div class="action-row">
+            <button class="btn-primary" id="url-encode-btn" type="button">Encode URL</button>
+            <button class="btn-secondary" id="url-decode-btn" type="button">Decode URL</button>
+          </div>
+          <p id="url-error" style="color:#dc2626;font-size:0.875rem;min-height:1.2em;"></p>
+          <div class="result-box" id="url-result-box" style="flex-direction:column;align-items:stretch;margin-top:1.25rem;display:none;">
+            <span class="result-output" id="url-output" style="white-space:pre-wrap;word-break:break-all;"></span>
+            <button class="btn-copy" id="url-copy-btn" type="button" style="align-self:flex-end;margin-top:0.5rem;">Copy</button>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is URL encoding?</h2>
+          <p>URL encoding (also called percent-encoding) is a mechanism for encoding information in a Uniform Resource Identifier (URI). It replaces characters that are not allowed or have special meaning in a URL with a percent sign (<code>%</code>) followed by two hexadecimal digits. For example, a space becomes <code>%20</code>, and an ampersand becomes <code>%26</code>.</p>
+
+          <h2>Why encode URLs?</h2>
+          <p>URLs can only contain a limited set of characters from the ASCII character set. Characters outside this set, or characters that have special meaning in URLs (such as <code>&amp;</code>, <code>=</code>, <code>?</code>, and <code>#</code>), must be encoded before they can appear in a URL. This is especially important when passing user-supplied data as query string parameters, where unencoded special characters could break the URL structure or be misinterpreted by the server.</p>
+
+          <h2>Common characters that need encoding</h2>
+          <p>Characters like spaces, quotes, angle brackets, curly braces, pipes, backslashes, and non-ASCII characters (such as accented letters or emoji) all require percent-encoding in URLs. This tool uses <code>encodeURIComponent()</code>, which encodes all characters except <code>A–Z a–z 0–9 - _ . ! ~ * ' ( )</code> — making it ideal for encoding individual query parameter values.</p>
+
+          <h2>Use cases</h2>
+          <p>URL encoding is needed when building query strings programmatically, constructing redirect URLs, embedding links in HTML attributes, working with form submissions, and testing API endpoints that accept URL parameters. Decoding is useful when you receive an encoded URL and want to inspect its readable components.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="base64-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+                Base64 Encoder/Decoder
+              </a>
+              <a href="json-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                JSON Formatter
+              </a>
+              <a href="text-case-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Text Case Converter
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/url-encoder.js"></script>
+  <script>initUrlEncoder();</script>
+
+</body>
+</html>

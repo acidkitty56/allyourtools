@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free IP Address Lookup – Find Location &amp; Info | All Your Tools</title>
+  <meta name="description" content="Look up any IP address to find its location, ISP, timezone, and more. Free IP address info tool, no login required.">
+  <link rel="canonical" href="https://allyourtools.com/ip-address-info.html">
+  <meta property="og:title" content="Free IP Address Lookup – Find Location &amp; Info | All Your Tools">
+  <meta property="og:description" content="Look up any IP address to find its location, ISP, timezone, and more. Free IP address info tool, no login required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/ip-address-info.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free IP Address Lookup – Find Location &amp; Info | All Your Tools">
+  <meta name="twitter:description" content="Look up any IP address to find its location, ISP, timezone, and more. Free IP address info tool, no login required.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free IP Address Lookup",
+    "url": "https://allyourtools.com/ip-address-info.html",
+    "description": "Look up any IP address to find its location, ISP, timezone, and more. Free IP address info tool, no login required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>IP Address Info</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>IP Address Info</h1>
+          <p class="tool-tagline">Look up your own IP address or any IP to see location, ISP, timezone, and network details.</p>
+
+          <div class="form-group">
+            <label for="ip-input">IP Address</label>
+            <div style="display:flex;gap:0.75rem;">
+              <input type="text" id="ip-input" placeholder="e.g. 8.8.8.8 or leave blank for your IP" style="flex:1;" autocomplete="off">
+              <button class="btn-ghost" id="ip-my-btn" type="button" style="white-space:nowrap;">My IP</button>
+            </div>
+          </div>
+          <div class="action-row">
+            <button class="btn-primary" id="ip-lookup-btn" type="button">Look Up</button>
+          </div>
+          <p id="ip-error" style="color:#dc2626;font-size:0.875rem;min-height:1.2em;"></p>
+          <div id="ip-results" style="display:none;margin-top:1.25rem;">
+            <div id="ip-results-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;"></div>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is an IP address?</h2>
+          <p>An IP (Internet Protocol) address is a numerical label assigned to every device connected to a network. It serves two main purposes: identifying the host or network interface, and providing the location of that host in the network. Without IP addresses, devices would have no way to find and communicate with each other across the internet.</p>
+
+          <h2>IPv4 vs IPv6</h2>
+          <p>IPv4 addresses are 32-bit numbers written as four groups of decimal digits separated by dots, such as <code>192.168.1.1</code>. They allow for roughly 4.3 billion unique addresses — a number that has been exhausted due to the explosion of internet-connected devices. IPv6 was introduced to solve this problem: it uses 128-bit addresses written in hexadecimal, like <code>2001:0db8:85a3::8a2e:0370:7334</code>, providing an astronomically large address space of 340 undecillion addresses.</p>
+
+          <h2>What information can be found from an IP address?</h2>
+          <p>An IP address can reveal the approximate geographic location of a device (typically at the city or region level, not street level), the Internet Service Provider (ISP) or hosting company that owns the address block, the autonomous system number (ASN), the timezone, and whether the IP belongs to a residential, business, or data center network. This information is stored in public registration databases called WHOIS and RIR (Regional Internet Registry) records.</p>
+
+          <h2>Privacy note</h2>
+          <p>IP geolocation is not precise — it shows a general area rather than an exact address. The accuracy varies widely: it is most reliable at the country level, reasonably accurate at the city level, and unreliable at the street level. VPNs and proxy servers will show the IP of the VPN server rather than your actual device. This tool uses the <a href="https://ipapi.co" rel="noopener noreferrer" target="_blank">ipapi.co</a> API to retrieve geolocation data. No IP addresses or lookup results are stored by this tool.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="url-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                URL Encoder
+              </a>
+              <a href="uuid-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h.01M12 7h5M7 12h10M7 17h10"/></svg>
+                UUID Generator
+              </a>
+              <a href="number-base-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h5"/></svg>
+                Number Base Converter
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/ip-address-info.js"></script>
+  <script>initIpAddressInfo();</script>
+
+</body>
+</html>

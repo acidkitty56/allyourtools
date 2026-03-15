@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Regex Tester – Test Regular Expressions Online | All Your Tools</title>
+  <meta name="description" content="Test and debug regular expressions online with live match highlighting. Free regex tester, no login required.">
+  <link rel="canonical" href="https://allyourtools.com/regex-tester.html">
+  <meta property="og:title" content="Free Regex Tester – Test Regular Expressions Online | All Your Tools">
+  <meta property="og:description" content="Test and debug regular expressions online with live match highlighting. Free regex tester, no login required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/regex-tester.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Regex Tester – Test Regular Expressions Online | All Your Tools">
+  <meta name="twitter:description" content="Test and debug regular expressions online with live match highlighting. Free regex tester, no login required.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Regex Tester",
+    "url": "https://allyourtools.com/regex-tester.html",
+    "description": "Test and debug regular expressions online with live match highlighting. Free regex tester, no login required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>Regex Tester</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Regex Tester</h1>
+          <p class="tool-tagline">Write a regular expression and test it against your input — see all matches highlighted in real time.</p>
+
+          <div class="form-group">
+            <label for="regex-pattern">Regular Expression</label>
+            <div style="display:flex;gap:0.5rem;align-items:center;">
+              <span style="font-size:1.2rem;color:#6b7280;font-family:monospace;">/</span>
+              <input type="text" id="regex-pattern" placeholder="e.g. \b\w{5}\b" style="flex:1;" autocomplete="off">
+              <span style="font-size:1.2rem;color:#6b7280;font-family:monospace;">/</span>
+              <input type="text" id="regex-flags" placeholder="flags" maxlength="10" style="width:80px;" autocomplete="off" title="Flags: g (global), i (case-insensitive), m (multiline)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regex-test-string">Test String</label>
+            <textarea id="regex-test-string" rows="5" placeholder="Enter the text to test your regex against..."></textarea>
+          </div>
+          <p id="regex-error" style="color:#dc2626;font-size:0.875rem;min-height:1.2em;"></p>
+          <div class="action-row">
+            <button class="btn-primary" id="regex-test-btn" type="button">Test Regex</button>
+          </div>
+          <div id="regex-results" style="margin-top:1.25rem;display:none;">
+            <div id="regex-summary" style="font-size:0.875rem;font-weight:600;margin-bottom:0.75rem;"></div>
+            <div class="result-box" style="flex-direction:column;align-items:stretch;">
+              <div id="regex-matches-list" style="font-family:monospace;font-size:0.875rem;line-height:1.8;"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is a regular expression?</h2>
+          <p>A regular expression (regex or regexp) is a sequence of characters that defines a search pattern. It is used to match, find, and manipulate text. Regular expressions are supported in virtually every programming language — JavaScript, Python, Java, Ruby, Go, and many others — making them an indispensable tool for text processing. A regex can be as simple as a literal string or as complex as a pattern that validates email addresses or extracts structured data from logs.</p>
+
+          <h2>Common regex patterns</h2>
+          <p>Some frequently used patterns include: <code>\d+</code> to match one or more digits, <code>\b\w+\b</code> to match whole words, <code>^</code> and <code>$</code> to anchor to the start and end of a line, <code>[a-z]</code> for character classes, and <code>(foo|bar)</code> for alternation. The <code>g</code> flag enables global matching (find all occurrences), <code>i</code> makes the match case-insensitive, and <code>m</code> makes <code>^</code> and <code>$</code> match line boundaries.</p>
+
+          <h2>How this tool works</h2>
+          <p>Enter your regular expression in the pattern field and any flags (such as <code>g</code>, <code>i</code>, or <code>m</code>) in the flags field. Paste or type your test string, then click Test Regex. The tool compiles the expression using JavaScript's built-in <code>RegExp</code> constructor and runs it against your input, listing all matches along with their positions in the string. If the expression is invalid, a clear error message is shown.</p>
+
+          <h2>Use cases</h2>
+          <p>Regex testers are used to validate input formats (email, phone numbers, dates), extract data from log files, find and replace text in editors, parse structured text like CSV or HTML, and write test cases for string processing functions. Testing a regex interactively before embedding it in code prevents subtle bugs and saves debugging time.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="json-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                JSON Formatter
+              </a>
+              <a href="text-case-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Text Case Converter
+              </a>
+              <a href="url-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                URL Encoder/Decoder
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/regex-tester.js"></script>
+  <script>initRegexTester();</script>
+
+</body>
+</html>

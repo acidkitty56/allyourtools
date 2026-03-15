@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Diff Checker – Compare Two Texts Online | All Your Tools</title>
+  <meta name="description" content="Compare two pieces of text and instantly see what changed. Free online diff checker, line-by-line comparison, no login required.">
+  <link rel="canonical" href="https://allyourtools.com/diff-checker.html">
+  <meta property="og:title" content="Free Diff Checker – Compare Two Texts Online | All Your Tools">
+  <meta property="og:description" content="Compare two pieces of text and instantly see what changed. Free online diff checker, line-by-line comparison, no login required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/diff-checker.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Diff Checker – Compare Two Texts Online | All Your Tools">
+  <meta name="twitter:description" content="Compare two pieces of text and instantly see what changed. Free online diff checker, line-by-line comparison, no login required.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Diff Checker",
+    "url": "https://allyourtools.com/diff-checker.html",
+    "description": "Compare two pieces of text and instantly see what changed. Free online diff checker, line-by-line comparison, no login required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>Diff Checker</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Diff Checker</h1>
+          <p class="tool-tagline">Paste two versions of text to see exactly what was added, removed, or changed.</p>
+
+          <style>
+            #diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+            @media(max-width:640px){ #diff-grid { grid-template-columns:1fr; } }
+          </style>
+
+          <div id="diff-grid">
+            <div class="form-group" style="margin:0;">
+              <label for="diff-original">Original Text</label>
+              <textarea id="diff-original" rows="8" placeholder="Paste original text here..."></textarea>
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label for="diff-modified">Modified Text</label>
+              <textarea id="diff-modified" rows="8" placeholder="Paste modified text here..."></textarea>
+            </div>
+          </div>
+          <div class="action-row" style="margin-top:1rem;">
+            <button class="btn-primary" id="diff-compare-btn" type="button">Compare</button>
+          </div>
+          <div id="diff-results" style="display:none;margin-top:1.25rem;">
+            <div id="diff-summary" style="font-size:0.875rem;font-weight:600;margin-bottom:0.75rem;"></div>
+            <div id="diff-output" style="font-family:monospace;font-size:0.875rem;line-height:1.8;padding:1rem;background:#f9fafb;border:1.5px solid #e5e7eb;border-radius:0.5rem;white-space:pre-wrap;word-break:break-word;overflow:auto;max-height:500px;"></div>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is a diff checker?</h2>
+          <p>A diff checker (short for "difference checker") is a tool that compares two pieces of text and highlights what has changed between them. It shows you lines that were added, removed, or remained the same. Diff tools are a fundamental part of software development and document management.</p>
+
+          <h2>Line-by-line comparison explained</h2>
+          <p>This tool uses the <strong>Longest Common Subsequence (LCS)</strong> algorithm to find the maximum number of lines that appear in both versions in the same order. Lines that exist only in the original are shown in red with a "−" prefix. Lines that exist only in the modified version are shown in green with a "+" prefix. Unchanged lines are shown in gray.</p>
+
+          <h2>Common use cases</h2>
+          <p>Diff checkers are used by developers to review code changes before committing, by writers to compare document revisions, by editors to track content edits, and by data teams to spot changes between data exports. They are also handy for comparing configuration files, contract versions, or any two pieces of text you need to audit.</p>
+
+          <h2>How this tool works</h2>
+          <p>Everything runs locally in your browser. The text is split into lines, the LCS algorithm computes the optimal alignment, and the result is rendered with color-coded highlighting. No data is sent to any server — your content remains completely private.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="text-case-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Text Case Converter
+              </a>
+              <a href="markdown-preview.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                Markdown Preview
+              </a>
+              <a href="word-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                Word Counter
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/diff-checker.js"></script>
+  <script>initDiffChecker();</script>
+
+</body>
+</html>

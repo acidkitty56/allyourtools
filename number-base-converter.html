@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Number Base Converter – Binary, Octal, Decimal, Hex | All Your Tools</title>
+  <meta name="description" content="Convert numbers between binary, octal, decimal, and hexadecimal instantly. Free online base converter, no login required.">
+  <link rel="canonical" href="https://allyourtools.com/number-base-converter.html">
+  <meta property="og:title" content="Free Number Base Converter – Binary, Octal, Decimal, Hex | All Your Tools">
+  <meta property="og:description" content="Convert numbers between binary, octal, decimal, and hexadecimal instantly. Free online base converter, no login required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/number-base-converter.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Number Base Converter – Binary, Octal, Decimal, Hex | All Your Tools">
+  <meta name="twitter:description" content="Convert numbers between binary, octal, decimal, and hexadecimal instantly. Free online base converter, no login required.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Number Base Converter",
+    "url": "https://allyourtools.com/number-base-converter.html",
+    "description": "Convert numbers between binary, octal, decimal, and hexadecimal instantly. Free online base converter, no login required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>Number Base Converter</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Number Base Converter</h1>
+          <p class="tool-tagline">Convert any number between binary, octal, decimal, and hexadecimal in one click.</p>
+
+          <div class="form-group">
+            <label for="base-input">Enter a Number</label>
+            <input type="text" id="base-input" placeholder="e.g. 255" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label for="base-from">Input Base</label>
+            <select id="base-from">
+              <option value="10" selected>Decimal (base 10)</option>
+              <option value="2">Binary (base 2)</option>
+              <option value="8">Octal (base 8)</option>
+              <option value="16">Hexadecimal (base 16)</option>
+            </select>
+          </div>
+
+          <p id="base-error" style="color:#dc2626;font-size:0.875rem;min-height:1.2em;"></p>
+
+          <div class="action-row">
+            <button class="btn-primary" id="base-convert-btn" type="button">Convert</button>
+          </div>
+
+          <!-- Four output rows -->
+          <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:1.25rem;">
+            <div class="result-box">
+              <span class="result-label" style="font-size:0.8rem;font-weight:600;color:#6b7280;min-width:90px;">Binary</span>
+              <span class="result-output" id="out-binary">—</span>
+              <button class="btn-copy" data-target="out-binary">Copy</button>
+            </div>
+            <div class="result-box">
+              <span class="result-label" style="font-size:0.8rem;font-weight:600;color:#6b7280;min-width:90px;">Octal</span>
+              <span class="result-output" id="out-octal">—</span>
+              <button class="btn-copy" data-target="out-octal">Copy</button>
+            </div>
+            <div class="result-box">
+              <span class="result-label" style="font-size:0.8rem;font-weight:600;color:#6b7280;min-width:90px;">Decimal</span>
+              <span class="result-output" id="out-decimal">—</span>
+              <button class="btn-copy" data-target="out-decimal">Copy</button>
+            </div>
+            <div class="result-box">
+              <span class="result-label" style="font-size:0.8rem;font-weight:600;color:#6b7280;min-width:90px;">Hexadecimal</span>
+              <span class="result-output" id="out-hex">—</span>
+              <button class="btn-copy" data-target="out-hex">Copy</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is a number base?</h2>
+          <p>A number base (or radix) defines how many unique digits a positional number system uses. The familiar everyday system is base 10 (decimal), which uses the digits 0–9. Computers work natively in base 2 (binary), using only 0 and 1 to represent electrical states. Octal (base 8) and hexadecimal (base 16) are compact shorthand representations that map closely to binary groups, making them popular in programming and low-level computing.</p>
+
+          <h2>Why convert between bases?</h2>
+          <p>Base conversion is essential in computer science and software development. Hexadecimal is used for memory addresses, color codes (like #2563eb in CSS), and bytecode. Binary is the language of processors — every CPU instruction, every pixel, every character is ultimately stored as 1s and 0s. Octal was common in older Unix file permissions (e.g. <code>chmod 755</code>). Understanding all four bases makes reading technical documentation, debugging, and hardware programming much easier.</p>
+
+          <h2>How this tool works</h2>
+          <p>Enter a number in any of the four supported bases, select the input base from the dropdown, and the tool instantly shows all four representations. Internally it uses JavaScript's built-in <code>parseInt(value, base)</code> to parse the number into a standard decimal integer, then calls <code>.toString(base)</code> to produce each output. Hexadecimal output is displayed in uppercase for readability. Input is validated to reject characters that are illegal for the selected base — for example, a '9' in binary input will trigger an error.</p>
+
+          <h2>Common use cases</h2>
+          <p>Convert CSS hex color codes to their decimal RGB components. Check what a binary CPU register value looks like in hex. Verify file permission octal values in Unix systems. Decode memory addresses shown in hexadecimal during debugging sessions. Explore how large numbers grow in binary representation versus their decimal form.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="uuid-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h.01M12 7h5M7 12h10M7 17h10"/></svg>
+                UUID Generator
+              </a>
+              <a href="color-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                Color Converter
+              </a>
+              <a href="text-case-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Text Case Converter
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/number-base-converter.js"></script>
+  <script>initNumberBaseConverter();</script>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Color Converter – HEX, RGB, HSL | All Your Tools</title>
+  <meta name="description" content="Convert colors between HEX, RGB, and HSL formats instantly. Free online color converter, no login required.">
+  <link rel="canonical" href="https://allyourtools.com/color-converter.html">
+  <meta property="og:title" content="Free Color Converter – HEX, RGB, HSL | All Your Tools">
+  <meta property="og:description" content="Convert colors between HEX, RGB, and HSL formats instantly. Free online color converter, no login required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/color-converter.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Color Converter – HEX, RGB, HSL | All Your Tools">
+  <meta name="twitter:description" content="Convert colors between HEX, RGB, and HSL formats instantly. Free online color converter, no login required.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Color Converter",
+    "url": "https://allyourtools.com/color-converter.html",
+    "description": "Convert colors between HEX, RGB, and HSL formats instantly. Free online color converter, no login required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>Color Converter</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Color Converter</h1>
+          <p class="tool-tagline">Enter a color in any format — HEX, RGB, or HSL — and instantly see all three values.</p>
+
+          <!-- Color preview -->
+          <div id="color-preview" style="width:100%;height:80px;border-radius:0.75rem;background:#2563eb;margin-bottom:1.25rem;border:1px solid #e5e7eb;transition:background 0.2s;"></div>
+
+          <div class="form-group">
+            <label for="color-hex-input">HEX</label>
+            <input type="text" id="color-hex-input" placeholder="#2563eb" maxlength="7" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="color-rgb-input">RGB</label>
+            <input type="text" id="color-rgb-input" placeholder="37, 99, 235" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="color-hsl-input">HSL</label>
+            <input type="text" id="color-hsl-input" placeholder="221, 83%, 53%" autocomplete="off">
+          </div>
+
+          <p id="color-error" style="color:#dc2626;font-size:0.875rem;min-height:1.2em;"></p>
+
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem;">
+            <button class="btn-primary" id="random-color-btn" type="button">🎲 Random Color</button>
+          </div>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
+            <button class="btn-ghost" id="copy-hex-btn" type="button">Copy HEX</button>
+            <button class="btn-ghost" id="copy-rgb-btn" type="button">Copy RGB</button>
+            <button class="btn-ghost" id="copy-hsl-btn" type="button">Copy HSL</button>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is color format conversion?</h2>
+          <p>Colors on screens can be described in many different mathematical models, each with its own notation. Color format conversion means expressing the same exact color using a different notation system. A deep blue might be written as <code>#2563eb</code> in HEX, as <code>rgb(37, 99, 235)</code> in RGB, or as <code>hsl(221, 83%, 53%)</code> in HSL — all three describe the exact same hue. Different tools and contexts expect different formats, so being able to convert quickly saves time and prevents errors.</p>
+
+          <h2>HEX vs RGB vs HSL explained</h2>
+          <p><strong>HEX</strong> encodes red, green, and blue as a six-character hexadecimal string prefixed with #. It is compact and universal, used in CSS, SVG, HTML attributes, and design tools like Figma. <strong>RGB</strong> (Red, Green, Blue) represents each channel as an integer from 0 to 255, making arithmetic adjustments intuitive — doubling the red value makes something redder. <strong>HSL</strong> (Hue, Saturation, Lightness) describes color in human-intuitive terms: hue is the angle on the color wheel (0–360°), saturation controls how vivid the color is (0–100%), and lightness controls how bright it is (0–100%). HSL makes it easy to create color palettes by adjusting only one dimension at a time.</p>
+
+          <h2>How this tool works</h2>
+          <p>Type a color value into any of the three input fields and the other two update instantly. Parsing logic handles flexible input: HEX accepts both 3-digit and 6-digit forms (with or without the # symbol), RGB accepts comma-separated or space-separated values, and HSL accepts percentages with or without the % sign. The preview rectangle above the inputs always shows the current color. All conversion math runs locally in your browser — no data is sent to a server.</p>
+
+          <h2>Common use cases</h2>
+          <p>Convert a HEX color from a brand style guide into RGB for use in a CSS <code>rgba()</code> rule with transparency. Translate an RGB value from a design handoff into HSL so you can generate lighter and darker tints. Check what a hex color code looks like visually before committing it to code. Build color palettes by fixing the hue in HSL and adjusting saturation and lightness. Verify that two apparently similar hex codes are actually the same color by comparing their RGB values.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="number-base-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h1v6"/><path d="M14 9h2v2h-2v2h2v2h-2"/></svg>
+                Number Base Converter
+              </a>
+              <a href="uuid-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h.01M12 7h5M7 12h10M7 17h10"/></svg>
+                UUID Generator
+              </a>
+              <a href="lorem-ipsum-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                Lorem Ipsum Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/color-converter.js"></script>
+  <script>initColorConverter();</script>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Text Case Converter – UPPER, lower, camelCase &amp; More | All Your Tools</title>
+  <meta name="description" content="Convert text between UPPER CASE, lower case, Title Case, camelCase, snake_case, and kebab-case instantly. Free online tool.">
+  <link rel="canonical" href="https://allyourtools.com/text-case-converter.html">
+  <meta property="og:title" content="Free Text Case Converter – UPPER, lower, camelCase &amp; More | All Your Tools">
+  <meta property="og:description" content="Convert text between UPPER CASE, lower case, Title Case, camelCase, snake_case, and kebab-case instantly. Free online tool.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/text-case-converter.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Text Case Converter – UPPER, lower, camelCase &amp; More | All Your Tools">
+  <meta name="twitter:description" content="Convert text between UPPER CASE, lower case, Title Case, camelCase, snake_case, and kebab-case instantly. Free online tool.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Text Case Converter",
+    "url": "https://allyourtools.com/text-case-converter.html",
+    "description": "Convert text between UPPER CASE, lower case, Title Case, camelCase, snake_case, and kebab-case instantly. Free online tool.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>Text Case Converter</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Text Case Converter</h1>
+          <p class="tool-tagline">Paste your text, then click any conversion button to instantly transform it.</p>
+
+          <!-- Text Input -->
+          <div class="form-group">
+            <label for="text-input">Your Text</label>
+            <textarea
+              id="text-input"
+              placeholder="Paste or type your text here..."
+              rows="5"
+              aria-label="Text to convert"
+            ></textarea>
+          </div>
+
+          <!-- Conversion Buttons -->
+          <div class="convert-buttons">
+            <button class="btn-ghost" id="btn-upper"    type="button">UPPER CASE</button>
+            <button class="btn-ghost" id="btn-lower"    type="button">lower case</button>
+            <button class="btn-ghost" id="btn-title"    type="button">Title Case</button>
+            <button class="btn-ghost" id="btn-sentence" type="button">Sentence case</button>
+            <button class="btn-ghost" id="btn-camel"    type="button">camelCase</button>
+            <button class="btn-ghost" id="btn-snake"    type="button">snake_case</button>
+            <button class="btn-ghost" id="btn-kebab"    type="button">kebab-case</button>
+          </div>
+
+          <!-- Result -->
+          <div class="result-box" id="result-box">
+            <span class="result-output" id="result-output">Result appears here</span>
+            <button class="btn-copy" id="copy-btn" type="button" aria-label="Copy converted text">Copy</button>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is a text case converter?</h2>
+          <p>A text case converter changes the capitalisation style of a block of text. Different conventions are used in different contexts — programming, writing, data entry — and switching between them manually is tedious. This tool does it instantly with a single click.</p>
+
+          <h2>What case formats are supported?</h2>
+          <p><strong>UPPER CASE</strong> — all letters capitalised. Useful for headings, acronyms, and constants.<br>
+          <strong>lower case</strong> — all letters lowercased. Common for URLs and tags.<br>
+          <strong>Title Case</strong> — each major word capitalised; minor linking words are left lowercase.<br>
+          <strong>Sentence case</strong> — only the first word of each sentence is capitalised.<br>
+          <strong>camelCase</strong> — no spaces; each word except the first is capitalised. Used in JavaScript and many programming languages.<br>
+          <strong>snake_case</strong> — all lowercase, words separated by underscores. Common in Python and database column names.<br>
+          <strong>kebab-case</strong> — all lowercase, words separated by hyphens. Used in CSS, HTML attributes, and URLs.</p>
+
+          <h2>How does this tool work?</h2>
+          <p>The converter first splits your input into individual words — handling spaces, punctuation, hyphens, underscores, and CamelCase input. It then reassembles the words using the rules for your chosen output format. All processing happens locally in your browser.</p>
+
+          <h2>Common use cases</h2>
+          <p>Developers use this to convert variable names between languages. Content writers use UPPER CASE for headings and Title Case for article titles. Data engineers use snake_case and kebab-case for consistent naming in databases and APIs.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="lorem-ipsum-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                Lorem Ipsum Generator
+              </a>
+              <a href="number-base-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h1v6"/><path d="M14 9h2v2h-2v2h2v2h-2"/></svg>
+                Number Base Converter
+              </a>
+              <a href="username-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Username Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/text-case-converter.js"></script>
+  <script>initTextCaseConverter();</script>
+
+</body>
+</html>

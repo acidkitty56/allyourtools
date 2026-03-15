@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free JSON Formatter &amp; Validator – Beautify &amp; Minify JSON | All Your Tools</title>
+  <meta name="description" content="Format, validate, and beautify JSON instantly. Paste messy JSON and get clean, indented output. Free, browser-based, no login.">
+  <link rel="canonical" href="https://allyourtools.com/json-formatter.html">
+  <meta property="og:title" content="Free JSON Formatter &amp; Validator – Beautify &amp; Minify JSON | All Your Tools">
+  <meta property="og:description" content="Format, validate, and beautify JSON instantly. Paste messy JSON and get clean, indented output. Free, browser-based, no login.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.com/json-formatter.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free JSON Formatter &amp; Validator – Beautify &amp; Minify JSON | All Your Tools">
+  <meta name="twitter:description" content="Format, validate, and beautify JSON instantly. Paste messy JSON and get clean, indented output. Free, browser-based, no login.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free JSON Formatter & Validator",
+    "url": "https://allyourtools.com/json-formatter.html",
+    "description": "Format, validate, and beautify JSON instantly. Paste messy JSON and get clean, indented output. Free, browser-based, no login.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "All Your Tools",
+      "url": "https://allyourtools.com/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>JSON Formatter</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>JSON Formatter &amp; Validator</h1>
+          <p class="tool-tagline">Paste JSON to format, validate, and beautify it — or minify it for production.</p>
+
+          <div class="form-group">
+            <label for="json-input">Paste JSON</label>
+            <textarea id="json-input" rows="8" placeholder='{"name":"Alice","age":30,"active":true}'></textarea>
+          </div>
+          <p id="json-error" style="color:#dc2626;font-size:0.875rem;min-height:1.2em;font-weight:500;"></p>
+          <div class="action-row">
+            <button class="btn-primary" id="json-format-btn" type="button">Format / Beautify</button>
+            <button class="btn-secondary" id="json-minify-btn" type="button">Minify</button>
+          </div>
+          <div class="result-box" id="json-result-box" style="flex-direction:column;align-items:stretch;margin-top:1.25rem;display:none;">
+            <span class="result-output" id="json-output" style="white-space:pre-wrap;word-break:break-word;font-size:0.85rem;"></span>
+            <button class="btn-copy" id="json-copy-btn" type="button" style="align-self:flex-end;margin-top:0.5rem;">Copy</button>
+          </div>
+        </section>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is JSON?</h2>
+          <p>JSON (JavaScript Object Notation) is a lightweight, text-based data interchange format. It is human-readable and easy for machines to parse and generate. JSON is built on two structures: a collection of key/value pairs (objects) and an ordered list of values (arrays). It has become the dominant format for REST APIs, configuration files, and data storage across virtually every programming language.</p>
+
+          <h2>Why format JSON?</h2>
+          <p>Raw or minified JSON is often difficult to read — all the data is compressed onto a single line with no indentation. Formatting (also called "pretty-printing" or "beautifying") adds consistent indentation and line breaks, making the structure immediately visible. This is invaluable when debugging API responses, reviewing configuration files, or understanding unfamiliar data structures.</p>
+
+          <h2>How this tool works</h2>
+          <p>This formatter uses your browser's built-in <code>JSON.parse()</code> to validate and parse the input, then <code>JSON.stringify()</code> to produce formatted or minified output. If your JSON is invalid, the exact error message is shown so you can pinpoint the problem. Everything runs locally in your browser — no data is sent to any server.</p>
+
+          <h2>Common use cases</h2>
+          <p>Developers use a JSON formatter to inspect API responses during development, clean up configuration files, validate that a JSON payload is well-formed before sending it to a server, and minify JSON to reduce payload size in production. It is one of the most frequently reached-for tools in any web developer's workflow.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="uuid-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h.01M12 7h5M7 12h10M7 17h10"/></svg>
+                UUID Generator
+              </a>
+              <a href="number-base-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                Number Base Converter
+              </a>
+              <a href="base64-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+                Base64 Encoder/Decoder
+              </a>
+              <a href="url-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                URL Encoder/Decoder
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="number-base-converter.html">Number Base Converter</a></li>
+            <li><a href="html-entities.html">HTML Entities</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="markdown-preview.html">Markdown Preview</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="css-gradient-generator.html">CSS Gradient Generator</a></li>
+            <li><a href="cron-builder.html">Cron Builder</a></li>
+            <li><a href="ip-address-info.html">IP Address Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/json-formatter.js"></script>
+  <script>initJsonFormatter();</script>
+
+</body>
+</html>
