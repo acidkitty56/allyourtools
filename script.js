@@ -182,7 +182,7 @@ function loadAdSense() {
   var s = document.createElement('script');
   s.async = true;
   s.crossOrigin = 'anonymous';
-  s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-ADSENSE-ID';
+  s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7896989004984215';
   document.head.appendChild(s);
 }
 
