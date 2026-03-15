@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free JSON Minifier – Compress JSON Online | All Your Tools</title>
+  <meta name="description" content="Minify and compress JSON by removing whitespace and formatting. Reduce JSON file size instantly — free, no login, works in your browser.">
+  <link rel="canonical" href="https://allyourtools.net/json-minifier.html">
+  <meta property="og:title" content="Free JSON Minifier – Compress JSON Online | All Your Tools">
+  <meta property="og:description" content="Minify and compress JSON by removing whitespace and formatting. Reduce JSON file size instantly — free, no login, works in your browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/json-minifier.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free JSON Minifier – Compress JSON Online | All Your Tools">
+  <meta name="twitter:description" content="Minify and compress JSON by removing whitespace and formatting. Reduce JSON file size instantly — free, no login, works in your browser.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free JSON Minifier",
+    "url": "https://allyourtools.net/json-minifier.html",
+    "description": "Minify and compress JSON by removing whitespace and formatting. Reduce JSON file size instantly — free, no login, works in your browser.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>JSON Minifier</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <section class="tool-interface-card">
+          <h1>JSON Minifier</h1>
+          <p class="tool-tagline">Paste formatted JSON and compress it by removing all whitespace — smaller payload, same data.</p>
+
+          <div class="form-group">
+            <label for="jm-input">Formatted JSON</label>
+            <textarea id="jm-input" rows="7" placeholder='{\n  "name": "Alice",\n  "age": 30\n}'></textarea>
+          </div>
+          <button class="btn-primary" id="jm-btn" style="margin-bottom:0.75rem;">Minify JSON</button>
+          <p id="jm-info" style="font-size:0.875rem;color:#6b7280;min-height:1.25rem;margin-bottom:0.75rem;"></p>
+          <div class="form-group">
+            <label for="jm-output">Minified JSON</label>
+            <textarea id="jm-output" rows="4" readonly placeholder="Minified output will appear here..."></textarea>
+          </div>
+          <button class="btn-secondary" id="jm-copy">Copy Minified JSON</button>
+        </section>
+
+        <div class="ad-slot"></div>
+
+        <article class="tool-seo">
+          <h2>What is JSON minification?</h2>
+          <p>JSON minification removes all unnecessary whitespace — spaces, tabs, and newlines — from a JSON document without changing its data or structure. The result is a compact single-line string that is functionally identical to the formatted original but takes up less space.</p>
+
+          <h2>Why minify JSON?</h2>
+          <p>Minified JSON reduces the size of API responses and configuration files, which speeds up network transfers and lowers bandwidth costs. For large JSON payloads, removing whitespace can reduce file size by 20–40%. It also makes JSON harder to accidentally hand-edit, which is desirable for production config files.</p>
+
+          <h2>Minify vs format</h2>
+          <p>Minifying and formatting are opposite operations. Use the JSON Formatter when you need to read or debug a JSON document — it adds indentation and newlines to make structure visible. Use the JSON Minifier when you need to ship or store the data efficiently. This tool also validates your JSON as a side effect: if minification fails, your JSON has a syntax error.</p>
+
+          <h2>JSON validation on the fly</h2>
+          <p>Because this tool parses the JSON before minifying it, any syntax error in your input will be caught and displayed as an error message. This makes it a quick JSON validator as well — if it minifies successfully, your JSON is guaranteed to be syntactically valid.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="json-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                JSON Formatter
+              </a>
+              <a href="base64-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                Base64 Encoder
+              </a>
+              <a href="html-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                HTML Formatter
+              </a>
+              <a href="url-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                URL Encoder
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">⚡ All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="password-generator.html">Password Generator</a></li>
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="uuid-generator.html">UUID Generator</a></li>
+            <li><a href="lorem-ipsum-generator.html">Lorem Ipsum</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="json-formatter.html">JSON Formatter</a></li>
+            <li><a href="json-minifier.html">JSON Minifier</a></li>
+            <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="url-decoder.html">URL Decoder</a></li>
+            <li><a href="html-formatter.html">HTML Formatter</a></li>
+            <li><a href="meta-tag-generator.html">Meta Tag Generator</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="slug-generator.html">Slug Generator</a></li>
+            <li><a href="remove-line-breaks.html">Remove Line Breaks</a></li>
+            <li><a href="text-sorter.html">Text Sorter</a></li>
+            <li><a href="duplicate-line-remover.html">Duplicate Line Remover</a></li>
+            <li><a href="whitespace-remover.html">Whitespace Remover</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense — just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">&copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/json-minifier.js"></script>
+  <script>initJsonMinifier();</script>
+
+</body>
+</html>
