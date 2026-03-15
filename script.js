@@ -86,19 +86,6 @@ function showToast(message) {
 }
 
 /**
- * Smoothly scroll to an element by its ID.
- * Used for the "Browse Tools" CTA on the homepage.
- *
- * @param {string} id - The element ID to scroll to
- */
-function scrollTo(id) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-
-/**
  * Initialise the mobile hamburger menu toggle.
  * Call once on DOMContentLoaded.
  */
