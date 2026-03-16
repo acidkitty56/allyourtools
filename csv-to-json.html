@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV to JSON Converter – Free Online Tool | All Your Tools</title>
+  <meta name="description" content="Convert CSV data to a JSON array instantly. Paste your CSV, click Convert, and copy the formatted JSON. Handles quoted fields and auto-casts numbers. Free, no login.">
+  <link rel="canonical" href="https://allyourtools.net/csv-to-json.html">
+  <meta property="og:title" content="CSV to JSON Converter – Free Online Tool | All Your Tools">
+  <meta property="og:description" content="Convert CSV data to a JSON array instantly. Paste your CSV, click Convert, and copy the formatted JSON. Handles quoted fields and auto-casts numbers. Free, no login.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/csv-to-json.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CSV to JSON Converter – Free Online Tool | All Your Tools">
+  <meta name="twitter:description" content="Convert CSV data to a JSON array instantly. Paste your CSV, click Convert, and copy the formatted JSON. Handles quoted fields and auto-casts numbers. Free, no login.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSV to JSON Converter",
+    "url": "https://allyourtools.net/csv-to-json.html",
+    "description": "Convert CSV data to a JSON array instantly. Handles quoted fields and auto-casts numbers.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>CSV to JSON</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>CSV to JSON Converter</h1>
+          <p class="tool-tagline">Paste spreadsheet data as CSV and get a clean, formatted JSON array instantly.</p>
+
+          <div class="form-group">
+            <label for="c2j-input">CSV Input</label>
+            <textarea id="c2j-input" rows="8" placeholder="name,age,city&#10;Alice,30,London&#10;Bob,25,Paris"></textarea>
+          </div>
+
+          <div id="c2j-error" style="display:none;color:#ef4444;background:#fef2f2;border:1px solid #fca5a5;border-radius:0.5rem;padding:0.75rem;margin-bottom:1rem;font-size:0.9rem;"></div>
+
+          <button class="btn-primary" id="c2j-convert" style="width:100%;">Convert to JSON</button>
+
+          <div class="form-group" style="margin-top:1rem;">
+            <label for="c2j-output">JSON Output</label>
+            <textarea id="c2j-output" rows="6" readonly placeholder="JSON will appear here…"></textarea>
+          </div>
+
+          <button class="btn-secondary" id="c2j-copy" style="margin-top:0.5rem;">Copy JSON</button>
+        </section>
+
+        <!-- Ad slot 1: between tool and explanation -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>When do you need CSV to JSON conversion?</h2>
+          <p>Spreadsheets exported from Excel or Google Sheets come as CSV. REST APIs and JavaScript applications expect JSON. Converting between the two is a frequent need when moving data between systems — importing spreadsheet data into a web app, feeding CSV exports into an API, or transforming database exports for use in code. This tool handles the conversion in seconds, right in your browser.</p>
+
+          <h2>How the parser works</h2>
+          <p>The first row is treated as the header row and becomes the keys for each JSON object. Every subsequent row becomes one JSON object. Fields wrapped in double quotes (including those containing commas) are correctly parsed — escaped quotes inside quoted fields are handled too. Numeric values are automatically cast to JavaScript numbers, and <code>true</code>/<code>false</code> strings become booleans. All other values remain strings.</p>
+
+          <h2>Tips for clean conversion</h2>
+          <p>Ensure your CSV uses a consistent delimiter (commas) and that your header row has no duplicate column names. Blank lines between rows are ignored. If a column value contains a comma, it must be wrapped in double quotes in the source CSV — most spreadsheet tools handle this automatically when you export. Avoid merged cells or multi-row headers, which are not valid CSV.</p>
+
+          <h2>Use cases</h2>
+          <p><strong>Data migration:</strong> Convert exported database tables to JSON for import into a NoSQL store. <strong>API testing:</strong> Turn a spreadsheet of test cases into a JSON payload for Postman or a test script. <strong>Configuration:</strong> Manage config values in a spreadsheet and convert to JSON before deployment. <strong>Prototyping:</strong> Quickly create mock data arrays for front-end development from a simple spreadsheet.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="json-to-csv.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                JSON to CSV
+              </a>
+              <a href="json-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+                JSON Formatter
+              </a>
+              <a href="json-minifier.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                JSON Minifier
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2: below explanation -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/csv-to-json.js"></script>
+  <script>initCsvToJson();</script>
+
+</body>
+</html>

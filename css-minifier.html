@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Minifier – Compress CSS Online Free | All Your Tools</title>
+  <meta name="description" content="Minify CSS instantly in your browser. Remove comments, whitespace, and redundant code to reduce file size. Shows original size, minified size, and % saved. Free.">
+  <link rel="canonical" href="https://allyourtools.net/css-minifier.html">
+  <meta property="og:title" content="CSS Minifier – Compress CSS Online Free | All Your Tools">
+  <meta property="og:description" content="Minify CSS instantly in your browser. Remove comments, whitespace, and redundant code to reduce file size. Shows original size, minified size, and % saved. Free.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/css-minifier.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CSS Minifier – Compress CSS Online Free | All Your Tools">
+  <meta name="twitter:description" content="Minify CSS instantly in your browser. Remove comments, whitespace, and redundant code to reduce file size. Shows original size, minified size, and % saved. Free.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSS Minifier",
+    "url": "https://allyourtools.net/css-minifier.html",
+    "description": "Minify CSS instantly. Remove comments, whitespace, and redundant code to reduce file size.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>CSS Minifier</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>CSS Minifier</h1>
+          <p class="tool-tagline">Compress your CSS by stripping comments, whitespace, and redundant code to speed up page loads.</p>
+
+          <div class="form-group">
+            <label for="cssm-input">CSS Input</label>
+            <textarea id="cssm-input" rows="8" placeholder="/* Paste your CSS here */&#10;.container {&#10;  margin: 0 auto;&#10;  padding: 0px 16px;&#10;}"></textarea>
+          </div>
+
+          <button class="btn-primary" id="cssm-minify" style="width:100%;">Minify CSS</button>
+
+          <div id="cssm-stats" style="margin-top:0.75rem;min-height:2rem;"></div>
+
+          <div class="form-group" style="margin-top:0.75rem;">
+            <label for="cssm-output">Minified CSS</label>
+            <textarea id="cssm-output" rows="4" readonly placeholder="Minified CSS will appear here…" style="font-family:monospace;font-size:0.85rem;"></textarea>
+          </div>
+
+          <button class="btn-secondary" id="cssm-copy" style="margin-top:0.5rem;">Copy CSS</button>
+        </section>
+
+        <!-- Ad slot 1: between tool and explanation -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>Why minify CSS?</h2>
+          <p>Every byte of CSS must be downloaded by the browser before it can render a page. Minification reduces file size — typically by 30–60% — by removing characters that the browser doesn't need: whitespace, newlines, comments, and redundant semicolons. Smaller files download faster over mobile connections, reduce bandwidth costs, and improve Lighthouse/PageSpeed scores. Minification is a standard step in any front-end build pipeline.</p>
+
+          <h2>What this minifier does</h2>
+          <p>The minifier performs these transformations: removes all <code>/* */</code> comments, collapses all whitespace and newlines to single spaces, removes spaces around <code>{ } : ; , &gt; ~ +</code>, removes trailing semicolons before closing braces (the last semicolon in a rule block is always optional in CSS), removes units from <code>0</code> values (<code>0px</code> → <code>0</code>), and removes leading zeros from decimals (<code>0.5</code> → <code>.5</code>).</p>
+
+          <h2>What it does not do</h2>
+          <p>This is a lightweight minifier — it doesn't perform advanced optimizations like combining duplicate selectors, removing unused rules, shortening color values (<code>#ffffff</code> → <code>#fff</code>), or rewriting shorthand properties. For those optimizations, consider a build-time tool like cssnano or CleanCSS. This tool is ideal for a quick manual minification pass or for checking how much your CSS can compress.</p>
+
+          <h2>Before deploying minified CSS</h2>
+          <p>Always test minified CSS in a browser before deploying. While the transformations applied here are safe, complex selectors or content strings that look like CSS syntax could in rare cases be affected. Keep your original source files in version control and only deploy the minified output. If you're using a build tool like Vite, Webpack, or Parcel, CSS minification is likely already happening automatically in production builds.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="json-minifier.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                JSON Minifier
+              </a>
+              <a href="html-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                HTML Formatter
+              </a>
+              <a href="json-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+                JSON Formatter
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2: below explanation -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/css-minifier.js"></script>
+  <script>initCssMinifier();</script>
+
+</body>
+</html>

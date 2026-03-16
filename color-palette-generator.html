@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Palette Generator – Free Online Harmony Color Tool | All Your Tools</title>
+  <meta name="description" content="Generate beautiful color palettes from any base color. Choose from complementary, analogous, triadic, split-complementary, or monochromatic harmonies. Click to copy HEX codes.">
+  <link rel="canonical" href="https://allyourtools.net/color-palette-generator.html">
+  <meta property="og:title" content="Color Palette Generator – Free Online Harmony Color Tool | All Your Tools">
+  <meta property="og:description" content="Generate beautiful color palettes from any base color. Choose from complementary, analogous, triadic, split-complementary, or monochromatic harmonies. Click to copy HEX codes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/color-palette-generator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Color Palette Generator – Free Online Harmony Color Tool | All Your Tools">
+  <meta name="twitter:description" content="Generate beautiful color palettes from any base color. Choose from complementary, analogous, triadic, split-complementary, or monochromatic harmonies. Click to copy HEX codes.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Color Palette Generator",
+    "url": "https://allyourtools.net/color-palette-generator.html",
+    "description": "Generate beautiful color palettes from any base color using color harmony rules.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>Color Palette Generator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Color Palette Generator</h1>
+          <p class="tool-tagline">Pick a base color, choose a harmony, and generate a 5-color palette. Click any swatch to copy its HEX code.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="form-group" style="margin:0;">
+              <label for="cpg-color">Base Color</label>
+              <input type="color" id="cpg-color" value="#3b82f6" style="width:100%;height:2.75rem;border-radius:0.5rem;border:1.5px solid #e5e7eb;cursor:pointer;padding:0.2rem;">
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label for="cpg-harmony">Color Harmony</label>
+              <select id="cpg-harmony">
+                <option value="complementary">Complementary</option>
+                <option value="analogous">Analogous</option>
+                <option value="triadic">Triadic</option>
+                <option value="split-complementary">Split-Complementary</option>
+                <option value="monochromatic">Monochromatic</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:0.5rem;margin-bottom:1.25rem;">
+            <button class="btn-primary" id="cpg-generate" style="flex:1;">Generate Palette</button>
+            <button class="btn-secondary" id="cpg-random">Random Color</button>
+          </div>
+
+          <div id="cpg-swatches" style="display:flex;gap:0.75rem;flex-wrap:wrap;"></div>
+        </section>
+
+        <!-- Ad slot 1: between tool and explanation -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is color harmony?</h2>
+          <p>Color harmony is the theory of selecting colors that work well together visually. Designers have used these principles for centuries. The harmonies are based on the positions of colors on the color wheel: colors opposite each other (complementary) create vibrant contrast; colors next to each other (analogous) create serene, natural-looking combinations; three evenly spaced colors (triadic) create vibrant yet balanced palettes. Knowing which harmony to apply helps you build color systems that feel intentional rather than random.</p>
+
+          <h2>The five harmonies explained</h2>
+          <p><strong>Complementary:</strong> Two colors directly opposite on the color wheel — maximum contrast, great for call-to-action elements. <strong>Analogous:</strong> Three to five colors sitting adjacent — harmonious and easy on the eye, common in nature. <strong>Triadic:</strong> Three colors evenly spaced 120° apart — vibrant and balanced, a favorite for illustration. <strong>Split-Complementary:</strong> A base color plus two colors adjacent to its complement — contrast without tension. <strong>Monochromatic:</strong> A single hue in five different lightness levels — elegant and cohesive.</p>
+
+          <h2>How to use the generated palette</h2>
+          <p>Click any swatch to copy its HEX code to your clipboard, then paste it into Figma, CSS, Tailwind config, or any design tool. Monochromatic palettes are ideal for typography hierarchies and background layers. Complementary palettes suit bold brand color pairs. Analogous palettes work well for gradient-heavy designs or illustrative UI. Triadic palettes are excellent for dashboards that need to distinguish between three data series.</p>
+
+          <h2>Color theory basics for developers</h2>
+          <p>The generator works in HSL color space — Hue (0–360°), Saturation (0–100%), and Lightness (0–100%). Harmony rules shift the hue by specific degrees while keeping saturation and lightness similar. The resulting colors feel related because they share the same saturation and lightness level, only differing in their position on the color wheel. Understanding HSL makes it much easier to reason about color relationships than working with HEX values directly.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="color-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                Color Converter
+              </a>
+              <a href="css-gradient-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8l4 4-4 4"/></svg>
+                CSS Gradient Generator
+              </a>
+              <a href="css-minifier.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                CSS Minifier
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2: below explanation -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/color-palette-generator.js"></script>
+  <script>initColorPaletteGenerator();</script>
+
+</body>
+</html>

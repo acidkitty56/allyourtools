@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aspect Ratio Calculator – Find Missing Dimensions or Simplify Ratios | All Your Tools</title>
+  <meta name="description" content="Calculate missing image or video dimensions from an aspect ratio, or find the simplified ratio from width and height. Includes 16:9, 4:3, 1:1 and more presets. Free online tool.">
+  <link rel="canonical" href="https://allyourtools.net/aspect-ratio-calculator.html">
+  <meta property="og:title" content="Aspect Ratio Calculator – Find Missing Dimensions or Simplify Ratios | All Your Tools">
+  <meta property="og:description" content="Calculate missing image or video dimensions from an aspect ratio, or find the simplified ratio from width and height. Includes 16:9, 4:3, 1:1 and more presets. Free online tool.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/aspect-ratio-calculator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Aspect Ratio Calculator – Find Missing Dimensions or Simplify Ratios | All Your Tools">
+  <meta name="twitter:description" content="Calculate missing image or video dimensions from an aspect ratio, or find the simplified ratio from width and height. Includes 16:9, 4:3, 1:1 and more presets. Free online tool.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Aspect Ratio Calculator",
+    "url": "https://allyourtools.net/aspect-ratio-calculator.html",
+    "description": "Calculate missing image dimensions from an aspect ratio, or find the simplified ratio from width and height.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>Aspect Ratio Calculator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Aspect Ratio Calculator</h1>
+          <p class="tool-tagline">Find a missing dimension from an aspect ratio, or simplify a width and height into a clean ratio.</p>
+
+          <!-- Mode selector -->
+          <div style="display:flex;gap:1.5rem;margin-bottom:1.25rem;">
+            <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-weight:500;">
+              <input type="radio" name="arc-mode" value="missing" checked style="cursor:pointer;"> Find missing dimension
+            </label>
+            <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-weight:500;">
+              <input type="radio" name="arc-mode" value="ratio" style="cursor:pointer;"> Find ratio
+            </label>
+          </div>
+
+          <!-- Inputs -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="form-group" style="margin:0;">
+              <label for="arc-width">Width (px)</label>
+              <input type="number" id="arc-width" placeholder="e.g. 1920" min="0">
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label for="arc-height">Height (px)</label>
+              <input type="number" id="arc-height" placeholder="e.g. 1080" min="0">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="arc-ratio">Ratio (W:H)</label>
+            <input type="text" id="arc-ratio" placeholder="e.g. 16:9">
+          </div>
+
+          <!-- Presets -->
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem;">
+            <span style="font-size:0.85rem;color:#6b7280;align-self:center;margin-right:0.25rem;">Presets:</span>
+            <button class="btn-secondary" data-ratio="16:9" style="padding:0.3rem 0.75rem;font-size:0.85rem;">16:9</button>
+            <button class="btn-secondary" data-ratio="4:3" style="padding:0.3rem 0.75rem;font-size:0.85rem;">4:3</button>
+            <button class="btn-secondary" data-ratio="1:1" style="padding:0.3rem 0.75rem;font-size:0.85rem;">1:1</button>
+            <button class="btn-secondary" data-ratio="21:9" style="padding:0.3rem 0.75rem;font-size:0.85rem;">21:9</button>
+            <button class="btn-secondary" data-ratio="3:2" style="padding:0.3rem 0.75rem;font-size:0.85rem;">3:2</button>
+            <button class="btn-secondary" data-ratio="9:16" style="padding:0.3rem 0.75rem;font-size:0.85rem;">9:16</button>
+          </div>
+
+          <button class="btn-primary" id="arc-calc" style="width:100%;">Calculate</button>
+
+          <div id="arc-result" style="display:none;margin-top:1.25rem;border:1.5px solid #bae6fd;background:#f0f9ff;border-radius:0.75rem;padding:1rem;font-size:1rem;font-weight:500;"></div>
+        </section>
+
+        <!-- Ad slot 1: between tool and explanation -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is aspect ratio?</h2>
+          <p>Aspect ratio describes the proportional relationship between an image's width and height, expressed as two numbers separated by a colon — for example 16:9 or 4:3. It tells you the shape of the image, not its actual dimensions. A 1920×1080 video and a 640×360 video both have a 16:9 ratio — they're the same shape, just different sizes. Aspect ratio is fundamental to photography, video production, web design, and print layout.</p>
+
+          <h2>Finding a missing dimension</h2>
+          <p>Select "Find missing dimension", enter either the width or the height (leave the other blank), then type a ratio in the W:H field or click a preset. The calculator will compute the missing dimension that maintains the given ratio. This is useful when you need to resize an image to a specific width and want to know the correct height to avoid distortion, or when preparing images for a platform with a required aspect ratio.</p>
+
+          <h2>Common aspect ratios</h2>
+          <p><strong>16:9 (1.778)</strong> — HD and 4K video, YouTube, most monitors and TVs. <strong>4:3 (1.333)</strong> — Traditional TV, standard definition video, iPad displays. <strong>1:1 (1.0)</strong> — Square format, Instagram posts, avatar images. <strong>21:9 (2.333)</strong> — Ultrawide monitors, cinematic films. <strong>3:2 (1.5)</strong> — 35mm photography, most DSLR and mirrorless cameras. <strong>9:16 (0.5625)</strong> — Portrait video, Instagram and TikTok Stories.</p>
+
+          <h2>Simplifying a ratio</h2>
+          <p>Select "Find ratio" and enter both width and height. The calculator divides both values by their greatest common divisor (GCD) to produce the simplest whole-number ratio — for example, 2560×1440 simplifies to 16:9. It also shows the decimal ratio (width ÷ height) which is convenient for CSS <code>aspect-ratio</code> property comparisons. If the numbers don't simplify to a small ratio (e.g. 1200×628 from an Open Graph image), the decimal representation is most useful.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="color-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                Color Converter
+              </a>
+              <a href="css-gradient-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8l4 4-4 4"/></svg>
+                CSS Gradient Generator
+              </a>
+              <a href="color-palette-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg>
+                Color Palette Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2: below explanation -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/aspect-ratio-calculator.js"></script>
+  <script>initAspectRatioCalculator();</script>
+
+</body>
+</html>

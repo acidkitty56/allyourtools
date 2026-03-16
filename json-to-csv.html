@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free HTML Formatter – Beautify &amp; Indent HTML Online | All Your Tools</title>
-  <meta name="description" content="Format and beautify minified or messy HTML with proper indentation instantly. Free online HTML formatter — no login, no install, works in your browser.">
-  <link rel="canonical" href="https://allyourtools.net/html-formatter.html">
-  <meta property="og:title" content="Free HTML Formatter – Beautify &amp; Indent HTML Online | All Your Tools">
-  <meta property="og:description" content="Format and beautify minified or messy HTML with proper indentation instantly. Free online HTML formatter — no login, no install, works in your browser.">
+  <title>JSON to CSV Converter – Free Online Tool | All Your Tools</title>
+  <meta name="description" content="Convert a JSON array to CSV format instantly. Paste JSON, click Convert, then copy or download the CSV file. Free, browser-based, no login needed.">
+  <link rel="canonical" href="https://allyourtools.net/json-to-csv.html">
+  <meta property="og:title" content="JSON to CSV Converter – Free Online Tool | All Your Tools">
+  <meta property="og:description" content="Convert a JSON array to CSV format instantly. Paste JSON, click Convert, then copy or download the CSV file. Free, browser-based, no login needed.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://allyourtools.net/html-formatter.html">
+  <meta property="og:url" content="https://allyourtools.net/json-to-csv.html">
   <meta property="og:site_name" content="All Your Tools">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Free HTML Formatter – Beautify &amp; Indent HTML Online | All Your Tools">
-  <meta name="twitter:description" content="Format and beautify minified or messy HTML with proper indentation instantly. Free online HTML formatter — no login, no install, works in your browser.">
+  <meta name="twitter:title" content="JSON to CSV Converter – Free Online Tool | All Your Tools">
+  <meta name="twitter:description" content="Convert a JSON array to CSV format instantly. Paste JSON, click Convert, then copy or download the CSV file. Free, browser-based, no login needed.">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Free HTML Formatter",
-    "url": "https://allyourtools.net/html-formatter.html",
-    "description": "Format and beautify minified or messy HTML with proper indentation instantly. Free online HTML formatter — no login, no install, works in your browser.",
-    "applicationCategory": "DeveloperApplication",
+    "name": "JSON to CSV Converter",
+    "url": "https://allyourtools.net/json-to-csv.html",
+    "description": "Convert a JSON array to CSV format instantly. Paste JSON, click Convert, then copy or download the CSV file.",
+    "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
@@ -33,6 +33,7 @@
 </head>
 <body>
 
+  <!-- ===== NAVIGATION ===== -->
   <nav class="nav">
     <div class="container nav__inner">
       <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
@@ -46,62 +47,71 @@
     </div>
   </nav>
 
+  <!-- ===== TOOL PAGE ===== -->
   <main class="tool-page">
     <div class="container">
 
+      <!-- Breadcrumb -->
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a>
         <span aria-hidden="true">›</span>
-        <span>HTML Formatter</span>
+        <span>JSON to CSV</span>
       </nav>
 
       <div class="tool-page__layout">
 
+        <!-- ===== Tool Interface Card ===== -->
         <section class="tool-interface-card">
-          <h1>HTML Formatter</h1>
-          <p class="tool-tagline">Paste minified or messy HTML and format it with clean 2-space indentation — ready to read, edit, or commit.</p>
+          <h1>JSON to CSV Converter</h1>
+          <p class="tool-tagline">Paste a JSON array of objects and convert it to a CSV spreadsheet in one click.</p>
 
           <div class="form-group">
-            <label for="hf-input">HTML Input</label>
-            <textarea id="hf-input" rows="8" placeholder="Paste your HTML here — minified or unformatted..."></textarea>
+            <label for="j2c-input">JSON Input</label>
+            <textarea id="j2c-input" rows="8" placeholder='[{"name":"Alice","age":30},{"name":"Bob","age":25}]'></textarea>
           </div>
-          <button class="btn-primary" id="hf-btn" style="margin-bottom:1rem;">Format HTML</button>
-          <div class="form-group">
-            <label for="hf-output">Formatted HTML</label>
-            <textarea id="hf-output" rows="8" readonly placeholder="Formatted output will appear here..."></textarea>
+
+          <div id="j2c-error" style="display:none;color:#ef4444;background:#fef2f2;border:1px solid #fca5a5;border-radius:0.5rem;padding:0.75rem;margin-bottom:1rem;font-size:0.9rem;"></div>
+
+          <button class="btn-primary" id="j2c-convert" style="width:100%;">Convert to CSV</button>
+
+          <div class="form-group" style="margin-top:1rem;">
+            <label for="j2c-output">CSV Output</label>
+            <textarea id="j2c-output" rows="6" readonly placeholder="CSV will appear here…"></textarea>
           </div>
-          <button class="btn-secondary" id="hf-copy">Copy Formatted HTML</button>
+
+          <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+            <button class="btn-secondary" id="j2c-copy">Copy CSV</button>
+            <button class="btn-secondary" id="j2c-download">Download CSV</button>
+          </div>
         </section>
 
+        <!-- Ad slot 1: between tool and explanation -->
         <div class="ad-slot"></div>
 
+        <!-- ===== SEO Content ===== -->
         <article class="tool-seo">
-          <h2>What does an HTML formatter do?</h2>
-          <p>An HTML formatter takes minified or poorly indented HTML and restructures it with consistent indentation — typically 2 spaces per nesting level. The output is functionally identical to the input but is much easier to read, review, and edit. This is also known as HTML beautification.</p>
+          <h2>When would you convert JSON to CSV?</h2>
+          <p>APIs return data as JSON, but spreadsheet tools like Excel, Google Sheets, and Numbers work best with CSV. If you've pulled data from a REST API or exported records from a database and need to open them in a spreadsheet, converting JSON to CSV is the bridge. It's also useful for sharing data with colleagues who aren't developers — CSV is universally understood and can be opened without any special tools.</p>
 
-          <h2>When to format HTML</h2>
-          <p>Minified HTML from build tools, templating engines, or email clients is nearly impossible to debug by eye. Formatting is the first step before inspecting a page structure, reviewing a template, or checking for missing closing tags. It is also useful when committing HTML to version control — formatted code produces cleaner diffs.</p>
+          <h2>How the conversion works</h2>
+          <p>The converter reads the first object in your JSON array and uses its keys as column headers. Each subsequent object becomes a row. If a value contains a comma, double quotes, or a newline, it is automatically wrapped in double quotes and internal quotes are escaped. Nested objects and arrays that can't be flattened into a single cell are serialized as JSON strings.</p>
 
-          <h2>Block vs inline elements</h2>
-          <p>This formatter treats block-level elements like div, section, article, and nav as nesting containers and indents their children. Inline elements like span, a, strong, and em are kept on the same line as their surrounding content. Void elements like img, br, and input are never given a closing indent level.</p>
+          <h2>Input requirements</h2>
+          <p>The input must be a valid JSON array of objects — e.g. <code>[{"id":1,"name":"Alice"},{"id":2,"name":"Bob"}]</code>. A JSON object (not an array) or a JSON array of primitives (strings, numbers) will produce an error. All objects should ideally share the same keys; if later objects are missing keys that appear in the first object, those cells will be empty.</p>
 
-          <h2>Limitations</h2>
-          <p>This is a lightweight client-side formatter suitable for typical HTML snippets and full pages. It works best on well-structured HTML. For heavily nested or template-language HTML (e.g. Jinja, Handlebars), results may vary. For production-grade formatting, consider using Prettier in your development environment.</p>
+          <h2>Downloading the result</h2>
+          <p>Click "Download CSV" to save the output as <code>export.csv</code> directly from your browser — no server involved. The file is generated in memory from your converted data. You can then open it in Excel or Google Sheets, or import it into any database that accepts CSV input.</p>
 
           <div class="related-tools">
             <h2>Related Tools</h2>
             <div class="related-tools__grid">
+              <a href="csv-to-json.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                CSV to JSON
+              </a>
               <a href="json-formatter.html" class="related-tool-card">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
                 JSON Formatter
-              </a>
-              <a href="html-entities.html" class="related-tool-card">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                HTML Entities
-              </a>
-              <a href="diff-checker.html" class="related-tool-card">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                Diff Checker
               </a>
               <a href="json-minifier.html" class="related-tool-card">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -111,15 +121,17 @@
           </div>
         </article>
 
+        <!-- Ad slot 2: below explanation -->
         <div class="ad-slot"></div>
 
       </div>
     </div>
   </main>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
-            <div class="footer__inner">
+      <div class="footer__inner">
         <div>
           <div class="footer__brand-name">&#9889; All Your Tools</div>
           <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
@@ -165,13 +177,15 @@
           <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
         </div>
       </div>
-      <div class="footer__bottom">&copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.</div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
-  <script src="tools/html-formatter.js"></script>
-  <script>initHtmlFormatter();</script>
+  <script src="tools/json-to-csv.js"></script>
+  <script>initJsonToCsv();</script>
 
 </body>
 </html>

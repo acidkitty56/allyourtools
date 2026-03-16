@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free HTML Formatter – Beautify &amp; Indent HTML Online | All Your Tools</title>
-  <meta name="description" content="Format and beautify minified or messy HTML with proper indentation instantly. Free online HTML formatter — no login, no install, works in your browser.">
-  <link rel="canonical" href="https://allyourtools.net/html-formatter.html">
-  <meta property="og:title" content="Free HTML Formatter – Beautify &amp; Indent HTML Online | All Your Tools">
-  <meta property="og:description" content="Format and beautify minified or messy HTML with proper indentation instantly. Free online HTML formatter — no login, no install, works in your browser.">
+  <title>SQL Formatter – Free Online SQL Beautifier | All Your Tools</title>
+  <meta name="description" content="Format and beautify SQL queries online. Uppercase keywords, indent clauses, and clean up messy SQL in one click. Free, browser-based, no login needed.">
+  <link rel="canonical" href="https://allyourtools.net/sql-formatter.html">
+  <meta property="og:title" content="SQL Formatter – Free Online SQL Beautifier | All Your Tools">
+  <meta property="og:description" content="Format and beautify SQL queries online. Uppercase keywords, indent clauses, and clean up messy SQL in one click. Free, browser-based, no login needed.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://allyourtools.net/html-formatter.html">
+  <meta property="og:url" content="https://allyourtools.net/sql-formatter.html">
   <meta property="og:site_name" content="All Your Tools">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Free HTML Formatter – Beautify &amp; Indent HTML Online | All Your Tools">
-  <meta name="twitter:description" content="Format and beautify minified or messy HTML with proper indentation instantly. Free online HTML formatter — no login, no install, works in your browser.">
+  <meta name="twitter:title" content="SQL Formatter – Free Online SQL Beautifier | All Your Tools">
+  <meta name="twitter:description" content="Format and beautify SQL queries online. Uppercase keywords, indent clauses, and clean up messy SQL in one click. Free, browser-based, no login needed.">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Free HTML Formatter",
-    "url": "https://allyourtools.net/html-formatter.html",
-    "description": "Format and beautify minified or messy HTML with proper indentation instantly. Free online HTML formatter — no login, no install, works in your browser.",
-    "applicationCategory": "DeveloperApplication",
+    "name": "SQL Formatter",
+    "url": "https://allyourtools.net/sql-formatter.html",
+    "description": "Format and beautify SQL queries online. Uppercase keywords, indent clauses, and clean up messy SQL.",
+    "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
@@ -33,6 +33,7 @@
 </head>
 <body>
 
+  <!-- ===== NAVIGATION ===== -->
   <nav class="nav">
     <div class="container nav__inner">
       <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
@@ -46,62 +47,66 @@
     </div>
   </nav>
 
+  <!-- ===== TOOL PAGE ===== -->
   <main class="tool-page">
     <div class="container">
 
+      <!-- Breadcrumb -->
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a>
         <span aria-hidden="true">›</span>
-        <span>HTML Formatter</span>
+        <span>SQL Formatter</span>
       </nav>
 
       <div class="tool-page__layout">
 
+        <!-- ===== Tool Interface Card ===== -->
         <section class="tool-interface-card">
-          <h1>HTML Formatter</h1>
-          <p class="tool-tagline">Paste minified or messy HTML and format it with clean 2-space indentation — ready to read, edit, or commit.</p>
+          <h1>SQL Formatter</h1>
+          <p class="tool-tagline">Paste any SQL query and format it with uppercase keywords, proper indentation, and clean line breaks.</p>
 
           <div class="form-group">
-            <label for="hf-input">HTML Input</label>
-            <textarea id="hf-input" rows="8" placeholder="Paste your HTML here — minified or unformatted..."></textarea>
+            <label for="sql-input">SQL Input</label>
+            <textarea id="sql-input" rows="8" placeholder="select u.id, u.name, o.total from users u left join orders o on u.id = o.user_id where u.active = 1 order by o.total desc limit 10"></textarea>
           </div>
-          <button class="btn-primary" id="hf-btn" style="margin-bottom:1rem;">Format HTML</button>
-          <div class="form-group">
-            <label for="hf-output">Formatted HTML</label>
-            <textarea id="hf-output" rows="8" readonly placeholder="Formatted output will appear here..."></textarea>
+
+          <button class="btn-primary" id="sql-format" style="width:100%;">Format SQL</button>
+
+          <div class="form-group" style="margin-top:1rem;">
+            <label for="sql-output">Formatted SQL</label>
+            <textarea id="sql-output" rows="8" readonly placeholder="Formatted SQL will appear here…" style="font-family:monospace;font-size:0.9rem;"></textarea>
           </div>
-          <button class="btn-secondary" id="hf-copy">Copy Formatted HTML</button>
+
+          <button class="btn-secondary" id="sql-copy" style="margin-top:0.5rem;">Copy SQL</button>
         </section>
 
+        <!-- Ad slot 1: between tool and explanation -->
         <div class="ad-slot"></div>
 
+        <!-- ===== SEO Content ===== -->
         <article class="tool-seo">
-          <h2>What does an HTML formatter do?</h2>
-          <p>An HTML formatter takes minified or poorly indented HTML and restructures it with consistent indentation — typically 2 spaces per nesting level. The output is functionally identical to the input but is much easier to read, review, and edit. This is also known as HTML beautification.</p>
+          <h2>Why format SQL?</h2>
+          <p>Raw SQL from logs, ORMs, or copied query builders is often a single unreadable line. Formatted SQL with consistent keyword casing, one clause per line, and indented conditions is dramatically easier to read, debug, and review in pull requests. Consistent formatting also makes it easier to spot performance issues — a missing index hint, an unintentional Cartesian join, or a WHERE clause that applies to the wrong table become visible when the query is laid out clearly.</p>
 
-          <h2>When to format HTML</h2>
-          <p>Minified HTML from build tools, templating engines, or email clients is nearly impossible to debug by eye. Formatting is the first step before inspecting a page structure, reviewing a template, or checking for missing closing tags. It is also useful when committing HTML to version control — formatted code produces cleaner diffs.</p>
+          <h2>What this formatter does</h2>
+          <p>The formatter uppercases all SQL keywords (SELECT, FROM, WHERE, JOIN, etc.), places each major clause on its own line, indents AND/OR conditions under WHERE, and breaks the SELECT column list onto individual indented lines when there are multiple columns. It works with standard SQL as used by MySQL, PostgreSQL, SQLite, and SQL Server — dialect-specific syntax (stored procedures, window functions) will be formatted as best as possible but some edge cases may need manual adjustment.</p>
 
-          <h2>Block vs inline elements</h2>
-          <p>This formatter treats block-level elements like div, section, article, and nav as nesting containers and indents their children. Inline elements like span, a, strong, and em are kept on the same line as their surrounding content. Void elements like img, br, and input are never given a closing indent level.</p>
+          <h2>Supported keywords</h2>
+          <p>SELECT, FROM, WHERE, JOIN (all variants: LEFT, RIGHT, INNER, OUTER, FULL, CROSS), ON, AND, OR, GROUP BY, ORDER BY, HAVING, LIMIT, OFFSET, UNION, INSERT INTO, VALUES, UPDATE, SET, DELETE FROM, CREATE TABLE, ALTER TABLE, DROP TABLE, CASE/WHEN/THEN/ELSE/END, as well as aggregate functions COUNT, SUM, AVG, MIN, MAX and AS, DISTINCT, IN, BETWEEN, LIKE, IS NULL, IS NOT NULL.</p>
 
-          <h2>Limitations</h2>
-          <p>This is a lightweight client-side formatter suitable for typical HTML snippets and full pages. It works best on well-structured HTML. For heavily nested or template-language HTML (e.g. Jinja, Handlebars), results may vary. For production-grade formatting, consider using Prettier in your development environment.</p>
+          <h2>Tips for best results</h2>
+          <p>The formatter assumes standard SQL syntax. Comments (-- and /* */) in the middle of a query may affect formatting. Sub-queries in parentheses are currently formatted as inline text. For very long or complex queries with deeply nested subqueries, the output may not be perfectly indented — treat it as a starting point and adjust the nesting manually if needed.</p>
 
           <div class="related-tools">
             <h2>Related Tools</h2>
             <div class="related-tools__grid">
               <a href="json-formatter.html" class="related-tool-card">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
                 JSON Formatter
               </a>
-              <a href="html-entities.html" class="related-tool-card">
+              <a href="html-formatter.html" class="related-tool-card">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                HTML Entities
-              </a>
-              <a href="diff-checker.html" class="related-tool-card">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                Diff Checker
+                HTML Formatter
               </a>
               <a href="json-minifier.html" class="related-tool-card">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -111,15 +116,17 @@
           </div>
         </article>
 
+        <!-- Ad slot 2: below explanation -->
         <div class="ad-slot"></div>
 
       </div>
     </div>
   </main>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
-            <div class="footer__inner">
+      <div class="footer__inner">
         <div>
           <div class="footer__brand-name">&#9889; All Your Tools</div>
           <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
@@ -165,13 +172,15 @@
           <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
         </div>
       </div>
-      <div class="footer__bottom">&copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.</div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
-  <script src="tools/html-formatter.js"></script>
-  <script>initHtmlFormatter();</script>
+  <script src="tools/sql-formatter.js"></script>
+  <script>initSqlFormatter();</script>
 
 </body>
 </html>

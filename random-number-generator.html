@@ -3,36 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Random Name Generator – Realistic Full Names | All Your Tools</title>
-  <meta name="description" content="Generate realistic random full names for testing, prototyping, or fiction writing. Choose male, female, or any gender. Free, browser-based.">
-  <link rel="canonical" href="https://allyourtools.net/random-name-generator.html">
-  <meta property="og:title" content="Free Random Name Generator – Realistic Full Names | All Your Tools">
-  <meta property="og:description" content="Generate realistic random full names for testing, prototyping, or fiction writing. Choose male, female, or any gender. Free, browser-based.">
+  <title>Random Number Generator – Free Online Number Picker | All Your Tools</title>
+  <meta name="description" content="Generate random numbers instantly. Set a custom range, choose a quantity up to 100, and optionally allow or prevent duplicates. Free, no login required.">
+  <link rel="canonical" href="https://allyourtools.net/random-number-generator.html">
+  <meta property="og:title" content="Random Number Generator – Free Online Number Picker | All Your Tools">
+  <meta property="og:description" content="Generate random numbers instantly. Set a custom range, choose a quantity up to 100, and optionally allow or prevent duplicates. Free, no login required.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://allyourtools.net/random-name-generator.html">
+  <meta property="og:url" content="https://allyourtools.net/random-number-generator.html">
   <meta property="og:site_name" content="All Your Tools">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Free Random Name Generator – Realistic Full Names | All Your Tools">
-  <meta name="twitter:description" content="Generate realistic random full names for testing, prototyping, or fiction writing. Choose male, female, or any gender. Free, browser-based.">
+  <meta name="twitter:title" content="Random Number Generator – Free Online Number Picker | All Your Tools">
+  <meta name="twitter:description" content="Generate random numbers instantly. Set a custom range, choose a quantity up to 100, and optionally allow or prevent duplicates. Free, no login required.">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Free Random Name Generator",
-    "url": "https://allyourtools.net/random-name-generator.html",
-    "description": "Generate realistic random full names for testing, prototyping, or fiction writing. Choose male, female, or any gender. Free, browser-based.",
+    "name": "Random Number Generator",
+    "url": "https://allyourtools.net/random-number-generator.html",
+    "description": "Generate random numbers instantly. Set a custom range, choose a quantity up to 100, and optionally allow or prevent duplicates.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "All Your Tools",
-      "url": "https://allyourtools.net/"
-    }
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
   }
   </script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -50,9 +42,7 @@
         <li><a href="index.html#tools">Tools</a></li>
       </ul>
       <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
@@ -65,34 +55,39 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a>
         <span aria-hidden="true">›</span>
-        <span>Random Name Generator</span>
+        <span>Random Number Generator</span>
       </nav>
 
       <div class="tool-page__layout">
 
         <!-- ===== Tool Interface Card ===== -->
         <section class="tool-interface-card">
-          <h1>Random Name Generator</h1>
-          <p class="tool-tagline">Generate realistic random full names instantly — choose a gender preference and generate one or five at a time.</p>
+          <h1>Random Number Generator</h1>
+          <p class="tool-tagline">Pick one or many random numbers from any range — with or without duplicates.</p>
 
-          <!-- Gender Selector -->
-          <div class="form-group">
-            <label for="name-gender">Gender</label>
-            <select id="name-gender" aria-label="Name gender preference">
-              <option value="any" selected>Any (male or female)</option>
-              <option value="male">Male first names only</option>
-              <option value="female">Female first names only</option>
-            </select>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="form-group" style="margin:0;">
+              <label for="rng-min">Minimum</label>
+              <input type="number" id="rng-min" value="1">
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label for="rng-max">Maximum</label>
+              <input type="number" id="rng-max" value="100">
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label for="rng-qty">Quantity</label>
+              <input type="number" id="rng-qty" value="1" min="1" max="100">
+            </div>
           </div>
 
-          <!-- Action Buttons -->
-          <div class="action-row">
-            <button class="btn-primary" id="name-generate-btn" type="button">Generate 5 Names</button>
-            <button class="btn-secondary" id="name-again-btn" type="button">↻ Generate Again</button>
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+            <input type="checkbox" id="rng-duplicates" checked style="width:1rem;height:1rem;cursor:pointer;">
+            <label for="rng-duplicates" style="margin:0;cursor:pointer;font-weight:500;">Allow duplicates</label>
           </div>
 
-          <!-- Results -->
-          <div id="name-result-list"></div>
+          <button class="btn-primary" id="rng-generate" style="width:100%;">Generate</button>
+
+          <div id="rng-output" style="margin-top:1.25rem;min-height:3rem;"></div>
         </section>
 
         <!-- Ad slot 1: between tool and explanation -->
@@ -100,24 +95,24 @@
 
         <!-- ===== SEO Content ===== -->
         <article class="tool-seo">
-          <h2>What is a random name generator?</h2>
-          <p>A random name generator picks a first name and a last name at random from curated lists to produce a plausible full name. The results look like real person names, making them suitable for realistic test data, character creation, and anonymisation tasks.</p>
+          <h2>What is a random number generator?</h2>
+          <p>A random number generator (RNG) produces values within a defined range without any predictable pattern. Online RNGs like this one use JavaScript's <code>Math.random()</code> function — a pseudo-random number generator seeded by the browser — which is more than sufficient for games, raffles, testing, and everyday decisions. The output cannot be predicted in advance and is uniformly distributed across the range.</p>
 
-          <h2>When is a random name generator useful?</h2>
-          <p>Software developers use random names to populate test databases and UI prototypes without using real personal data. Writers use them for character names in fiction. Data engineers use them when they need to anonymise or mock datasets for analysis. Educators use them for example scenarios in teaching materials.</p>
+          <h2>Common uses</h2>
+          <p><strong>Lottery and raffles:</strong> Pick winning numbers or raffle ticket holders fairly. <strong>Games:</strong> Simulate dice rolls, card draws, or board game events. <strong>Statistics and sampling:</strong> Select random data points or sample indices. <strong>Decision making:</strong> Resolve ties or make a fair random choice between options. <strong>Software testing:</strong> Seed test data or generate random IDs for mock records.</p>
 
-          <h2>How does this tool work?</h2>
-          <p>The tool maintains separate lists of 30 male and 30 female first names, plus a shared list of 36 last names. When you click Generate, it picks a random entry from the appropriate first-name list and pairs it with a random last name. The "Generate 5" button produces five names at once, which is handy when you need multiple options.</p>
+          <h2>Duplicates and unique numbers</h2>
+          <p>With "Allow duplicates" checked, the same number can appear multiple times — like rolling a die where any face can land twice. With duplicates disabled, every result is unique, like drawing tickets from a hat without replacement. If you request more unique numbers than the range contains (e.g. 10 unique numbers between 1 and 5), the tool will show an error rather than silently produce incorrect output.</p>
 
-          <h2>Privacy note</h2>
-          <p>All names are generated locally in your browser. No names are sent to any server, and no usage data is collected. The names are entirely fictional and any resemblance to real persons is coincidental.</p>
+          <h2>How the numbers are distributed</h2>
+          <p>Each number in the range has an equal probability of being selected on any given draw. For a range of 1–10, each value has exactly a 10% chance per draw. Over a large number of draws the distribution should approach uniform — but short runs will naturally show variation. This is not a bug; it is how true randomness behaves.</p>
 
           <div class="related-tools">
             <h2>Related Tools</h2>
             <div class="related-tools__grid">
-              <a href="username-generator.html" class="related-tool-card">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                Username Generator
+              <a href="uuid-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h.01M12 7h5M7 12h10M7 17h10"/></svg>
+                UUID Generator
               </a>
               <a href="password-generator.html" class="related-tool-card">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg>
@@ -141,7 +136,7 @@
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
-            <div class="footer__inner">
+      <div class="footer__inner">
         <div>
           <div class="footer__brand-name">&#9889; All Your Tools</div>
           <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
@@ -194,8 +189,8 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="tools/random-name-generator.js"></script>
-  <script>initRandomNameGenerator();</script>
+  <script src="tools/random-number-generator.js"></script>
+  <script>initRandomNumberGenerator();</script>
 
 </body>
 </html>

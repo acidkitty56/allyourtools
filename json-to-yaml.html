@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON to YAML Converter – Free Online Tool | All Your Tools</title>
+  <meta name="description" content="Convert JSON to YAML format instantly in your browser. Nested objects, arrays, booleans, and numbers are all handled correctly. Free, no login, no server.">
+  <link rel="canonical" href="https://allyourtools.net/json-to-yaml.html">
+  <meta property="og:title" content="JSON to YAML Converter – Free Online Tool | All Your Tools">
+  <meta property="og:description" content="Convert JSON to YAML format instantly in your browser. Nested objects, arrays, booleans, and numbers are all handled correctly. Free, no login, no server.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/json-to-yaml.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="JSON to YAML Converter – Free Online Tool | All Your Tools">
+  <meta name="twitter:description" content="Convert JSON to YAML format instantly in your browser. Nested objects, arrays, booleans, and numbers are all handled correctly. Free, no login, no server.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON to YAML Converter",
+    "url": "https://allyourtools.net/json-to-yaml.html",
+    "description": "Convert JSON to YAML format instantly. Nested objects, arrays, booleans, and numbers are all handled correctly.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>JSON to YAML</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>JSON to YAML Converter</h1>
+          <p class="tool-tagline">Paste any JSON object or array and convert it to clean, readable YAML instantly.</p>
+
+          <div class="form-group">
+            <label for="j2y-input">JSON Input</label>
+            <textarea id="j2y-input" rows="8" placeholder='{"name":"Alice","roles":["admin","editor"],"active":true}'></textarea>
+          </div>
+
+          <div id="j2y-error" style="display:none;color:#ef4444;background:#fef2f2;border:1px solid #fca5a5;border-radius:0.5rem;padding:0.75rem;margin-bottom:1rem;font-size:0.9rem;"></div>
+
+          <button class="btn-primary" id="j2y-convert" style="width:100%;">Convert to YAML</button>
+
+          <div class="form-group" style="margin-top:1rem;">
+            <label for="j2y-output">YAML Output</label>
+            <textarea id="j2y-output" rows="8" readonly placeholder="YAML will appear here…" style="font-family:monospace;font-size:0.9rem;"></textarea>
+          </div>
+
+          <button class="btn-secondary" id="j2y-copy" style="margin-top:0.5rem;">Copy YAML</button>
+        </section>
+
+        <!-- Ad slot 1: between tool and explanation -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>Why convert JSON to YAML?</h2>
+          <p>JSON is great for machines but noisy for humans — lots of braces, brackets, and quotes. YAML is the same data in a cleaner, more readable format, which makes it ideal for configuration files that humans frequently read and edit. Converting JSON to YAML is useful when setting up Kubernetes manifests, GitHub Actions workflows, Ansible playbooks, or any other tool that prefers YAML configuration over JSON.</p>
+
+          <h2>How the conversion works</h2>
+          <p>The converter parses your JSON and emits YAML following these rules: objects become key-value pairs (one per line), arrays become dash-prefixed lists, nesting is represented by 2-space indentation, booleans and numbers are written without quotes, and strings that could be misinterpreted as booleans or numbers (like "true" or "123") are quoted. Empty objects become <code>{}</code> and empty arrays become <code>[]</code>.</p>
+
+          <h2>Output format</h2>
+          <p>The output uses 2-space indentation (the most common YAML convention) and omits the <code>---</code> document start marker for simplicity. Array items that are objects are written inline with the dash marker on the first key, consistent with how most YAML tools (like Kubernetes) format their output. The result is compatible with all standard YAML parsers.</p>
+
+          <h2>Common use cases</h2>
+          <p><strong>Kubernetes:</strong> Start from a JSON API response or documentation example and convert to YAML for a manifest file. <strong>GitHub Actions:</strong> Draft a workflow step in JSON (easier to generate programmatically) then convert to YAML. <strong>Helm charts:</strong> Convert JSON values files to YAML. <strong>Configuration management:</strong> Convert JSON config exports to YAML for human-editable config files.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="yaml-to-json.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                YAML to JSON
+              </a>
+              <a href="json-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+                JSON Formatter
+              </a>
+              <a href="json-minifier.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                JSON Minifier
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2: below explanation -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/json-to-yaml.js"></script>
+  <script>initJsonToYaml();</script>
+
+</body>
+</html>
