@@ -34,15 +34,16 @@ async function copyToClipboard(text, btn) {
       document.body.removeChild(textarea);
     }
 
-    // Visual feedback on the button
-    const originalText = btn.textContent;
-    btn.textContent = 'Copied!';
-    btn.classList.add('btn-copy--success');
-
-    setTimeout(() => {
-      btn.textContent = originalText;
-      btn.classList.remove('btn-copy--success');
-    }, 1500);
+    // Visual feedback on the button (optional — btn may not be passed)
+    if (btn) {
+      const originalText = btn.textContent;
+      btn.textContent = 'Copied!';
+      btn.classList.add('btn-copy--success');
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.classList.remove('btn-copy--success');
+      }, 1500);
+    }
 
     showToast('Copied to clipboard!');
   } catch (err) {
