@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Roller – Roll D4 D6 D8 D10 D12 D20 Online | All Your Tools</title>
+  <meta name="description" content="Roll virtual dice online: D4, D6, D8, D10, D12, D20, D100. Roll up to 10 dice at once. Shows individual results, total, and roll history. Free, no login.">
+  <link rel="canonical" href="https://allyourtools.net/dice-roller.html">
+  <meta property="og:title" content="Dice Roller – Roll D4 D6 D8 D10 D12 D20 Online | All Your Tools">
+  <meta property="og:description" content="Roll virtual dice online: D4 through D100. Roll multiple dice at once with total and history.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/dice-roller.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Dice Roller – Roll D4 D6 D8 D10 D12 D20 Online | All Your Tools">
+  <meta name="twitter:description" content="Roll virtual dice online: D4 through D100. Multiple dice, totals, and history.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Dice Roller",
+    "url": "https://allyourtools.net/dice-roller.html",
+    "description": "Roll virtual dice online: D4, D6, D8, D10, D12, D20, D100. Roll up to 10 dice at once.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="fun-tools.html">Fun Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>Dice Roller</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Dice Roller</h1>
+          <p class="tool-tagline">Roll any polyhedral dice for tabletop RPGs, board games, or any random decision. Up to 10 dice at once.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="dice-type">Dice Type</label>
+              <select id="dice-type">
+                <option value="4">D4</option>
+                <option value="6" selected>D6</option>
+                <option value="8">D8</option>
+                <option value="10">D10</option>
+                <option value="12">D12</option>
+                <option value="20">D20</option>
+                <option value="100">D100</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="dice-count">Number of Dice</label>
+              <select id="dice-count">
+                <option value="1" selected>1 die</option>
+                <option value="2">2 dice</option>
+                <option value="3">3 dice</option>
+                <option value="4">4 dice</option>
+                <option value="5">5 dice</option>
+                <option value="6">6 dice</option>
+                <option value="7">7 dice</option>
+                <option value="8">8 dice</option>
+                <option value="9">9 dice</option>
+                <option value="10">10 dice</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="dice-roll-btn" class="btn-primary" style="width:100%;font-size:1.1rem;padding:0.875rem;">Roll Dice</button>
+
+          <div id="dice-results" style="margin-top:1.5rem;min-height:4rem;padding:1rem;background:#f9fafb;border:1.5px solid #e5e7eb;border-radius:0.75rem;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <p style="color:#9ca3af;margin:0;">Click "Roll Dice" to see your results</p>
+          </div>
+
+          <div id="dice-history" style="margin-top:1rem;"></div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>Polyhedral dice explained</h2>
+          <p>Polyhedral dice are multi-sided dice used in tabletop role-playing games like Dungeons &amp; Dragons. The standard set includes: <strong>D4</strong> (tetrahedron, 4 sides), <strong>D6</strong> (cube, 6 sides — the classic dice), <strong>D8</strong> (octahedron, 8 sides), <strong>D10</strong> (pentagonal trapezohedron, 10 sides), <strong>D12</strong> (dodecahedron, 12 sides), <strong>D20</strong> (icosahedron, 20 sides), and <strong>D100</strong> (also called percentile dice — rolled as two D10s, one showing tens and one showing units).</p>
+
+          <h2>Common uses in tabletop RPGs</h2>
+          <p>In Dungeons &amp; Dragons and similar RPGs: <strong>D20</strong> is used for attack rolls, saving throws, and ability checks. <strong>D6</strong> appears in damage rolls for weapons like daggers. <strong>D8</strong> and <strong>D10</strong> are used for larger weapon damage. <strong>D12</strong> is relatively rare — used for greataxe damage and some class features. <strong>D4</strong> appears for small weapons and some spells. <strong>D100</strong> (or 2D10) is used for percentage chance tables.</p>
+
+          <h2>Rolling multiple dice</h2>
+          <p>Many game mechanics require rolling multiple dice simultaneously. "3D6" means roll three six-sided dice and add them up — this is used in old-school character stat generation, producing results from 3 to 18 with an average of 10.5. "2D8+4" would mean roll two D8 dice, add the results, then add 4. This roller shows each individual die result alongside the total, so you can apply any modifiers yourself.</p>
+
+          <h2>Unicode dice faces</h2>
+          <p>The six-sided die results are displayed using Unicode dice characters: ⚀ ⚁ ⚂ ⚃ ⚄ ⚅ (Unicode code points U+2680 through U+2685). These characters are part of the Miscellaneous Symbols block and are supported in all modern fonts. For other dice types (D4, D8, etc.), the numeric result is shown in a colored square, as no standard Unicode representations exist for non-cubic dice.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="coin-flip.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+                Coin Flip
+              </a>
+              <a href="random-number-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6v12"/></svg>
+                Random Number Generator
+              </a>
+              <a href="random-quote-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Random Quote Generator
+              </a>
+              <a href="password-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg>
+                Password Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/dice-roller.js"></script>
+  <script>initDiceRoller();</script>
+
+</body>
+</html>

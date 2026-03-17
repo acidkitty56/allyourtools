@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text to Binary Converter – Free Online Tool | All Your Tools</title>
+  <meta name="description" content="Convert text to binary (0s and 1s) and binary back to text instantly. Each character is shown as 8-bit binary. Free, no login required.">
+  <link rel="canonical" href="https://allyourtools.net/text-to-binary.html">
+  <meta property="og:title" content="Text to Binary Converter – Free Online Tool | All Your Tools">
+  <meta property="og:description" content="Convert text to binary and binary back to text instantly. Free, browser-based, no login required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/text-to-binary.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Text to Binary Converter – Free Online Tool | All Your Tools">
+  <meta name="twitter:description" content="Convert text to binary and binary back to text instantly.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Text to Binary Converter",
+    "url": "https://allyourtools.net/text-to-binary.html",
+    "description": "Convert text to binary (0s and 1s) and binary back to text instantly.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="fun-tools.html">Fun Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>Text to Binary</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Text to Binary Converter</h1>
+          <p class="tool-tagline">Convert any text to 8-bit binary code, or decode binary back to readable text instantly.</p>
+
+          <div class="form-group">
+            <label for="binary-input">Input</label>
+            <textarea id="binary-input" rows="5" placeholder="Enter text to convert to binary, or paste binary to decode..."></textarea>
+          </div>
+
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem;">
+            <button id="binary-to-binary-btn" class="btn-primary">Text → Binary</button>
+            <button id="binary-to-text-btn" class="btn-secondary">Binary → Text</button>
+          </div>
+
+          <div class="form-group">
+            <label for="binary-output">Output</label>
+            <textarea id="binary-output" rows="5" placeholder="Result appears here..." readonly></textarea>
+          </div>
+
+          <button id="binary-copy-btn" class="btn-secondary">Copy Output</button>
+
+          <div style="margin-top:1.5rem;padding:1rem;background:#f9fafb;border-radius:0.75rem;border:1.5px solid #e5e7eb;">
+            <div style="font-weight:700;margin-bottom:0.5rem;color:#374151;">How it works</div>
+            <p style="font-size:0.875rem;color:#6b7280;margin:0;">Each character is converted to its ASCII code, then represented as an 8-bit binary number. For example: <strong>A = 01000001</strong>, <strong>a = 01100001</strong>, <strong>space = 00100000</strong>. Binary bytes are separated by spaces.</p>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is binary code?</h2>
+          <p>Binary is the fundamental language of computers. Every piece of data — text, images, audio, and video — is ultimately stored and processed as a sequence of 1s and 0s. The binary number system uses base 2, where each digit (called a bit) can only be 0 or 1. Eight bits make up a byte, which can represent 256 different values (0–255). In ASCII encoding, every printable character maps to a specific numeric value between 32 and 126.</p>
+
+          <h2>Text to binary conversion explained</h2>
+          <p>When you convert text to binary, each character is first mapped to its ASCII (or Unicode) numeric value. That number is then written in base 2 as an 8-bit sequence, padded with leading zeros if necessary. For example, the letter "H" has ASCII code 72. In binary, 72 is 1001000 — padded to 8 bits that becomes 01001000. The word "Hi" in binary is: <code>01001000 01101001</code>.</p>
+
+          <h2>How to decode binary to text</h2>
+          <p>To convert binary back to text, paste binary code where each byte is 8 bits separated by spaces. The tool reads each 8-bit group, converts it from base 2 to a decimal number, then looks up the corresponding ASCII character. If a binary sequence doesn't map to a valid character, it will be shown as a question mark.</p>
+
+          <h2>Common uses</h2>
+          <p>Binary conversion is used in computer science education, programming puzzles, escape room games, and data encoding exercises. Understanding binary helps programmers understand how computers represent data internally, work with bitwise operations, and debug low-level issues. It's also used in some steganography and data obfuscation techniques.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="morse-code-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M3 12h3m12 0h3M12 3v3m0 12v3"/></svg>
+                Morse Code Converter
+              </a>
+              <a href="base64-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                Base64 Encoder
+              </a>
+              <a href="rot13-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                ROT13 Encoder
+              </a>
+              <a href="hash-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+                Hash Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/text-to-binary.js"></script>
+  <script>initTextToBinary();</script>
+
+</body>
+</html>

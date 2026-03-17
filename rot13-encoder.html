@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROT13 Encoder / Decoder – Free Online Tool | All Your Tools</title>
+  <meta name="description" content="Encode or decode text with ROT13 instantly. ROT13 is its own inverse — the same tool encodes and decodes. Free, browser-based, no login required.">
+  <link rel="canonical" href="https://allyourtools.net/rot13-encoder.html">
+  <meta property="og:title" content="ROT13 Encoder / Decoder – Free Online Tool | All Your Tools">
+  <meta property="og:description" content="Encode or decode text with ROT13 instantly. Type in the input and the output updates live.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/rot13-encoder.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ROT13 Encoder / Decoder | All Your Tools">
+  <meta name="twitter:description" content="Encode or decode text with ROT13 instantly. Free, browser-based.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ROT13 Encoder / Decoder",
+    "url": "https://allyourtools.net/rot13-encoder.html",
+    "description": "Encode or decode text with ROT13 instantly. ROT13 is its own inverse — the same operation encodes and decodes.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="fun-tools.html">Fun Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>ROT13 Encoder</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>ROT13 Encoder / Decoder</h1>
+          <p class="tool-tagline">Type text to encode or decode with ROT13 — it updates live as you type.</p>
+
+          <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:0.75rem;padding:0.75rem 1rem;margin-bottom:1.25rem;font-size:0.875rem;color:#1e40af;">
+            <strong>Tip:</strong> ROT13 is symmetric — encoding and decoding use the exact same operation. Paste encoded ROT13 text here to decode it instantly.
+          </div>
+
+          <div class="form-group">
+            <label for="rot13-input">Input Text</label>
+            <textarea id="rot13-input" rows="5" placeholder="Type or paste text here..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="rot13-output">ROT13 Output (live)</label>
+            <textarea id="rot13-output" rows="5" placeholder="ROT13 output appears here..." readonly></textarea>
+          </div>
+
+          <button id="rot13-copy-btn" class="btn-secondary">Copy Output</button>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is ROT13?</h2>
+          <p>ROT13 (Rotate 13) is a simple letter substitution cipher that replaces each letter with the one 13 positions ahead of it in the alphabet. Because the English alphabet has 26 letters, applying ROT13 twice returns the original text — encoding and decoding are the same operation. For example: A→N, B→O, C→P, ..., M→Z, N→A, O→B, and so on. Numbers, spaces, and special characters are left unchanged.</p>
+
+          <h2>History and uses</h2>
+          <p>ROT13 originated in the early days of Usenet (1980s–1990s) as a way to obscure text that some readers might not want to see unexpectedly — such as punchlines to jokes, spoilers, or offensive content. It provided "plausible deniability" without any real cryptographic security. Today it's used as a simple puzzle cipher, in programming exercises, and in some internet communities as a light-touch way to hide text that readers should opt into seeing.</p>
+
+          <h2>Is ROT13 secure?</h2>
+          <p>No. ROT13 provides absolutely no security. It is not encryption in any meaningful sense — anyone who knows about ROT13 (which is widely documented) can instantly decode it. It's better thought of as a simple text scrambler for casual use, not a way to protect sensitive information. For actual security, use proper encryption algorithms. For simple encoding without security requirements, ROT13 is perfectly fine.</p>
+
+          <h2>ROT13 vs Caesar cipher</h2>
+          <p>ROT13 is actually a special case of the Caesar cipher — specifically the Caesar cipher with a shift of 13. What makes ROT13 unique among Caesar shifts is that it is self-inverse: since 13 + 13 = 26 (the size of the alphabet), encoding twice gives the original text. No other shift value has this property except shifts of 0 and 13 for a 26-letter alphabet. The Caesar cipher with other shift values requires a different shift to decode.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="caesar-cipher.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                Caesar Cipher
+              </a>
+              <a href="morse-code-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M3 12h3m12 0h3M12 3v3m0 12v3"/></svg>
+                Morse Code Converter
+              </a>
+              <a href="base64-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                Base64 Encoder
+              </a>
+              <a href="hash-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+                Hash Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/rot13-encoder.js"></script>
+  <script>initRot13Encoder();</script>
+
+</body>
+</html>

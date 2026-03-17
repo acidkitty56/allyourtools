@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote Generator – Inspirational &amp; Funny Quotes | All Your Tools</title>
+  <meta name="description" content="Get a random inspirational or funny quote with one click. 50+ quotes from famous thinkers, leaders, and comedians. Copy instantly. Free, no login.">
+  <link rel="canonical" href="https://allyourtools.net/random-quote-generator.html">
+  <meta property="og:title" content="Random Quote Generator – Inspirational &amp; Funny Quotes | All Your Tools">
+  <meta property="og:description" content="Get a random inspirational or funny quote with one click. 50+ famous quotes. Copy instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/random-quote-generator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Random Quote Generator | All Your Tools">
+  <meta name="twitter:description" content="Get a random inspirational or funny quote with one click. 50+ famous quotes.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Random Quote Generator",
+    "url": "https://allyourtools.net/random-quote-generator.html",
+    "description": "Get a random inspirational or funny quote with one click. 50+ quotes from famous thinkers, leaders, and comedians.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .quote-display {
+      background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+      border: 1.5px solid #ddd6fe;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 1rem 0 1.5rem;
+      min-height: 10rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: opacity 0.2s;
+    }
+    .quote-display.fading { opacity: 0; }
+    #quote-text {
+      font-size: 1.25rem;
+      font-style: italic;
+      line-height: 1.6;
+      color: #1e1b4b;
+      margin-bottom: 1rem;
+      transition: opacity 0.2s;
+    }
+    #quote-author {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #7c3aed;
+    }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="fun-tools.html">Fun Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>Random Quote Generator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Random Quote Generator</h1>
+          <p class="tool-tagline">Get inspired — or amused — with a random quote from 50+ famous thinkers, leaders, and comedians.</p>
+
+          <div class="quote-display">
+            <div id="quote-text"></div>
+            <div id="quote-author"></div>
+          </div>
+
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <button id="quote-new-btn" class="btn-primary">New Quote</button>
+            <button id="quote-copy-btn" class="btn-secondary">Copy Quote</button>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>Why quotes matter</h2>
+          <p>A well-chosen quote can shift perspective, provide comfort, inspire action, or simply make you laugh. Quotes distill wisdom, humor, or insight into a few memorable words. Throughout history, the most powerful ideas have often been crystallized into short, quotable phrases that spread and endure. From Aristotle to Einstein, from Churchill to Oscar Wilde, the right words at the right moment can be transformative.</p>
+
+          <h2>What's included</h2>
+          <p>This generator contains over 50 curated quotes spanning inspirational, motivational, philosophical, and humorous categories. Authors include Steve Jobs, Albert Einstein, Nelson Mandela, Eleanor Roosevelt, Winston Churchill, Maya Angelou, Oscar Wilde, Mark Twain, Mahatma Gandhi, Walt Disney, and many more. The selection is intentionally diverse — mixing serious wisdom with lighter wit.</p>
+
+          <h2>How to use the quotes</h2>
+          <p>Click "New Quote" to get a random quote — each click guarantees a different quote from the previous one. Click "Copy Quote" to copy both the quote text and attribution to your clipboard, ready to paste into a message, social post, email, or document. The quotes include Unicode curly quotation marks and an em dash before the author's name, so they look polished wherever you paste them.</p>
+
+          <h2>Uses for random quotes</h2>
+          <p>Random quote generators are used for daily inspiration, social media content, presentations, email signatures, creative writing prompts, and icebreaker activities. Teachers use them to start class discussions. Writers use them as creative prompts. Developers use them for placeholder content in apps and mockups. Sometimes the perfect quote for a situation is just one click away.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="coin-flip.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+                Coin Flip
+              </a>
+              <a href="dice-roller.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/></svg>
+                Dice Roller
+              </a>
+              <a href="random-number-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6v12M6 10h4M6 14h4M14 10h4M14 14h4"/></svg>
+                Random Number Generator
+              </a>
+              <a href="lorem-ipsum-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                Lorem Ipsum Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/random-quote-generator.js"></script>
+  <script>initRandomQuoteGenerator();</script>
+
+</body>
+</html>

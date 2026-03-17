@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palindrome Checker – Is It a Palindrome? | All Your Tools</title>
+  <meta name="description" content="Check if a word or phrase is a palindrome instantly as you type. Ignores spaces and punctuation. Includes famous palindrome examples. Free, no login.">
+  <link rel="canonical" href="https://allyourtools.net/palindrome-checker.html">
+  <meta property="og:title" content="Palindrome Checker – Is It a Palindrome? | All Your Tools">
+  <meta property="og:description" content="Check if a word or phrase is a palindrome instantly as you type. Ignores spaces and punctuation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/palindrome-checker.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Palindrome Checker | All Your Tools">
+  <meta name="twitter:description" content="Check if a word or phrase is a palindrome instantly as you type.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Palindrome Checker",
+    "url": "https://allyourtools.net/palindrome-checker.html",
+    "description": "Check if a word or phrase is a palindrome instantly as you type. Ignores spaces and punctuation.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="fun-tools.html">Fun Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>Palindrome Checker</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Palindrome Checker</h1>
+          <p class="tool-tagline">Type any word or phrase to instantly check if it reads the same forwards and backwards.</p>
+
+          <div class="form-group">
+            <label for="palindrome-input">Enter a word or phrase</label>
+            <input type="text" id="palindrome-input" placeholder="e.g. racecar, level, A man a plan a canal Panama..." autocomplete="off">
+          </div>
+
+          <div id="palindrome-result" style="padding:1rem;margin-bottom:1rem;background:#f9fafb;border:1.5px solid #e5e7eb;border-radius:0.75rem;min-height:3rem;display:flex;align-items:center;">
+            <span style="color:#9ca3af;">Type something above to check...</span>
+          </div>
+
+          <div id="palindrome-cleaned" style="font-size:0.875rem;color:#6b7280;margin-bottom:1.5rem;"></div>
+
+          <div style="margin-top:0.5rem;">
+            <div style="font-weight:700;margin-bottom:0.75rem;color:#374151;">Try these famous palindromes:</div>
+            <div id="palindrome-examples" style="display:flex;flex-wrap:wrap;gap:0.5rem;"></div>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is a palindrome?</h2>
+          <p>A palindrome is a word, phrase, number, or sequence that reads the same forwards and backwards. The word comes from the Greek "palin dromos" meaning "running back again." Simple word palindromes include "racecar," "level," "madam," "kayak," and "civic." Phrase palindromes ignore spaces and punctuation, such as "A man a plan a canal Panama" or "Was it a car or a cat I saw."</p>
+
+          <h2>How this checker works</h2>
+          <p>This tool converts your input to lowercase and strips all non-alphanumeric characters (spaces, punctuation, special characters). It then compares the cleaned string with its reverse. If they match, the text is a palindrome. For example, "A man, a plan, a canal: Panama!" becomes "amanaplanacanalpanama" when cleaned — which is identical forwards and backwards.</p>
+
+          <h2>Famous palindromes</h2>
+          <p><strong>Words:</strong> racecar, level, madam, kayak, civic, radar, refer, noon, stats, deified, rotator. <strong>Phrases:</strong> "Never odd or even", "Do geese see God?", "Was it a car or a cat I saw?", "No lemon, no melon", "Step on no pets". <strong>Names:</strong> Anna, Bob, Elle, Hannah, Otto. <strong>Numbers:</strong> 12321, 1001, 111, any number where the digits read the same both ways.</p>
+
+          <h2>Types of palindromes</h2>
+          <p>Beyond simple word and phrase palindromes, there are several interesting variants. <strong>Semordnilaps</strong> (palindromes spelled backwards) are words that form a different word when reversed — like "dog" → "god" or "desserts" → "stressed". <strong>Ambigrams</strong> read the same when rotated 180 degrees. <strong>Numeric palindromes</strong> are numbers that read the same both ways. <strong>Palindromic poems</strong> (palindromes by line, not letter) are an advanced literary form.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="word-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                Word Counter
+              </a>
+              <a href="rot13-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                ROT13 Encoder
+              </a>
+              <a href="caesar-cipher.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                Caesar Cipher
+              </a>
+              <a href="text-case-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Text Case Converter
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/palindrome-checker.js"></script>
+  <script>initPalindromeChecker();</script>
+
+</body>
+</html>

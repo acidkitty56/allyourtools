@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coin Flip – Free Online Heads or Tails | All Your Tools</title>
+  <meta name="description" content="Flip a virtual coin online and get heads or tails. Tracks your flip history with heads and tails counts. Free, instant, no login required.">
+  <link rel="canonical" href="https://allyourtools.net/coin-flip.html">
+  <meta property="og:title" content="Coin Flip – Free Online Heads or Tails | All Your Tools">
+  <meta property="og:description" content="Flip a virtual coin online and get heads or tails. Tracks your flip history. Free, instant, no login.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/coin-flip.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Coin Flip – Free Online Heads or Tails | All Your Tools">
+  <meta name="twitter:description" content="Flip a virtual coin online and get heads or tails.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Coin Flip",
+    "url": "https://allyourtools.net/coin-flip.html",
+    "description": "Flip a virtual coin online and get heads or tails. Tracks your flip history with heads and tails counts.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .coin-container { display: flex; flex-direction: column; align-items: center; padding: 2rem 1rem; }
+    #coin-visual {
+      width: 9rem; height: 9rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+      border: 4px solid #b45309;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; font-weight: 900; color: #78350f;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 20px rgba(180,83,9,0.3), inset 0 2px 4px rgba(255,255,255,0.3);
+      margin-bottom: 1rem;
+      transition: transform 0.1s;
+      user-select: none;
+    }
+    #coin-visual.heads { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%); }
+    #coin-visual.tails { background: linear-gradient(135deg, #c0c0c0 0%, #a0a0a0 50%, #808080 100%); border-color: #606060; color: #2d2d2d; box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.4); }
+    @keyframes coinSpin {
+      0%   { transform: rotateY(0deg) scale(1); }
+      25%  { transform: rotateY(90deg) scale(0.85); }
+      50%  { transform: rotateY(180deg) scale(1); }
+      75%  { transform: rotateY(270deg) scale(0.85); }
+      100% { transform: rotateY(360deg) scale(1); }
+    }
+    #coin-visual.coin--flip { animation: coinSpin 0.7s ease-in-out; }
+    #coin-result-label { font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; min-height: 2rem; }
+    .coin-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%; max-width: 20rem; margin-bottom: 1.5rem; }
+    .coin-stat { background: #f9fafb; border: 1.5px solid #e5e7eb; border-radius: 0.75rem; padding: 1rem; text-align: center; }
+    .coin-stat__count { font-size: 1.75rem; font-weight: 800; color: #2563eb; }
+    .coin-stat__label { font-size: 0.8rem; color: #6b7280; font-weight: 600; margin-top: 0.25rem; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="fun-tools.html">Fun Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>Coin Flip</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Coin Flip</h1>
+          <p class="tool-tagline">Can't decide? Flip a virtual coin for an instant heads or tails result.</p>
+
+          <div class="coin-container">
+            <div id="coin-visual">?</div>
+            <div id="coin-result-label" style="color:#6b7280;">Flip to start</div>
+
+            <div class="coin-stats">
+              <div class="coin-stat">
+                <div class="coin-stat__count" id="coin-heads-count">0</div>
+                <div class="coin-stat__label">Heads</div>
+              </div>
+              <div class="coin-stat">
+                <div class="coin-stat__count" id="coin-tails-count">0</div>
+                <div class="coin-stat__label">Tails</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center;">
+              <button id="coin-flip-btn" class="btn-primary" style="min-width:9rem;">Flip Coin</button>
+              <button id="coin-reset-btn" class="btn-secondary">Reset Stats</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>When to flip a coin</h2>
+          <p>Coin flipping is one of humanity's oldest methods of random decision making, dating back to ancient Roman times when it was called "navia aut caput" (ship or head). It's a fair, unbiased way to make a 50/50 decision when you simply cannot choose between two options. Whether deciding who pays for dinner, who goes first in a game, or which of two paths to take — a coin flip provides an instant, impartial verdict.</p>
+
+          <h2>Is a coin flip truly random?</h2>
+          <p>Physical coin flips can actually be biased — research suggests a coin is slightly more likely to land on the same side it started on. This digital coin flip uses <code>Math.random()</code>, which in modern browsers is based on cryptographically secure pseudo-random number generation. Each flip is completely independent, with exactly a 50% probability of heads and 50% probability of tails.</p>
+
+          <h2>Tracking your flips</h2>
+          <p>The heads and tails counters track your flip session. Over a small number of flips you'll often see streaks and uneven distributions — this is normal and expected from random processes. Over hundreds of flips, the counts will converge toward 50/50. This is a great illustration of the Law of Large Numbers in probability theory. Use "Reset Stats" to start a fresh counting session.</p>
+
+          <h2>Other uses</h2>
+          <p>Coin flips are used in sports (deciding possession at kickoff), games (determining turn order), teaching probability concepts, and resolving deadlocks in group decision making. Some people use repeated coin flips to add randomness to choices where a single flip feels too consequential — for example, flipping three times and going with the best of three.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="dice-roller.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/></svg>
+                Dice Roller
+              </a>
+              <a href="random-number-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6v12"/></svg>
+                Random Number Generator
+              </a>
+              <a href="random-quote-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Random Quote Generator
+              </a>
+              <a href="password-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg>
+                Password Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/coin-flip.js"></script>
+  <script>initCoinFlip();</script>
+
+</body>
+</html>

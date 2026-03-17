@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji Picker – Copy Emojis to Clipboard | All Your Tools</title>
+  <meta name="description" content="Browse and copy 150+ emojis to clipboard with one click. Filter by category or search by name. Free, instant, no login required.">
+  <link rel="canonical" href="https://allyourtools.net/emoji-picker.html">
+  <meta property="og:title" content="Emoji Picker – Copy Emojis to Clipboard | All Your Tools">
+  <meta property="og:description" content="Browse and copy 150+ emojis to clipboard with one click. Filter by category or search by name.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/emoji-picker.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Emoji Picker – Copy Emojis to Clipboard | All Your Tools">
+  <meta name="twitter:description" content="Browse and copy 150+ emojis to clipboard with one click.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Emoji Picker",
+    "url": "https://allyourtools.net/emoji-picker.html",
+    "description": "Browse and copy 150+ emojis to clipboard with one click. Filter by category or search by name.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .emoji-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); gap: 0.375rem; margin-top: 1rem; }
+    .emoji-btn { font-size: 1.5rem; background: #f9fafb; border: 1.5px solid #e5e7eb; border-radius: 0.5rem; padding: 0.375rem; cursor: pointer; transition: background 0.15s, transform 0.1s; line-height: 1; }
+    .emoji-btn:hover { background: #eff6ff; border-color: #93c5fd; transform: scale(1.15); }
+    .emoji-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .emoji-filter-btn { padding: 0.375rem 0.875rem; border-radius: 2rem; border: 1.5px solid #e5e7eb; background: #f9fafb; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+    .emoji-filter-btn.active, .emoji-filter-btn:hover { background: #2563eb; color: #fff; border-color: #2563eb; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="fun-tools.html">Fun Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>Emoji Picker</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Emoji Picker</h1>
+          <p class="tool-tagline">Click any emoji to instantly copy it to your clipboard. Search or filter by category.</p>
+
+          <div class="form-group">
+            <label for="emoji-search">Search Emojis</label>
+            <input type="search" id="emoji-search" placeholder="Search by name (e.g. heart, dog, pizza...)">
+          </div>
+
+          <div class="emoji-filters">
+            <button class="emoji-filter-btn active" data-cat="all">All</button>
+            <button class="emoji-filter-btn" data-cat="smileys">Smileys</button>
+            <button class="emoji-filter-btn" data-cat="animals">Animals</button>
+            <button class="emoji-filter-btn" data-cat="food">Food</button>
+            <button class="emoji-filter-btn" data-cat="travel">Travel</button>
+            <button class="emoji-filter-btn" data-cat="objects">Objects</button>
+            <button class="emoji-filter-btn" data-cat="symbols">Symbols</button>
+          </div>
+
+          <div id="emoji-grid" class="emoji-grid" aria-label="Emoji grid"></div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>How to use the emoji picker</h2>
+          <p>Simply click on any emoji in the grid and it will be instantly copied to your clipboard. A toast notification will confirm the copy. You can then paste the emoji anywhere — in a social media post, chat message, email, document, or website. Use the category filter buttons to browse specific types of emojis, or type in the search box to find emojis by name.</p>
+
+          <h2>Emoji categories</h2>
+          <p>This picker includes emojis organized into six categories: <strong>Smileys</strong> (face expressions and emotions), <strong>Animals</strong> (mammals, birds, bugs, and sea creatures), <strong>Food</strong> (fruits, vegetables, meals, and drinks), <strong>Travel</strong> (vehicles, landmarks, and locations), <strong>Objects</strong> (technology, tools, and everyday items), and <strong>Symbols</strong> (hearts, stars, shapes, and abstract icons).</p>
+
+          <h2>Why use an emoji picker?</h2>
+          <p>While most smartphones have built-in emoji keyboards, desktop computers often make emoji insertion cumbersome. Operating system emoji pickers (Windows Key + . on Windows, Control + Command + Space on Mac) exist but can be slow or hard to find. This web-based picker is always available in any browser, loads instantly, and lets you search by name rather than scrolling through thousands of emojis.</p>
+
+          <h2>Emoji compatibility</h2>
+          <p>Emojis are standardized through the Unicode Consortium, which means most modern emojis render consistently across major platforms including iOS, Android, Windows, and macOS. Older emojis (included in Unicode 6.0 and earlier) are virtually universal. Newer emojis may display differently or appear as blank boxes on older operating systems or browsers.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="fancy-text-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Fancy Text Generator
+              </a>
+              <a href="text-case-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Text Case Converter
+              </a>
+              <a href="random-quote-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Random Quote Generator
+              </a>
+              <a href="word-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                Word Counter
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/emoji-picker.js"></script>
+  <script>initEmojiPicker();</script>
+
+</body>
+</html>
