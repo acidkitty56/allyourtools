@@ -82,7 +82,6 @@ function initEmojiPicker() {
     grid.querySelectorAll('.emoji-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         copyToClipboard(btn.textContent);
-        showToast('Copied ' + btn.textContent + '!');
       });
     });
   }
