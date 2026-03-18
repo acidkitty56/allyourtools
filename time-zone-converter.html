@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Zone Converter – Convert Time Between World Timezones | All Your Tools</title>
+  <meta name="description" content="Convert time between 26 world timezones instantly. Enter a date and time, choose source and target timezone, and get the converted time. Free, browser-based, no login.">
+  <link rel="canonical" href="https://allyourtools.net/time-zone-converter.html">
+  <meta property="og:title" content="Time Zone Converter – Convert Time Between World Timezones | All Your Tools">
+  <meta property="og:description" content="Convert time between 26 major world timezones instantly. Uses the Intl API for accurate DST-aware conversion.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/time-zone-converter.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Time Zone Converter | All Your Tools">
+  <meta name="twitter:description" content="Convert time between world timezones, including DST handling. Free and instant.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Time Zone Converter",
+    "url": "https://allyourtools.net/time-zone-converter.html",
+    "description": "Convert time between 26 major world timezones instantly. DST-aware using the Intl API.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tz-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .tz-form label { font-weight: 600; font-size: 0.9rem; color: #374151; display: block; margin-bottom: 0.35rem; }
+    .tz-result-box { margin-top: 1.5rem; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 0.75rem; padding: 1.5rem; text-align: center; }
+    .tz-result-label { font-size: 0.8rem; color: #6b7280; font-weight: 600; margin-bottom: 0.5rem; }
+    .tz-result-value { font-size: 1.35rem; font-weight: 800; color: #2563eb; word-break: break-word; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">⭐ Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Time Zone Converter</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <section class="tool-interface-card">
+          <h1>Time Zone Converter</h1>
+          <p class="tool-tagline">Convert a date and time between any two of 26 major world timezones.</p>
+
+          <div class="tz-form">
+            <div>
+              <label for="tz-datetime">Date &amp; time</label>
+              <input type="datetime-local" id="tz-datetime" class="input" style="max-width:20rem;">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div>
+                <label for="tz-from">From timezone</label>
+                <select id="tz-from" class="input"></select>
+              </div>
+              <div>
+                <label for="tz-to">To timezone</label>
+                <select id="tz-to" class="input"></select>
+              </div>
+            </div>
+          </div>
+
+          <div class="tz-result-box">
+            <div class="tz-result-label">Converted time</div>
+            <div class="tz-result-value" id="tz-result">—</div>
+          </div>
+        </section>
+
+        <div class="ad-slot"></div>
+
+        <article class="tool-seo">
+          <h2>How the time zone converter works</h2>
+          <p>The converter uses the browser's built-in <code>Intl.DateTimeFormat</code> API — part of the ECMAScript Internationalization specification — to perform accurate, DST-aware timezone conversions without any external libraries. The input datetime is treated as a wall-clock time in the source timezone, converted to a UTC instant, and then formatted in the target timezone. This approach correctly handles daylight saving time transitions automatically.</p>
+
+          <h2>Daylight saving time</h2>
+          <p>Many timezones observe daylight saving time (DST), shifting clocks forward by one hour in summer and back in winter. The exact dates of these transitions vary by country and year. By using IANA timezone identifiers (like "America/New_York" rather than "EST"), the converter automatically applies the correct UTC offset for the specific date you entered. No manual offset adjustment is needed.</p>
+
+          <h2>Covered timezones</h2>
+          <p>This tool covers 26 of the world's most-used timezones, spanning every major continent and populated region: North America (ET, CT, MT, PT, AKT, HST), South America (BRT, ART), Europe (GMT, CET, MSK), Africa (EET, SAST), Middle East (GST), South Asia (PKT, IST, BST), Southeast and East Asia (ICT, SGT, CST, JST, KST), and Oceania (AEST, NZST). UTC is always available as a reference.</p>
+
+          <h2>Common use cases</h2>
+          <p>Time zone converters are essential for scheduling international meetings, coordinating with remote teams across continents, understanding global broadcast times (sports events, product launches, earnings calls), booking international flights, and interpreting timestamps in logs or data exports. When collaborating with people in multiple countries, this tool lets you quickly answer "what time is that for me?" with a single click.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="timestamp-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                Timestamp Converter
+              </a>
+              <a href="days-between-dates.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Days Between Dates
+              </a>
+              <a href="age-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Age Calculator
+              </a>
+              <a href="unit-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                Unit Converter
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/time-zone-converter.js"></script>
+  <script>initTimeZoneConverter();</script>
+
+</body>
+</html>

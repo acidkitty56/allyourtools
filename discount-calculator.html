@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discount Calculator – Sale Price &amp; Savings | All Your Tools</title>
+  <meta name="description" content="Calculate sale price, discount amount, and savings from any original price and discount percentage. Also reverse-calculate the original price. Free, instant.">
+  <link rel="canonical" href="https://allyourtools.net/discount-calculator.html">
+  <meta property="og:title" content="Discount Calculator – Sale Price &amp; Savings | All Your Tools">
+  <meta property="og:description" content="Find the final price after a discount, or work backwards from a sale price to find the original. Instant results.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/discount-calculator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Discount Calculator | All Your Tools">
+  <meta name="twitter:description" content="Calculate sale price, discount amount, and savings instantly. Reverse mode too.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Discount Calculator",
+    "url": "https://allyourtools.net/discount-calculator.html",
+    "description": "Calculate sale price, discount amount, and savings. Reverse mode finds original price from final price.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .disc-mode-btns { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .disc-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .disc-form label { font-weight: 600; font-size: 0.9rem; color: #374151; display: block; margin-bottom: 0.35rem; }
+    .disc-results { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+    .disc-result-row { display: flex; justify-content: space-between; align-items: center; background: #f9fafb; border: 1.5px solid #e5e7eb; border-radius: 0.75rem; padding: 0.875rem 1.25rem; }
+    .disc-result-row__label { font-size: 0.875rem; color: #6b7280; font-weight: 600; }
+    .disc-result-row__value { font-size: 1.25rem; font-weight: 800; color: #2563eb; }
+    .disc-savings-box { background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 0.75rem; padding: 1rem 1.25rem; text-align: center; color: #16a34a; font-weight: 700; margin-top: 0.75rem; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">⭐ Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Discount Calculator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <section class="tool-interface-card">
+          <h1>Discount Calculator</h1>
+          <p class="tool-tagline">Find the sale price and savings, or reverse-calculate the original price.</p>
+
+          <div class="disc-mode-btns">
+            <button id="disc-mode-forward" class="tip-pct-btn tip-btn--active">Original → Sale Price</button>
+            <button id="disc-mode-reverse" class="tip-pct-btn">Sale Price → Original</button>
+          </div>
+
+          <!-- Forward panel -->
+          <div id="disc-panel-forward">
+            <div class="disc-form">
+              <div>
+                <label for="disc-orig">Original price ($)</label>
+                <input type="number" id="disc-orig" class="input" placeholder="e.g. 120.00" min="0" step="0.01" style="max-width:14rem;">
+              </div>
+              <div>
+                <label for="disc-pct">Discount percentage (%)</label>
+                <input type="number" id="disc-pct" class="input" placeholder="e.g. 25" min="0" max="100" step="0.1" style="max-width:14rem;">
+              </div>
+            </div>
+            <div class="disc-results">
+              <div class="disc-result-row">
+                <span class="disc-result-row__label">Discount amount</span>
+                <span class="disc-result-row__value" id="disc-amount">—</span>
+              </div>
+              <div class="disc-result-row">
+                <span class="disc-result-row__label">Final price</span>
+                <span class="disc-result-row__value" id="disc-final">—</span>
+              </div>
+            </div>
+            <div class="disc-savings-box" id="disc-savings">Enter values above to see your savings</div>
+          </div>
+
+          <!-- Reverse panel -->
+          <div id="disc-panel-reverse" style="display:none;">
+            <div class="disc-form">
+              <div>
+                <label for="disc-rev-final">Sale price / final price ($)</label>
+                <input type="number" id="disc-rev-final" class="input" placeholder="e.g. 90.00" min="0" step="0.01" style="max-width:14rem;">
+              </div>
+              <div>
+                <label for="disc-rev-pct">Discount percentage (%)</label>
+                <input type="number" id="disc-rev-pct" class="input" placeholder="e.g. 25" min="0" max="99" step="0.1" style="max-width:14rem;">
+              </div>
+            </div>
+            <div class="disc-results">
+              <div class="disc-result-row">
+                <span class="disc-result-row__label">Original price</span>
+                <span class="disc-result-row__value" id="disc-rev-orig">—</span>
+              </div>
+            </div>
+            <div class="disc-savings-box" id="disc-rev-savings">Enter values above</div>
+          </div>
+        </section>
+
+        <div class="ad-slot"></div>
+
+        <article class="tool-seo">
+          <h2>How to calculate a discount</h2>
+          <p>To find the final price after a discount, multiply the original price by the discount percentage divided by 100 to get the discount amount, then subtract that from the original. For example, 25% off $120: discount = $120 × 0.25 = $30; final price = $120 − $30 = $90. This tool does both steps at once and shows the discount amount, final price, and your total savings.</p>
+
+          <h2>Reverse discount calculation</h2>
+          <p>Sometimes you see a sale price on a tag but want to know what the original price was. If you know the discount percentage, divide the sale price by (1 minus the discount as a decimal). For a $90 item that's 25% off: $90 ÷ 0.75 = $120 original price. Switch to "Sale Price → Original" mode to use this calculation. This is useful for spotting whether a "sale" price is genuinely discounted from the original.</p>
+
+          <h2>Multiple discounts and stacking</h2>
+          <p>When multiple discounts are applied in sequence, you cannot simply add the percentages. A 20% discount followed by a 10% discount is not the same as 30% off — it actually equals 28% off the original price. To calculate stacked discounts, apply them one at a time: first reduce by 20%, then take 10% off that result. Each discount applies to the already-reduced price, not the original.</p>
+
+          <h2>Common discount scenarios</h2>
+          <p>This calculator is useful for retail shopping (checking if a "sale" is truly a good deal), business pricing (setting margin-preserving sale prices), coupon calculations, and comparing prices across stores with different discount structures. By bookmarking this tool, you can quickly verify advertised savings while shopping online or in-store.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="percentage-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                Percentage Calculator
+              </a>
+              <a href="tip-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Tip Calculator
+              </a>
+              <a href="loan-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                Loan Calculator
+              </a>
+              <a href="bmi-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                BMI Calculator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/discount-calculator.js"></script>
+  <script>initDiscountCalculator();</script>
+
+</body>
+</html>

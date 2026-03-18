@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator – Split Bill &amp; Calculate Tip Instantly | All Your Tools</title>
+  <meta name="description" content="Calculate tip amount, total bill, and split per person instantly. Choose from preset tip percentages or enter a custom amount. Free, no login needed.">
+  <link rel="canonical" href="https://allyourtools.net/tip-calculator.html">
+  <meta property="og:title" content="Tip Calculator – Split Bill &amp; Calculate Tip | All Your Tools">
+  <meta property="og:description" content="Calculate tip amount, total, and per-person share instantly. Multiple tip presets and custom percentage.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/tip-calculator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tip Calculator | All Your Tools">
+  <meta name="twitter:description" content="Calculate tip amount and split bill per person. Choose preset or custom tip percentage.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Tip Calculator",
+    "url": "https://allyourtools.net/tip-calculator.html",
+    "description": "Calculate tip amount, total bill, and per-person share. Supports preset and custom tip percentages.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tip-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .tip-form label { font-weight: 600; font-size: 0.9rem; color: #374151; display: block; margin-bottom: 0.35rem; }
+    .tip-pct-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .tip-pct-btn { padding: 0.45rem 0.9rem; border: 1.5px solid #e5e7eb; border-radius: 0.5rem; background: #f9fafb; cursor: pointer; font-size: 0.875rem; font-weight: 700; color: #374151; }
+    .tip-btn--active { background: #2563eb; color: #fff; border-color: #2563eb; }
+    .tip-pct-btn:hover:not(.tip-btn--active) { background: #f3f4f6; }
+    .tip-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+    @media (max-width: 480px) { .tip-results { grid-template-columns: 1fr; } }
+    .tip-result-card { background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 0.75rem; padding: 1rem; text-align: center; }
+    .tip-result-card__value { font-size: 1.5rem; font-weight: 800; color: #2563eb; }
+    .tip-result-card__label { font-size: 0.8rem; color: #6b7280; font-weight: 600; margin-top: 0.2rem; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">⭐ Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Tip Calculator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <section class="tool-interface-card">
+          <h1>Tip Calculator</h1>
+          <p class="tool-tagline">Calculate your tip, total bill, and per-person share — instantly.</p>
+
+          <div class="tip-form">
+            <div>
+              <label for="tip-bill">Bill amount ($)</label>
+              <input type="number" id="tip-bill" class="input" placeholder="e.g. 85.00" min="0" step="0.01" style="max-width:14rem;">
+            </div>
+            <div>
+              <label>Tip percentage</label>
+              <div class="tip-pct-btns">
+                <button class="tip-pct-btn" data-pct="10">10%</button>
+                <button class="tip-pct-btn" data-pct="15">15%</button>
+                <button class="tip-pct-btn" data-pct="18">18%</button>
+                <button class="tip-pct-btn" data-pct="20">20%</button>
+                <button class="tip-pct-btn" data-pct="25">25%</button>
+                <button class="tip-pct-btn" data-pct="custom">Custom</button>
+              </div>
+              <input type="number" id="tip-custom" class="input" placeholder="Custom %" min="0" max="100" step="0.1" style="max-width:10rem; margin-top:0.5rem; display:none;">
+            </div>
+            <div>
+              <label for="tip-people">Number of people</label>
+              <input type="number" id="tip-people" class="input" value="1" min="1" step="1" style="max-width:8rem;">
+            </div>
+          </div>
+
+          <div class="tip-results">
+            <div class="tip-result-card">
+              <div class="tip-result-card__value" id="tip-amount">$0.00</div>
+              <div class="tip-result-card__label">Tip Amount</div>
+            </div>
+            <div class="tip-result-card">
+              <div class="tip-result-card__value" id="tip-total">$0.00</div>
+              <div class="tip-result-card__label">Total Bill</div>
+            </div>
+            <div class="tip-result-card">
+              <div class="tip-result-card__value" id="tip-per-person">$0.00</div>
+              <div class="tip-result-card__label">Per Person</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="ad-slot"></div>
+
+        <article class="tool-seo">
+          <h2>How to calculate a tip</h2>
+          <p>To calculate a tip, multiply the bill amount by the tip percentage divided by 100. For example, a 20% tip on a $85 bill is $85 × 0.20 = $17. Add the tip to the bill to get the total: $85 + $17 = $102. Dividing the total by the number of people gives each person's share. This tool handles all three steps at once, updating instantly as you type.</p>
+
+          <h2>What percentage should you tip?</h2>
+          <p>Tipping norms vary by country and service type. In the United States, 15% is the baseline for adequate service, 18–20% is standard for good service, and 25% or more is appropriate for exceptional service. For counter-service or takeout, 10% is common. In many European countries, tips are smaller (5–10%) or rounding up the bill is typical. For international travel, research local customs before you go.</p>
+
+          <h2>Splitting the bill fairly</h2>
+          <p>When splitting a bill among a group, the simplest method is to divide the total (including tip) equally. This tool supports any number of people, so you can enter 2, 4, 10, or any size party. If people ordered different amounts, you may want to calculate individual tips separately — but for most casual restaurant situations, splitting the total evenly is the fastest and least awkward approach.</p>
+
+          <h2>Tip on pre-tax or post-tax amount?</h2>
+          <p>In the US, tipping is generally calculated on the pre-tax amount (the subtotal), since tax is not part of the service you received. However, it's common to simply tip on the full total shown on the bill — the difference is small in practice. This tool lets you enter whatever bill amount you want to tip on, so either approach works. Just enter the number you want to base the tip calculation on.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="percentage-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                Percentage Calculator
+              </a>
+              <a href="discount-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                Discount Calculator
+              </a>
+              <a href="loan-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                Loan Calculator
+              </a>
+              <a href="bmi-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                BMI Calculator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/tip-calculator.js"></script>
+  <script>initTipCalculator();</script>
+
+</body>
+</html>

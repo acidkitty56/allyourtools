@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentage Calculator – Free Online Percent Tool | All Your Tools</title>
+  <meta name="description" content="Calculate percentages instantly: find X% of Y, what percent X is of Y, or percentage change between two values. Free, fast, no login required.">
+  <link rel="canonical" href="https://allyourtools.net/percentage-calculator.html">
+  <meta property="og:title" content="Percentage Calculator – Free Online Percent Tool | All Your Tools">
+  <meta property="og:description" content="Calculate percentages instantly: find X% of Y, what percent X is of Y, or percentage change between two values.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/percentage-calculator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Percentage Calculator | All Your Tools">
+  <meta name="twitter:description" content="Three-mode percentage calculator: find percentages, compare values, and calculate percent change.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Percentage Calculator",
+    "url": "https://allyourtools.net/percentage-calculator.html",
+    "description": "Calculate percentages instantly: find X% of Y, what percent X is of Y, or percentage change between two values.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pct-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .pct-tab { padding: 0.5rem 1rem; border: 1.5px solid #e5e7eb; border-radius: 0.5rem; background: #f9fafb; cursor: pointer; font-size: 0.875rem; font-weight: 600; color: #374151; transition: all 0.15s; }
+    .pct-tab--active { background: #2563eb; color: #fff; border-color: #2563eb; }
+    .pct-tab:hover:not(.pct-tab--active) { background: #f3f4f6; }
+    .pct-inputs { display: flex; flex-direction: column; gap: 1rem; }
+    .pct-row { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .pct-row input { width: 8rem; }
+    .pct-row span { color: #6b7280; font-weight: 600; }
+    .pct-result-box { margin-top: 1.25rem; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 0.75rem; padding: 1.25rem; text-align: center; }
+    .pct-result-label { font-size: 0.8rem; color: #6b7280; font-weight: 600; margin-bottom: 0.25rem; }
+    .pct-result-value { font-size: 2rem; font-weight: 800; color: #2563eb; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">⭐ Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Percentage Calculator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Percentage Calculator</h1>
+          <p class="tool-tagline">Calculate percentages in three different modes — instantly as you type.</p>
+
+          <div class="pct-tabs">
+            <button class="pct-tab pct-tab--active" data-panel="0">X% of Y</button>
+            <button class="pct-tab" data-panel="1">X is what % of Y</button>
+            <button class="pct-tab" data-panel="2">% Change</button>
+          </div>
+
+          <!-- Panel 0: X% of Y -->
+          <div class="pct-panel">
+            <div class="pct-inputs">
+              <div class="pct-row">
+                <input type="number" id="pct-pct1" class="input" placeholder="20" min="0" step="any">
+                <span>% of</span>
+                <input type="number" id="pct-num1" class="input" placeholder="150" step="any">
+              </div>
+            </div>
+            <div class="pct-result-box">
+              <div class="pct-result-label">Result</div>
+              <div class="pct-result-value" id="pct-res1">—</div>
+            </div>
+          </div>
+
+          <!-- Panel 1: X is what % of Y -->
+          <div class="pct-panel" style="display:none;">
+            <div class="pct-inputs">
+              <div class="pct-row">
+                <input type="number" id="pct-num2a" class="input" placeholder="30" step="any">
+                <span>is what % of</span>
+                <input type="number" id="pct-num2b" class="input" placeholder="150" step="any">
+              </div>
+            </div>
+            <div class="pct-result-box">
+              <div class="pct-result-label">Result</div>
+              <div class="pct-result-value" id="pct-res2">—</div>
+            </div>
+          </div>
+
+          <!-- Panel 2: % Change -->
+          <div class="pct-panel" style="display:none;">
+            <div class="pct-inputs">
+              <div class="pct-row">
+                <span>From</span>
+                <input type="number" id="pct-num3a" class="input" placeholder="100" step="any">
+                <span>to</span>
+                <input type="number" id="pct-num3b" class="input" placeholder="120" step="any">
+              </div>
+            </div>
+            <div class="pct-result-box">
+              <div class="pct-result-label">Percentage Change</div>
+              <div class="pct-result-value" id="pct-res3">—</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>How to calculate percentages</h2>
+          <p>A percentage is simply a fraction expressed as parts per hundred. The most common calculation is finding X% of Y, which equals (X ÷ 100) × Y. For example, 20% of 150 equals (20 ÷ 100) × 150 = 30. This is useful whenever you need to find a portion of a whole — like a tip, a discount, or a commission.</p>
+
+          <h2>What percentage is X of Y?</h2>
+          <p>To find what percentage one number is of another, divide X by Y and multiply by 100. For example, 30 out of 150 is (30 ÷ 150) × 100 = 20%. This mode is helpful for test scores, tax rates, budget allocations, and any situation where you want to express a ratio as a percent. Use the "X is what % of Y" tab above for this calculation.</p>
+
+          <h2>Percentage change calculation</h2>
+          <p>Percentage change measures how much a value has increased or decreased relative to its starting value. The formula is ((new − old) ÷ |old|) × 100. A positive result means an increase; a negative result means a decrease. This is widely used in finance (stock price changes, revenue growth), science (experimental results), and everyday comparisons like price changes at the grocery store.</p>
+
+          <h2>Common percentage mistakes to avoid</h2>
+          <p>A frequent error is reversing the percentage change formula — always divide by the original (starting) value, not the new value. Another common mistake is applying percentages in sequence: a 20% increase followed by a 20% decrease does not bring you back to the original number; it results in a 4% net decrease. Our calculator handles all three modes correctly and shows the result immediately as you type.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="discount-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                Discount Calculator
+              </a>
+              <a href="tip-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Tip Calculator
+              </a>
+              <a href="loan-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                Loan Calculator
+              </a>
+              <a href="unit-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                Unit Converter
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/percentage-calculator.js"></script>
+  <script>initPercentageCalculator();</script>
+
+</body>
+</html>

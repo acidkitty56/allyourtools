@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator – Body Mass Index with Weight Category | All Your Tools</title>
+  <meta name="description" content="Calculate your Body Mass Index (BMI) from height and weight. Shows BMI value, category (Underweight, Normal, Overweight, Obese), and color-coded result. Free, instant.">
+  <link rel="canonical" href="https://allyourtools.net/bmi-calculator.html">
+  <meta property="og:title" content="BMI Calculator – Body Mass Index | All Your Tools">
+  <meta property="og:description" content="Calculate your BMI from height and weight. Supports kg/lb and cm/ft-in. Shows category and color-coded result instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/bmi-calculator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="BMI Calculator | All Your Tools">
+  <meta name="twitter:description" content="Calculate your Body Mass Index. Supports metric and imperial units.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BMI Calculator",
+    "url": "https://allyourtools.net/bmi-calculator.html",
+    "description": "Calculate your Body Mass Index (BMI) from height and weight. Shows BMI value and weight category.",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .bmi-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .bmi-form label { font-weight: 600; font-size: 0.9rem; color: #374151; display: block; margin-bottom: 0.35rem; }
+    .bmi-row { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .bmi-row input { width: 8rem; }
+    .bmi-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .bmi-result-card { background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 0.75rem; padding: 1.25rem; text-align: center; }
+    .bmi-result-card__value { font-size: 2.5rem; font-weight: 800; color: #2563eb; }
+    .bmi-result-card__label { font-size: 0.8rem; color: #6b7280; font-weight: 600; margin-top: 0.2rem; }
+    .bmi-scale { margin-top: 1.25rem; border: 1.5px solid #e5e7eb; border-radius: 0.75rem; overflow: hidden; }
+    .bmi-scale-row { display: flex; align-items: center; padding: 0.5rem 1rem; gap: 0.75rem; font-size: 0.875rem; }
+    .bmi-scale-row:not(:last-child) { border-bottom: 1px solid #e5e7eb; }
+    .bmi-scale-dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; flex-shrink: 0; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">⭐ Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>BMI Calculator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <section class="tool-interface-card">
+          <h1>BMI Calculator</h1>
+          <p class="tool-tagline">Calculate your Body Mass Index instantly — supports metric and imperial units.</p>
+
+          <div class="bmi-form">
+            <div>
+              <label>Weight</label>
+              <div class="bmi-row">
+                <input type="number" id="bmi-weight" class="input" placeholder="70" min="1" step="0.1">
+                <select id="bmi-weight-unit" class="input" style="width:auto;">
+                  <option value="kg">kg</option>
+                  <option value="lb">lb</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label>Height</label>
+              <div class="bmi-row">
+                <select id="bmi-height-unit" class="input" style="width:auto;">
+                  <option value="cm">cm</option>
+                  <option value="ftin">ft &amp; in</option>
+                </select>
+              </div>
+              <div id="bmi-cm-row" class="bmi-row" style="margin-top:0.5rem;">
+                <input type="number" id="bmi-height" class="input" placeholder="175" min="1" step="0.1">
+                <span style="color:#6b7280;font-size:0.875rem;">cm</span>
+              </div>
+              <div id="bmi-ft-row" class="bmi-row" style="margin-top:0.5rem; display:none;">
+                <input type="number" id="bmi-height-ft" class="input" placeholder="5" min="0" step="1" style="width:6rem;">
+                <span style="color:#6b7280;font-size:0.875rem;">ft</span>
+                <input type="number" id="bmi-height-in" class="input" placeholder="9" min="0" max="11" step="1" style="width:6rem;">
+                <span style="color:#6b7280;font-size:0.875rem;">in</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bmi-result-grid">
+            <div class="bmi-result-card">
+              <div class="bmi-result-card__value" id="bmi-result">—</div>
+              <div class="bmi-result-card__label">BMI</div>
+            </div>
+            <div class="bmi-result-card">
+              <div class="bmi-result-card__value" style="font-size:1.25rem;" id="bmi-category">—</div>
+              <div class="bmi-result-card__label">Category</div>
+            </div>
+          </div>
+
+          <div class="bmi-scale">
+            <div class="bmi-scale-row"><div class="bmi-scale-dot" style="background:#2563eb;"></div><strong>Underweight</strong><span style="color:#6b7280;margin-left:auto;">BMI &lt; 18.5</span></div>
+            <div class="bmi-scale-row"><div class="bmi-scale-dot" style="background:#16a34a;"></div><strong>Normal weight</strong><span style="color:#6b7280;margin-left:auto;">18.5 – 24.9</span></div>
+            <div class="bmi-scale-row"><div class="bmi-scale-dot" style="background:#d97706;"></div><strong>Overweight</strong><span style="color:#6b7280;margin-left:auto;">25.0 – 29.9</span></div>
+            <div class="bmi-scale-row"><div class="bmi-scale-dot" style="background:#dc2626;"></div><strong>Obese</strong><span style="color:#6b7280;margin-left:auto;">BMI ≥ 30</span></div>
+          </div>
+        </section>
+
+        <div class="ad-slot"></div>
+
+        <article class="tool-seo">
+          <h2>What is BMI?</h2>
+          <p>Body Mass Index (BMI) is a simple numerical measure of a person's body size calculated from their height and weight. The formula is weight (kg) divided by height squared (m²). BMI was developed in the 19th century by Belgian mathematician Adolphe Quetelet and has been widely adopted as a screening tool by health organizations worldwide. It is not a direct measure of body fat, but provides a useful population-level indicator of weight status.</p>
+
+          <h2>BMI categories explained</h2>
+          <p>The World Health Organization defines four BMI categories: Underweight (below 18.5), Normal weight (18.5–24.9), Overweight (25–29.9), and Obese (30 and above). These thresholds were developed from population health data and are associated with different risks for conditions like heart disease, diabetes, and hypertension. Being outside the normal range is a signal to consult a healthcare provider, not a diagnosis.</p>
+
+          <h2>Limitations of BMI</h2>
+          <p>BMI has well-known limitations: it does not distinguish between muscle and fat, so very muscular individuals may be classified as overweight. It also does not account for age, sex, or ethnicity — older adults typically have more body fat at the same BMI than younger adults, and BMI cut-points differ across ethnic groups. For children, age and sex-specific percentile charts are used instead. Always interpret BMI in context with other health measures.</p>
+
+          <h2>Metric and imperial inputs</h2>
+          <p>This calculator supports both metric units (kilograms and centimetres) and imperial units (pounds and feet/inches). When imperial units are selected, the calculator converts to metric internally before computing BMI, since the BMI formula uses SI units. The conversion is precise: 1 pound = 0.453592 kg, 1 inch = 0.0254 m. Results are identical regardless of which unit system you use.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="unit-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                Unit Converter
+              </a>
+              <a href="age-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Age Calculator
+              </a>
+              <a href="percentage-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                Percentage Calculator
+              </a>
+              <a href="tip-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Tip Calculator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/bmi-calculator.js"></script>
+  <script>initBmiCalculator();</script>
+
+</body>
+</html>

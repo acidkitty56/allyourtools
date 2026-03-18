@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Days Between Dates – Date Difference Calculator | All Your Tools</title>
+  <meta name="description" content="Calculate the number of days, weeks, and months between two dates. Free online date difference calculator — instant results, no login required.">
+  <link rel="canonical" href="https://allyourtools.net/days-between-dates.html">
+  <meta property="og:title" content="Days Between Dates – Date Difference Calculator | All Your Tools">
+  <meta property="og:description" content="Find how many days, weeks, and months are between any two dates. Instant results in your browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/days-between-dates.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Days Between Dates | All Your Tools">
+  <meta name="twitter:description" content="Calculate days, weeks, and months between two dates instantly.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Days Between Dates",
+    "url": "https://allyourtools.net/days-between-dates.html",
+    "description": "Calculate the number of days, weeks, and months between two dates.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .dbd-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) { .dbd-form { grid-template-columns: 1fr; } }
+    .dbd-form label { font-weight: 600; font-size: 0.9rem; color: #374151; display: block; margin-bottom: 0.35rem; }
+    .dbd-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+    @media (max-width: 480px) { .dbd-results { grid-template-columns: 1fr; } }
+    .dbd-result-card { background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 0.75rem; padding: 1rem; text-align: center; }
+    .dbd-result-card__value { font-size: 1.5rem; font-weight: 800; color: #2563eb; }
+    .dbd-result-card__label { font-size: 0.8rem; color: #6b7280; font-weight: 600; margin-top: 0.2rem; }
+    .dbd-note { margin-top: 0.75rem; font-size: 0.875rem; min-height: 1.25rem; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">⭐ Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Days Between Dates</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <section class="tool-interface-card">
+          <h1>Days Between Dates</h1>
+          <p class="tool-tagline">Find the exact number of days, weeks, and months between any two dates.</p>
+
+          <div class="dbd-form">
+            <div>
+              <label for="dbd-start">Start date</label>
+              <input type="date" id="dbd-start" class="input">
+            </div>
+            <div>
+              <label for="dbd-end">End date</label>
+              <input type="date" id="dbd-end" class="input">
+            </div>
+          </div>
+
+          <div class="dbd-results">
+            <div class="dbd-result-card">
+              <div class="dbd-result-card__value" id="dbd-days">—</div>
+              <div class="dbd-result-card__label">Days</div>
+            </div>
+            <div class="dbd-result-card">
+              <div class="dbd-result-card__value" id="dbd-weeks">—</div>
+              <div class="dbd-result-card__label">Weeks</div>
+            </div>
+            <div class="dbd-result-card">
+              <div class="dbd-result-card__value" id="dbd-months">—</div>
+              <div class="dbd-result-card__label">Months</div>
+            </div>
+          </div>
+          <div class="dbd-note" id="dbd-note"></div>
+        </section>
+
+        <div class="ad-slot"></div>
+
+        <article class="tool-seo">
+          <h2>How to count days between dates</h2>
+          <p>The calculator subtracts the start date from the end date to find the exact number of calendar days. It accounts for all month lengths and leap years automatically. Weeks are calculated by dividing the day count by 7, and months use an average of 30.4375 days per month (the precise average across a 4-year leap cycle). Results update instantly whenever you change either date.</p>
+
+          <h2>Negative results: end before start</h2>
+          <p>If you enter an end date that falls before the start date, the tool will show a negative day count and flag this clearly. This can be useful when you want to find how far in the past an event was, or when checking if a deadline has already passed. The weeks and months values are also negative in this case.</p>
+
+          <h2>Common uses for date difference calculations</h2>
+          <p>Date difference calculators are used across many fields: project managers track sprint durations and deadlines; HR teams calculate employment lengths for benefits eligibility; legal professionals determine statutes of limitations; travelers plan trip durations; and developers work with date ranges in database queries. Even personal tasks like planning how many days until vacation benefit from this tool.</p>
+
+          <h2>Accuracy and edge cases</h2>
+          <p>The tool uses midnight-to-midnight date arithmetic, so two consecutive dates (like March 1 and March 2) are exactly 1 day apart. Daylight saving time transitions do not affect the result because the calculation is purely calendar-based rather than using Unix timestamps. The start date is counted inclusively only if you consider it day zero; the standard interpretation is exclusive start, inclusive end.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="age-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Age Calculator
+              </a>
+              <a href="time-zone-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Time Zone Converter
+              </a>
+              <a href="timestamp-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                Timestamp Converter
+              </a>
+              <a href="percentage-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                Percentage Calculator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/days-between-dates.js"></script>
+  <script>initDaysBetweenDates();</script>
+
+</body>
+</html>

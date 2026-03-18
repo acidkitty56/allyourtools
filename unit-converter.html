@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter – Length, Weight, Temperature &amp; Speed | All Your Tools</title>
+  <meta name="description" content="Convert units of length, weight, temperature, and speed instantly. Supports mm, cm, m, km, inches, feet, miles, kg, lb, °C, °F, Kelvin, mph, and more.">
+  <link rel="canonical" href="https://allyourtools.net/unit-converter.html">
+  <meta property="og:title" content="Unit Converter – Length, Weight, Temperature &amp; Speed | All Your Tools">
+  <meta property="og:description" content="Convert between dozens of units across length, weight, temperature, and speed categories instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/unit-converter.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Unit Converter | All Your Tools">
+  <meta name="twitter:description" content="Convert length, weight, temperature, and speed units instantly. Free, browser-based.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Unit Converter",
+    "url": "https://allyourtools.net/unit-converter.html",
+    "description": "Convert units of length, weight, temperature, and speed instantly.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .uc-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .uc-tab { padding: 0.5rem 1rem; border: 1.5px solid #e5e7eb; border-radius: 0.5rem; background: #f9fafb; cursor: pointer; font-size: 0.875rem; font-weight: 600; color: #374151; }
+    .pct-tab--active { background: #2563eb; color: #fff; border-color: #2563eb; }
+    .uc-tab:hover:not(.pct-tab--active) { background: #f3f4f6; }
+    .uc-row { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .uc-row input { width: 9rem; }
+    .uc-row select { flex: 1; min-width: 8rem; }
+    .uc-row span { color: #6b7280; font-weight: 600; font-size: 1.1rem; }
+    .uc-result { margin-top: 1.25rem; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 0.75rem; padding: 1.25rem; text-align: center; font-size: 1.75rem; font-weight: 800; color: #2563eb; min-height: 4rem; display: flex; align-items: center; justify-content: center; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">⭐ Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Unit Converter</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <section class="tool-interface-card">
+          <h1>Unit Converter</h1>
+          <p class="tool-tagline">Convert length, weight, temperature, and speed units instantly.</p>
+
+          <div class="uc-tabs">
+            <button class="uc-tab">Length</button>
+            <button class="uc-tab">Weight</button>
+            <button class="uc-tab">Temperature</button>
+            <button class="uc-tab">Speed</button>
+          </div>
+
+          <!-- Length panel -->
+          <div class="uc-panel">
+            <div class="uc-row">
+              <input type="number" class="uc-val input" placeholder="Enter value" step="any">
+              <select class="uc-from input"></select>
+              <span>→</span>
+              <select class="uc-to input"></select>
+            </div>
+            <div class="uc-result">—</div>
+          </div>
+
+          <!-- Weight panel -->
+          <div class="uc-panel" style="display:none;">
+            <div class="uc-row">
+              <input type="number" class="uc-val input" placeholder="Enter value" step="any">
+              <select class="uc-from input"></select>
+              <span>→</span>
+              <select class="uc-to input"></select>
+            </div>
+            <div class="uc-result">—</div>
+          </div>
+
+          <!-- Temperature panel -->
+          <div class="uc-panel" style="display:none;">
+            <div class="uc-row">
+              <input type="number" class="uc-val input" placeholder="Enter value" step="any">
+              <select class="uc-from input"></select>
+              <span>→</span>
+              <select class="uc-to input"></select>
+            </div>
+            <div class="uc-result">—</div>
+          </div>
+
+          <!-- Speed panel -->
+          <div class="uc-panel" style="display:none;">
+            <div class="uc-row">
+              <input type="number" class="uc-val input" placeholder="Enter value" step="any">
+              <select class="uc-from input"></select>
+              <span>→</span>
+              <select class="uc-to input"></select>
+            </div>
+            <div class="uc-result">—</div>
+          </div>
+        </section>
+
+        <div class="ad-slot"></div>
+
+        <article class="tool-seo">
+          <h2>How the unit converter works</h2>
+          <p>The converter uses a base-unit approach: all units in a category are first converted to a common base (metres for length, kilograms for weight, metres-per-second for speed), and then converted from that base to the target unit. Temperature uses direct formulas since it involves offsets rather than simple scale factors. All conversions run instantly in your browser with no server calls.</p>
+
+          <h2>Length conversions</h2>
+          <p>The length converter supports millimetres, centimetres, metres, kilometres, inches, feet, yards, and miles. These cover both the metric (SI) system used globally and the imperial system still common in the US, UK, and a few other countries. A kilometre equals exactly 1,000 metres; a mile equals 1,609.344 metres. Feet and inches are based on 0.3048 m per foot.</p>
+
+          <h2>Weight and temperature</h2>
+          <p>The weight converter covers milligrams through tonnes in metric, plus ounces and pounds in imperial. Temperature conversions use the standard formulae: °F = °C × 9/5 + 32, and K = °C + 273.15. Kelvin is the SI base unit of temperature and is used in science, while Celsius and Fahrenheit are used in everyday contexts in different parts of the world.</p>
+
+          <h2>Speed conversions</h2>
+          <p>Speed units include metres per second (SI base), kilometres per hour (most countries' road speeds), miles per hour (US and UK roads), and knots (nautical and aviation). One knot equals exactly one nautical mile per hour, or 1.852 km/h. Speed conversion is important for international travel, weather reports (wind speed), and reading foreign vehicle speedometers.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="percentage-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                Percentage Calculator
+              </a>
+              <a href="roman-numeral-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+                Roman Numeral Converter
+              </a>
+              <a href="number-base-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6v12"/></svg>
+                Number Base Converter
+              </a>
+              <a href="bmi-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                BMI Calculator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/unit-converter.js"></script>
+  <script>initUnitConverter();</script>
+
+</body>
+</html>

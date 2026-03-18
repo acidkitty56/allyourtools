@@ -959,7 +959,7 @@ input[type="checkbox"]:focus {
 
 .footer__inner {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: var(--space-8);
   margin-bottom: var(--space-10);
 }
@@ -1145,7 +1145,7 @@ input[type="checkbox"]:focus {
   }
 
   .footer__inner {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-8);
   }
 

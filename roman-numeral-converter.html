@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roman Numeral Converter – Number ↔ Roman Numerals | All Your Tools</title>
+  <meta name="description" content="Convert numbers to Roman numerals and Roman numerals back to numbers. Supports 1–3999 with input validation. Free, instant, browser-based.">
+  <link rel="canonical" href="https://allyourtools.net/roman-numeral-converter.html">
+  <meta property="og:title" content="Roman Numeral Converter – Number ↔ Roman Numerals | All Your Tools">
+  <meta property="og:description" content="Convert any number 1–3999 to Roman numerals, or decode Roman numerals back to numbers. Validates input.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/roman-numeral-converter.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Roman Numeral Converter | All Your Tools">
+  <meta name="twitter:description" content="Convert numbers to Roman numerals and back. Instant, validated, free.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Roman Numeral Converter",
+    "url": "https://allyourtools.net/roman-numeral-converter.html",
+    "description": "Convert numbers (1–3999) to Roman numerals and Roman numerals back to numbers.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .roman-interface { display: flex; flex-direction: column; gap: 1.25rem; align-items: flex-start; }
+    .roman-dir-btn { padding: 0.5rem 1.25rem; border: 1.5px solid #2563eb; border-radius: 0.5rem; background: #eff6ff; color: #2563eb; font-weight: 700; cursor: pointer; font-size: 0.9rem; }
+    .roman-dir-btn:hover { background: #dbeafe; }
+    .roman-label { font-weight: 600; font-size: 0.9rem; color: #374151; }
+    .roman-result-box { width: 100%; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 0.75rem; padding: 1.5rem; text-align: center; }
+    .roman-result-label { font-size: 0.8rem; color: #6b7280; font-weight: 600; margin-bottom: 0.5rem; }
+    .roman-result-value { font-size: 2rem; font-weight: 800; color: #2563eb; letter-spacing: 0.05em; }
+    .roman-error { color: #dc2626; font-size: 0.875rem; font-weight: 600; margin-top: 0.25rem; min-height: 1.25rem; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">⭐ Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Roman Numeral Converter</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <section class="tool-interface-card">
+          <h1>Roman Numeral Converter</h1>
+          <p class="tool-tagline">Convert between numbers and Roman numerals instantly — with validation.</p>
+
+          <div class="roman-interface">
+            <button id="roman-dir-btn" class="roman-dir-btn">Number → Roman</button>
+            <div>
+              <div class="roman-label" id="roman-label">Enter number (1–3999)</div>
+              <input type="text" id="roman-input" class="input" placeholder="e.g. 14" style="max-width:16rem; margin-top:0.35rem;">
+              <div class="roman-error" id="roman-error"></div>
+            </div>
+          </div>
+
+          <div class="roman-result-box" style="margin-top:1.25rem;">
+            <div class="roman-result-label">Result</div>
+            <div class="roman-result-value" id="roman-result">—</div>
+          </div>
+        </section>
+
+        <div class="ad-slot"></div>
+
+        <article class="tool-seo">
+          <h2>Roman numeral basics</h2>
+          <p>Roman numerals use seven symbols: I (1), V (5), X (10), L (50), C (100), D (500), and M (1000). Numbers are formed by combining these symbols, generally from largest to smallest left to right. Subtractive notation is used for specific combinations: IV = 4, IX = 9, XL = 40, XC = 90, CD = 400, CM = 900. This system was the standard in ancient Rome and remained widely used in Europe through the Middle Ages.</p>
+
+          <h2>Valid range: 1 to 3999</h2>
+          <p>The standard Roman numeral system can represent integers from 1 (I) to 3999 (MMMCMXCIX). Numbers 4000 and above would require a fourth M or special overline notation not supported in standard text. Zero has no Roman numeral representation — Romans used the Latin word "nulla" (nothing) for zero. The converter validates your input and shows an error message if the value is out of range or invalid.</p>
+
+          <h2>Validation of Roman numeral input</h2>
+          <p>Not every string of Roman letters is a valid Roman numeral. For example, "IIII" is not valid (4 should be "IV"), and "VV" is not valid (10 should be "X"). This converter validates input by converting the number back to Roman and checking it matches your input exactly. This ensures you get meaningful feedback if you accidentally type a non-canonical sequence.</p>
+
+          <h2>Where Roman numerals are still used today</h2>
+          <p>Roman numerals remain in use in several contexts: clock faces (IV or IIII for 4), chapter and volume numbering in books, film and TV copyright years (e.g., MMXXV for 2025), Super Bowl numbering, Olympic Games years, names of monarchs and popes (e.g., Queen Elizabeth II), and architectural inscriptions. They also appear frequently in outlines, legal documents, and academic citation formats.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="unit-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                Unit Converter
+              </a>
+              <a href="number-base-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6v12"/></svg>
+                Number Base Converter
+              </a>
+              <a href="text-to-binary.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 7h1v5H9zM14 7h1v5h-1zM9 16h6"/></svg>
+                Text to Binary
+              </a>
+              <a href="percentage-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                Percentage Calculator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/roman-numeral-converter.js"></script>
+  <script>initRomanNumeralConverter();</script>
+
+</body>
+</html>
