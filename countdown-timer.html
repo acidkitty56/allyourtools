@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Online Countdown Timer – Date & Duration Countdown | All Your Tools</title>
+  <meta name="description" content="Free online countdown timer. Count down to any date and time, or set a custom duration in hours, minutes, and seconds. Shows days, hours, minutes, seconds live.">
+  <link rel="canonical" href="https://allyourtools.net/countdown-timer.html">
+  <meta property="og:title" content="Free Online Countdown Timer | All Your Tools">
+  <meta property="og:description" content="Count down to any date or set a custom duration. Shows days, hours, minutes, and seconds live.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/countdown-timer.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Online Countdown Timer | All Your Tools">
+  <meta name="twitter:description" content="Count down to any date or set a custom duration. Runs in your browser — no login needed.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Online Countdown Timer",
+    "url": "https://allyourtools.net/countdown-timer.html",
+    "description": "Free online countdown timer. Count down to any date and time or set a custom duration.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .ct-mode-toggle {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .ct-mode-btn {
+      padding: 0.5rem 1.25rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 2rem;
+      background: #fff;
+      color: #374151;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .ct-mode-btn.active {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #fff;
+    }
+    .ct-display {
+      font-size: clamp(2rem, 7vw, 4rem);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.04em;
+      color: #111827;
+      text-align: center;
+      padding: 1.5rem 0 0.5rem;
+      font-family: 'Courier New', monospace;
+    }
+    .ct-display-labels {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 1.25rem;
+    }
+    .ct-segment {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 4rem;
+    }
+    .ct-segment-val {
+      font-size: clamp(2rem, 7vw, 4rem);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      font-family: 'Courier New', monospace;
+      color: #111827;
+      line-height: 1;
+    }
+    .ct-segment-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-top: 0.25rem;
+    }
+    .ct-sep {
+      font-size: clamp(2rem, 7vw, 4rem);
+      font-weight: 800;
+      color: #d1d5db;
+      font-family: 'Courier New', monospace;
+      line-height: 1;
+      padding: 0 0.1em;
+      align-self: flex-start;
+    }
+    .ct-timesup {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #dc2626;
+      margin-bottom: 0.75rem;
+      min-height: 2rem;
+    }
+    .ct-input-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .ct-date-input {
+      padding: 0.6rem 1rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      color: #111827;
+      width: 100%;
+      max-width: 22rem;
+    }
+    .ct-duration-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .ct-dur-field {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .ct-dur-field label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .ct-dur-field input {
+      width: 5rem;
+      padding: 0.5rem 0.5rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1.1rem;
+      text-align: center;
+      color: #111827;
+    }
+    .ct-controls {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .ct-controls button { min-width: 7rem; }
+    .btn-stop {
+      background: #dc2626 !important;
+      border-color: #dc2626 !important;
+    }
+    .btn-stop:hover { background: #b91c1c !important; border-color: #b91c1c !important; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Countdown Timer</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Countdown Timer</h1>
+          <p class="tool-tagline">Count down to a target date and time, or set a custom duration.</p>
+
+          <!-- Mode toggle -->
+          <div class="ct-mode-toggle">
+            <button class="ct-mode-btn active" id="ct-btn-date">Date &amp; Time</button>
+            <button class="ct-mode-btn" id="ct-btn-duration">Duration</button>
+          </div>
+
+          <!-- Date mode input -->
+          <div class="ct-input-group" id="ct-date-panel">
+            <input type="datetime-local" id="ct-date-input" class="ct-date-input" aria-label="Target date and time">
+          </div>
+
+          <!-- Duration mode inputs -->
+          <div class="ct-input-group" id="ct-duration-panel" style="display:none;">
+            <div class="ct-duration-row">
+              <div class="ct-dur-field">
+                <label for="ct-hours">Hours</label>
+                <input type="number" id="ct-hours" min="0" max="999" value="0" placeholder="0">
+              </div>
+              <div class="ct-dur-field">
+                <label for="ct-minutes">Minutes</label>
+                <input type="number" id="ct-minutes" min="0" max="59" value="0" placeholder="0">
+              </div>
+              <div class="ct-dur-field">
+                <label for="ct-seconds">Seconds</label>
+                <input type="number" id="ct-seconds" min="0" max="59" value="0" placeholder="0">
+              </div>
+            </div>
+          </div>
+
+          <!-- Timer display -->
+          <div id="ct-display" class="ct-display-labels" aria-live="polite">
+            <div class="ct-segment" id="ct-days-seg" style="display:none;">
+              <span class="ct-segment-val" id="ct-days">00</span>
+              <span class="ct-segment-label">Days</span>
+            </div>
+            <span class="ct-sep" id="ct-days-sep" style="display:none;">:</span>
+            <div class="ct-segment">
+              <span class="ct-segment-val" id="ct-hh">00</span>
+              <span class="ct-segment-label">Hours</span>
+            </div>
+            <span class="ct-sep">:</span>
+            <div class="ct-segment">
+              <span class="ct-segment-val" id="ct-mm">00</span>
+              <span class="ct-segment-label">Min</span>
+            </div>
+            <span class="ct-sep">:</span>
+            <div class="ct-segment">
+              <span class="ct-segment-val" id="ct-ss">00</span>
+              <span class="ct-segment-label">Sec</span>
+            </div>
+          </div>
+
+          <div id="ct-timesup" class="ct-timesup"></div>
+
+          <!-- Duration mode controls -->
+          <div class="ct-controls" id="ct-dur-controls" style="display:none;">
+            <button id="ct-start" class="btn-primary">Start</button>
+            <button id="ct-reset" class="btn-secondary">Reset</button>
+          </div>
+
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>About this countdown timer</h2>
+          <p>This free online countdown timer works in two modes. In <strong>Date &amp; Time</strong> mode, you pick a specific target date and time and the timer counts down automatically — useful for countdowns to events, deadlines, birthdays, or launches. In <strong>Duration</strong> mode, you enter hours, minutes, and seconds, then start the timer manually — ideal for cooking, workouts, study sessions, or any timed task. Both modes show days, hours, minutes, and seconds in a large, easy-to-read display.</p>
+
+          <h2>How to use the countdown timer</h2>
+          <p>For a date countdown, select <strong>Date &amp; Time</strong> mode and use the date-time picker to choose your target moment — the timer starts counting down immediately. For a duration countdown, select <strong>Duration</strong> mode and enter the desired hours, minutes, and seconds, then press <strong>Start</strong>. Press <strong>Pause</strong> to freeze the timer and <strong>Start</strong> again to resume. Press <strong>Reset</strong> to return to zero and re-enter a new duration. When the countdown reaches zero, a "Time's up!" message is displayed.</p>
+
+          <h2>Common uses for a countdown timer</h2>
+          <p>Countdown timers are useful in a wide range of everyday situations. Teachers use them to time in-class activities and exams. Athletes use them for interval training and rest periods. Cooks use them to track boiling, baking, and resting times. Presenters and speakers use them to keep talks within their allotted slot. Project managers and students use date countdowns to track days until a deadline or exam. A visible countdown creates natural urgency and helps with time management.</p>
+
+          <h2>Runs entirely in your browser</h2>
+          <p>This countdown timer uses JavaScript's <code>setInterval</code> and <code>Date.now()</code> to track time accurately without any server communication. No data is sent anywhere — your target time and duration stay private on your own device. The timer runs correctly even if you switch browser tabs, because it computes elapsed time from the wall clock rather than counting individual ticks. For very long countdowns (days or weeks), refreshing the page with the same date selected will resume the countdown accurately.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="stopwatch.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Stopwatch
+              </a>
+              <a href="days-between-dates.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Days Between Dates
+              </a>
+              <a href="age-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Age Calculator
+              </a>
+              <a href="time-zone-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Time Zone Converter
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/countdown-timer.js"></script>
+  <script>initCountdownTimer();</script>
+
+</body>
+</html>

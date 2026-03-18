@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Time Estimator – How Long to Read Any Text | All Your Tools</title>
+  <meta name="description" content="Estimate how long it takes to read any text at slow, average, or fast reading speeds. Also shows speaking time, word count, sentence count, and paragraph count. Free, browser-based.">
+  <link rel="canonical" href="https://allyourtools.net/reading-time-estimator.html">
+  <meta property="og:title" content="Reading Time Estimator | All Your Tools">
+  <meta property="og:description" content="Estimate reading time and speaking time for any text. Choose slow, average, or fast reading speed. Instant results.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/reading-time-estimator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Reading Time Estimator | All Your Tools">
+  <meta name="twitter:description" content="Estimate how long it takes to read any text. Shows reading time, speaking time, word count, and more.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Reading Time Estimator",
+    "url": "https://allyourtools.net/reading-time-estimator.html",
+    "description": "Estimate how long it takes to read any text at slow, average, or fast reading speeds. Also shows speaking time.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .rt-textarea {
+      width: 100%;
+      height: 13rem;
+      padding: 0.75rem;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+      color: #111827;
+      resize: vertical;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    .rt-textarea:focus { outline: none; border-color: #2563eb; }
+    .rt-speed-row {
+      display: flex;
+      gap: 0.4rem;
+      margin: 0.75rem 0;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .rt-speed-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #374151;
+      margin-right: 0.25rem;
+    }
+    .rt-speed-btn {
+      padding: 0.35rem 0.85rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 2rem;
+      background: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #6b7280;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .rt-speed-btn.active { background: #2563eb; border-color: #2563eb; color: #fff; }
+    .rt-custom-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .rt-custom-wrap input {
+      width: 4.5rem;
+      padding: 0.35rem 0.5rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.4rem;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .rt-custom-wrap span { font-size: 0.8rem; color: #6b7280; }
+    .rt-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .rt-card {
+      border-radius: 0.75rem;
+      padding: 1rem 0.75rem;
+      text-align: center;
+    }
+    .rt-card dt {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #6b7280;
+      margin-bottom: 0.35rem;
+    }
+    .rt-card dd {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 0;
+    }
+    .rt-card small {
+      display: block;
+      font-size: 0.7rem;
+      color: #9ca3af;
+      margin-top: 0.15rem;
+    }
+    .rt-card-read  { background: #eff6ff; }
+    .rt-card-read dd { color: #1d4ed8; }
+    .rt-card-speak { background: #f0fdf4; }
+    .rt-card-speak dd { color: #166534; }
+    .rt-card-words { background: #f9fafb; }
+    .rt-card-words dd { color: #111827; }
+    .rt-card-chars { background: #f9fafb; }
+    .rt-card-chars dd { color: #111827; }
+    .rt-card-sents { background: #f9fafb; }
+    .rt-card-sents dd { color: #111827; }
+    .rt-card-paras { background: #f9fafb; }
+    .rt-card-paras dd { color: #111827; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="text-tools.html">Text Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>Reading Time Estimator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Reading Time Estimator</h1>
+          <p class="tool-tagline">Estimate how long it takes to read or speak any text. Updates as you type.</p>
+
+          <textarea class="rt-textarea" id="rt-input" placeholder="Paste or type your text here..." aria-label="Text to estimate reading time for"></textarea>
+
+          <div class="rt-speed-row">
+            <span class="rt-speed-label">Speed:</span>
+            <button class="rt-speed-btn" id="rt-slow" data-wpm="150">Slow (150 wpm)</button>
+            <button class="rt-speed-btn active" id="rt-avg" data-wpm="200">Average (200 wpm)</button>
+            <button class="rt-speed-btn" id="rt-fast" data-wpm="250">Fast (250 wpm)</button>
+            <div class="rt-custom-wrap">
+              <button class="rt-speed-btn" id="rt-custom-btn" data-wpm="0">Custom</button>
+              <input type="number" id="rt-custom-wpm" min="50" max="2000" placeholder="wpm" style="display:none;">
+              <span id="rt-custom-label" style="display:none;">wpm</span>
+            </div>
+          </div>
+
+          <dl class="rt-results" id="rt-results" aria-live="polite">
+            <div class="rt-card rt-card-read">
+              <dt>Reading Time</dt>
+              <dd id="rt-read-time">—</dd>
+              <small id="rt-wpm-label">at 200 wpm</small>
+            </div>
+            <div class="rt-card rt-card-speak">
+              <dt>Speaking Time</dt>
+              <dd id="rt-speak-time">—</dd>
+              <small>at 130 wpm</small>
+            </div>
+            <div class="rt-card rt-card-words">
+              <dt>Words</dt>
+              <dd id="rt-words">0</dd>
+              <small>&nbsp;</small>
+            </div>
+            <div class="rt-card rt-card-chars">
+              <dt>Characters</dt>
+              <dd id="rt-chars">0</dd>
+              <small>&nbsp;</small>
+            </div>
+            <div class="rt-card rt-card-sents">
+              <dt>Sentences</dt>
+              <dd id="rt-sentences">0</dd>
+              <small>&nbsp;</small>
+            </div>
+            <div class="rt-card rt-card-paras">
+              <dt>Paragraphs</dt>
+              <dd id="rt-paragraphs">0</dd>
+              <small>&nbsp;</small>
+            </div>
+          </dl>
+
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>Why estimate reading time?</h2>
+          <p>Showing a reading time estimate on blog posts and articles sets accurate reader expectations and has been shown to improve scroll depth and completion rates. A reader who sees "5 min read" before starting an article is more likely to commit to finishing it. Publishers on Medium, dev.to, and most major CMS platforms display reading time estimates for this reason. This tool calculates the estimate using the same simple formula — word count divided by reading speed in words per minute — so you can add the right estimate to your content before publishing.</p>
+
+          <h2>What are typical reading speeds?</h2>
+          <p>The average adult reads approximately 200–250 words per minute for general non-fiction text. Slow readers typically read at around 150 wpm — this is also a good estimate for dense technical content, legal text, or academic papers that require more processing time. Fast readers can comfortably reach 250–300 wpm for familiar prose. The custom speed option lets you calibrate the estimate for your specific audience or content type. All three preset speeds in this tool use round, commonly cited benchmark values.</p>
+
+          <h2>Speaking time for presentations</h2>
+          <p>The speaking time calculation uses a rate of 130 words per minute, which is the approximate pace of a clear, measured presentation or public speech. Speaking is significantly slower than reading because of pauses for emphasis, audience reaction, and slide transitions. If you're preparing a conference talk, keynote, or scripted video, the speaking time estimate tells you whether your script fits within your allocated slot. A 10-minute presentation slot typically accommodates around 1,200–1,400 words of script.</p>
+
+          <h2>The other stats explained</h2>
+          <p>Beyond reading time, the tool shows four additional counts. <strong>Words</strong> counts all whitespace-separated tokens — identical to most word processor counts. <strong>Characters</strong> counts all characters including spaces and punctuation. <strong>Sentences</strong> counts sequences ending with a full stop, exclamation mark, or question mark — a rough but useful indicator of sentence length and complexity. <strong>Paragraphs</strong> counts non-empty blocks of text separated by blank lines, which helps with layout planning for long-form content.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="word-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                Word Counter
+              </a>
+              <a href="word-frequency-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                Word Frequency Counter
+              </a>
+              <a href="character-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                Character Counter
+              </a>
+              <a href="diff-checker.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="18" rx="1"/><rect x="13" y="3" width="8" height="18" rx="1"/></svg>
+                Diff Checker
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/reading-time-estimator.js"></script>
+  <script>initReadingTimeEstimator();</script>
+
+</body>
+</html>

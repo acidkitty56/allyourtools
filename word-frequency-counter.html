@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Frequency Counter – Analyse Word Usage in Any Text | All Your Tools</title>
+  <meta name="description" content="Count how often each word appears in your text. Sort by frequency or alphabetically. Supports stop word filtering and case-insensitive analysis. Free and browser-based.">
+  <link rel="canonical" href="https://allyourtools.net/word-frequency-counter.html">
+  <meta property="og:title" content="Word Frequency Counter | All Your Tools">
+  <meta property="og:description" content="See how often each word appears in your text. Sort by frequency or alphabetically. Great for SEO and writing analysis.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/word-frequency-counter.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Word Frequency Counter | All Your Tools">
+  <meta name="twitter:description" content="Analyse how often each word appears in your text. Filter stop words, sort by frequency or alphabetically.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Word Frequency Counter",
+    "url": "https://allyourtools.net/word-frequency-counter.html",
+    "description": "Count how often each word appears in your text. Sort by frequency or alphabetically, with stop word filtering.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .wf-textarea {
+      width: 100%;
+      height: 12rem;
+      padding: 0.75rem;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+      color: #111827;
+      resize: vertical;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    .wf-textarea:focus { outline: none; border-color: #2563eb; }
+    .wf-options {
+      display: flex;
+      gap: 1.25rem;
+      margin: 0.75rem 0;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .wf-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+      color: #374151;
+      cursor: pointer;
+    }
+    .wf-toggle input[type=checkbox] { width: 1rem; height: 1rem; cursor: pointer; }
+    .wf-sort-row {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .wf-sort-btn {
+      padding: 0.35rem 0.9rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 2rem;
+      background: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #6b7280;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .wf-sort-btn.active { background: #2563eb; border-color: #2563eb; color: #fff; }
+    .wf-summary {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .wf-sum-item {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+    .wf-sum-item strong { color: #111827; }
+    .wf-table-wrap {
+      max-height: 22rem;
+      overflow-y: auto;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 0.5rem;
+    }
+    .wf-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .wf-table thead tr {
+      background: #f3f4f6;
+      position: sticky;
+      top: 0;
+    }
+    .wf-table th {
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .wf-table td {
+      padding: 0.45rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #111827;
+    }
+    .wf-table tbody tr:last-child td { border-bottom: none; }
+    .wf-bar-cell { width: 8rem; }
+    .wf-bar {
+      height: 0.5rem;
+      background: #bfdbfe;
+      border-radius: 1rem;
+      position: relative;
+    }
+    .wf-bar-fill {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      background: #2563eb;
+      border-radius: 1rem;
+    }
+    .wf-note {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="text-tools.html">Text Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>Word Frequency Counter</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Word Frequency Counter</h1>
+          <p class="tool-tagline">See how often each word appears in your text — sorted by frequency or alphabetically.</p>
+
+          <textarea class="wf-textarea" id="wf-input" placeholder="Paste or type your text here..." aria-label="Text input for word frequency analysis"></textarea>
+
+          <div class="wf-options">
+            <label class="wf-toggle">
+              <input type="checkbox" id="wf-case" checked>
+              Case-insensitive
+            </label>
+            <label class="wf-toggle">
+              <input type="checkbox" id="wf-stop">
+              Ignore common stop words
+            </label>
+          </div>
+
+          <div id="wf-results" style="display:none;">
+
+            <div class="wf-summary" id="wf-summary"></div>
+
+            <div class="wf-sort-row">
+              <button class="wf-sort-btn active" id="wf-sort-freq">By Frequency</button>
+              <button class="wf-sort-btn" id="wf-sort-alpha">Alphabetical</button>
+            </div>
+
+            <div class="wf-table-wrap">
+              <table class="wf-table" aria-label="Word frequency table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Word</th>
+                    <th>Count</th>
+                    <th>Share</th>
+                    <th class="wf-bar-cell">Frequency</th>
+                  </tr>
+                </thead>
+                <tbody id="wf-tbody"></tbody>
+              </table>
+            </div>
+
+            <p class="wf-note" id="wf-note"></p>
+
+          </div>
+
+          <p id="wf-empty" style="color:#9ca3af;font-size:0.9rem;text-align:center;margin-top:1rem;">Start typing or paste text above to see word frequencies.</p>
+
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is word frequency analysis?</h2>
+          <p>Word frequency analysis counts how many times each unique word appears in a text and ranks them by occurrence. It is a fundamental technique in linguistics, natural language processing, content analysis, and SEO. By understanding which words dominate a piece of writing, you can identify the core topics and themes, spot unintentional repetition, evaluate keyword density for search engine optimisation, and compare writing style across different documents or authors.</p>
+
+          <h2>Stop words explained</h2>
+          <p>Stop words are common function words like "the", "a", "is", "in", and "of" that appear frequently in almost all English texts but carry little specific meaning about the topic. When stop word filtering is enabled, these words are excluded from the results so the most meaningful content words rise to the top of the frequency table. Disable stop word filtering to see the full picture including all function words — useful when studying writing style or grammatical patterns rather than topic keywords.</p>
+
+          <h2>How to use this tool for SEO</h2>
+          <p>Paste a web page's body content into the tool and enable stop word filtering to quickly see which keywords dominate the text. The percentage column shows each word's share of total word count, which gives a rough idea of keyword density. A well-optimised page typically has its target keyword appearing at a natural frequency — usually 1–3% — without forced repetition. Comparing the frequency table of your page against a top-ranking competitor's content can reveal keyword gaps or over-optimisation issues.</p>
+
+          <h2>Writing and editing uses</h2>
+          <p>Word frequency analysis is also valuable for writers and editors. Sorting by frequency with stop words enabled reveals vocabulary diversity — a high-quality piece of writing uses a wide range of words rather than leaning heavily on a small set. If a single content word appears dozens of times more than any other, it may be worth varying the phrasing. Academic writers can use the tool to verify that key terminology appears consistently across a paper. Journalists can check that sources and names are balanced throughout an article.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="word-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                Word Counter
+              </a>
+              <a href="character-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                Character Counter
+              </a>
+              <a href="reading-time-estimator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Reading Time Estimator
+              </a>
+              <a href="text-case-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Text Case Converter
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/word-frequency-counter.js"></script>
+  <script>initWordFrequencyCounter();</script>
+
+</body>
+</html>

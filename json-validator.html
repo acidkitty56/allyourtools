@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Validator – Free Online JSON Checker with Error Messages | All Your Tools</title>
+  <meta name="description" content="Validate JSON instantly with clear error messages and line numbers. Shows a formatted preview and stats when valid. Free, browser-based, no login required.">
+  <link rel="canonical" href="https://allyourtools.net/json-validator.html">
+  <meta property="og:title" content="JSON Validator – Free Online JSON Checker | All Your Tools">
+  <meta property="og:description" content="Validate JSON instantly with clear error messages and line numbers. Shows formatted preview and stats when valid.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/json-validator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="JSON Validator | All Your Tools">
+  <meta name="twitter:description" content="Validate JSON with precise error messages and line numbers. Free and browser-based.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON Validator",
+    "url": "https://allyourtools.net/json-validator.html",
+    "description": "Validate JSON instantly with clear error messages and line numbers. Shows a formatted preview and stats when valid.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .jv-textarea {
+      width: 100%;
+      height: 14rem;
+      padding: 0.75rem;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 0.5rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #111827;
+      resize: vertical;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .jv-textarea:focus { outline: none; border-color: #2563eb; }
+    .jv-controls {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .jv-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .jv-status--valid { background: #f0fdf4; border: 1.5px solid #86efac; color: #166534; }
+    .jv-status--invalid { background: #fef2f2; border: 1.5px solid #fca5a5; color: #991b1b; }
+    .jv-status--empty { background: #f9fafb; border: 1.5px solid #e5e7eb; color: #6b7280; }
+    .jv-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .jv-stat {
+      background: #f3f4f6;
+      border-radius: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+    }
+    .jv-stat dt { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #6b7280; }
+    .jv-stat dd { font-size: 1.1rem; font-weight: 700; color: #111827; margin: 0.15rem 0 0; }
+    .jv-preview-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.35rem;
+    }
+    .jv-preview {
+      width: 100%;
+      height: 12rem;
+      padding: 0.75rem;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 0.5rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      color: #374151;
+      resize: vertical;
+      background: #f9fafb;
+      box-sizing: border-box;
+    }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="developer-tools.html">Developer Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>JSON Validator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>JSON Validator</h1>
+          <p class="tool-tagline">Paste JSON and instantly see if it's valid — with precise error messages and line numbers.</p>
+
+          <textarea class="jv-textarea" id="jv-input" placeholder="Paste your JSON here..." spellcheck="false" aria-label="JSON input"></textarea>
+
+          <div class="jv-controls">
+            <button class="btn-primary" id="jv-validate">Validate</button>
+            <button class="btn-secondary" id="jv-clear">Clear</button>
+          </div>
+
+          <!-- Status message -->
+          <div class="jv-status jv-status--empty" id="jv-status" aria-live="polite">Waiting for input...</div>
+
+          <!-- Stats (shown when valid) -->
+          <dl class="jv-stats" id="jv-stats" style="display:none;">
+            <div class="jv-stat">
+              <dt>Keys</dt>
+              <dd id="jv-stat-keys">0</dd>
+            </div>
+            <div class="jv-stat">
+              <dt>Arrays</dt>
+              <dd id="jv-stat-arrays">0</dd>
+            </div>
+            <div class="jv-stat">
+              <dt>Max Depth</dt>
+              <dd id="jv-stat-depth">0</dd>
+            </div>
+            <div class="jv-stat">
+              <dt>Characters</dt>
+              <dd id="jv-stat-chars">0</dd>
+            </div>
+          </dl>
+
+          <!-- Formatted preview (shown when valid) -->
+          <div id="jv-preview-block" style="display:none;">
+            <div class="jv-preview-label">Formatted Preview</div>
+            <textarea class="jv-preview" id="jv-preview" readonly aria-label="Formatted JSON preview"></textarea>
+          </div>
+
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What does JSON validation do?</h2>
+          <p>JSON (JavaScript Object Notation) is a widely used data format for APIs, configuration files, and data storage. A single misplaced comma, missing quote, or unmatched bracket can make an entire JSON document invalid, causing silent failures or cryptic errors in code. This validator parses your JSON using the browser's built-in <code>JSON.parse()</code> and reports exactly what went wrong — including the character position — so you can fix problems quickly without guessing.</p>
+
+          <h2>Reading the error messages</h2>
+          <p>When JSON is invalid, the error message shows the specific parse failure and, where possible, the position in the string where the error was detected. Common errors include unexpected tokens (usually a missing comma or colon), unterminated strings (a missing closing quote), unexpected end of data (the JSON is cut off), and duplicate keys (allowed by the spec but often unintentional). The character offset in the error can be matched against the line and column in a text editor to find the exact location.</p>
+
+          <h2>Understanding the stats</h2>
+          <p>When JSON is valid, the tool displays four quick stats: <strong>Keys</strong> counts all object property names across the entire document (useful for understanding schema size), <strong>Arrays</strong> counts all array instances, <strong>Max Depth</strong> shows how deeply nested the structure is (high values may indicate overly complex data), and <strong>Characters</strong> shows the total length of the input. A formatted preview with 2-space indentation is also shown so you can read the structure clearly.</p>
+
+          <h2>Common JSON mistakes to avoid</h2>
+          <p>The most frequent JSON errors are: trailing commas after the last item in an object or array (valid in JavaScript but not JSON), using single quotes instead of double quotes for strings and keys, including comments (JSON has no comment syntax), and using <code>undefined</code> or functions as values (not valid JSON types). If you're writing JSON by hand, using a validator before sending it to an API or saving it to a config file can save significant debugging time.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="json-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+                JSON Formatter
+              </a>
+              <a href="json-minifier.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                JSON Minifier
+              </a>
+              <a href="json-to-csv.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+                JSON to CSV
+              </a>
+              <a href="jwt-decoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                JWT Decoder
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/json-validator.js"></script>
+  <script>initJsonValidator();</script>
+
+</body>
+</html>

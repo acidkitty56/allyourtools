@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie & TDEE Calculator – BMR, Maintenance, Loss & Gain | All Your Tools</title>
+  <meta name="description" content="Calculate your BMR and TDEE based on age, weight, height, gender, and activity level. Shows calorie targets for weight loss and gain. Free, instant, browser-based.">
+  <link rel="canonical" href="https://allyourtools.net/calorie-calculator.html">
+  <meta property="og:title" content="Calorie & TDEE Calculator | All Your Tools">
+  <meta property="og:description" content="Calculate BMR and TDEE based on age, weight, height, and activity level. Shows calorie targets for loss and gain.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/calorie-calculator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Calorie & TDEE Calculator | All Your Tools">
+  <meta name="twitter:description" content="Calculate your daily calorie needs based on activity level. Free and browser-based.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calorie & TDEE Calculator",
+    "url": "https://allyourtools.net/calorie-calculator.html",
+    "description": "Calculate your BMR and TDEE based on age, weight, height, gender, and activity level.",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .cc-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 480px) { .cc-form { grid-template-columns: 1fr; } }
+    .cc-field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .cc-field.full { grid-column: 1 / -1; }
+    .cc-field label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #374151;
+    }
+    .cc-field input, .cc-field select {
+      padding: 0.55rem 0.75rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+      color: #111827;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .cc-field input:focus, .cc-field select:focus { outline: none; border-color: #2563eb; }
+    .cc-unit-toggle {
+      display: flex;
+      gap: 0.25rem;
+    }
+    .cc-unit-btn {
+      flex: 1;
+      padding: 0.45rem 0.5rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.4rem;
+      background: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #6b7280;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .cc-unit-btn.active {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #fff;
+    }
+    .cc-height-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .cc-height-row input { flex: 1; }
+    .cc-gender-row { display: flex; gap: 0.5rem; }
+    .cc-gender-btn {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      background: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #6b7280;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .cc-gender-btn.active { background: #2563eb; border-color: #2563eb; color: #fff; }
+    .cc-results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 480px) { .cc-results { grid-template-columns: 1fr; } }
+    .cc-result-card {
+      border-radius: 0.75rem;
+      padding: 1rem;
+      text-align: center;
+    }
+    .cc-result-card dt {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #6b7280;
+      margin-bottom: 0.4rem;
+    }
+    .cc-result-card dd {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .cc-result-card small {
+      display: block;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.15rem;
+    }
+    .cc-card-bmr  { background: #eff6ff; }
+    .cc-card-bmr dd { color: #1d4ed8; }
+    .cc-card-tdee { background: #f0fdf4; }
+    .cc-card-tdee dd { color: #166534; }
+    .cc-card-loss { background: #fff7ed; }
+    .cc-card-loss dd { color: #9a3412; }
+    .cc-card-gain { background: #fdf4ff; }
+    .cc-card-gain dd { color: #7e22ce; }
+    .cc-disclaimer {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      text-align: center;
+      margin-top: 1rem;
+    }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Calorie Calculator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Calorie &amp; TDEE Calculator</h1>
+          <p class="tool-tagline">Calculate your BMR and daily calorie needs based on your body and activity level.</p>
+
+          <div class="cc-form">
+
+            <!-- Gender -->
+            <div class="cc-field full">
+              <label>Gender</label>
+              <div class="cc-gender-row">
+                <button class="cc-gender-btn active" id="cc-male" data-gender="male">Male</button>
+                <button class="cc-gender-btn" id="cc-female" data-gender="female">Female</button>
+              </div>
+            </div>
+
+            <!-- Age -->
+            <div class="cc-field">
+              <label for="cc-age">Age (years)</label>
+              <input type="number" id="cc-age" min="10" max="120" placeholder="25" value="">
+            </div>
+
+            <!-- Weight -->
+            <div class="cc-field">
+              <label>Weight</label>
+              <div style="display:flex;gap:0.5rem;align-items:center;">
+                <input type="number" id="cc-weight" min="1" placeholder="70" style="flex:1;">
+                <div class="cc-unit-toggle" style="width:6rem;">
+                  <button class="cc-unit-btn active" id="cc-kg">kg</button>
+                  <button class="cc-unit-btn" id="cc-lb">lb</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Height -->
+            <div class="cc-field full">
+              <label>Height</label>
+              <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+                <div class="cc-height-row" id="cc-height-cm-row" style="flex:1;min-width:8rem;">
+                  <input type="number" id="cc-height-cm" min="50" max="300" placeholder="175">
+                  <span style="align-self:center;color:#6b7280;font-size:0.85rem;">cm</span>
+                </div>
+                <div class="cc-height-row" id="cc-height-ft-row" style="flex:1;min-width:8rem;display:none;">
+                  <input type="number" id="cc-height-ft" min="1" max="9" placeholder="5">
+                  <span style="align-self:center;color:#6b7280;font-size:0.85rem;">ft</span>
+                  <input type="number" id="cc-height-in" min="0" max="11" placeholder="9">
+                  <span style="align-self:center;color:#6b7280;font-size:0.85rem;">in</span>
+                </div>
+                <div class="cc-unit-toggle" style="width:6rem;">
+                  <button class="cc-unit-btn active" id="cc-cm">cm</button>
+                  <button class="cc-unit-btn" id="cc-ft">ft</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity level -->
+            <div class="cc-field full">
+              <label for="cc-activity">Activity Level</label>
+              <select id="cc-activity">
+                <option value="1.2">Sedentary (little or no exercise)</option>
+                <option value="1.375">Lightly Active (1–3 days/week)</option>
+                <option value="1.55" selected>Moderately Active (3–5 days/week)</option>
+                <option value="1.725">Very Active (6–7 days/week)</option>
+                <option value="1.9">Extra Active (hard exercise, physical job)</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Results -->
+          <dl class="cc-results" id="cc-results" style="display:none;" aria-live="polite">
+            <div class="cc-result-card cc-card-bmr">
+              <dt>BMR</dt>
+              <dd id="cc-bmr">—</dd>
+              <small>Calories at complete rest</small>
+            </div>
+            <div class="cc-result-card cc-card-tdee">
+              <dt>TDEE (Maintenance)</dt>
+              <dd id="cc-tdee">—</dd>
+              <small>Calories to maintain weight</small>
+            </div>
+            <div class="cc-result-card cc-card-loss">
+              <dt>Weight Loss</dt>
+              <dd id="cc-loss">—</dd>
+              <small>~0.5 kg / 1 lb per week</small>
+            </div>
+            <div class="cc-result-card cc-card-gain">
+              <dt>Weight Gain</dt>
+              <dd id="cc-gain">—</dd>
+              <small>~0.5 kg / 1 lb per week</small>
+            </div>
+          </dl>
+
+          <p class="cc-disclaimer" id="cc-hint">Fill in all fields above to see your results.</p>
+
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is BMR and TDEE?</h2>
+          <p><strong>BMR (Basal Metabolic Rate)</strong> is the number of calories your body burns each day at complete rest — just to maintain basic functions like breathing, circulation, and cell repair. <strong>TDEE (Total Daily Energy Expenditure)</strong> is your BMR multiplied by an activity factor to account for movement throughout the day. TDEE represents your true maintenance calories: eating at this level keeps your weight stable, eating below it creates a calorie deficit for weight loss, and eating above it creates a surplus for weight gain.</p>
+
+          <h2>The Mifflin-St Jeor equation</h2>
+          <p>This calculator uses the Mifflin-St Jeor equation, which is widely regarded as the most accurate formula for estimating BMR in healthy adults. For men, BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) + 5. For women, the formula replaces +5 with −161. The result is then multiplied by an activity factor ranging from 1.2 (sedentary) to 1.9 (very hard training or physical labour) to produce TDEE. The weight loss target subtracts 500 calories from TDEE; the weight gain target adds 500 calories.</p>
+
+          <h2>How to use your results</h2>
+          <p>To lose weight at a rate of roughly 0.5 kg (1 lb) per week, aim to eat around the <strong>Weight Loss</strong> figure shown. A 500-calorie daily deficit equates to approximately 3,500 calories per week, which is the commonly accepted estimate for losing about half a kilogram. To gain muscle or body weight at a controlled rate, aim for the <strong>Weight Gain</strong> figure. For weight maintenance, target the TDEE. These are estimates based on population averages — individual metabolism varies, so adjust based on real-world results over 2–4 weeks.</p>
+
+          <h2>Important notes on accuracy</h2>
+          <p>Calorie calculators provide estimates, not precise measurements. Factors such as hormonal status, sleep quality, body composition (muscle vs. fat percentage), genetics, and even gut microbiome affect actual energy expenditure. The activity multipliers are broad categories — an honest assessment of your typical week gives a better result than choosing the flattering option. For medical advice on nutrition and weight management, always consult a qualified healthcare professional or registered dietitian.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="bmi-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-3-3.87M4 21v-2a4 4 0 0 1 3-3.87m3-9.13a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg>
+                BMI Calculator
+              </a>
+              <a href="age-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Age Calculator
+              </a>
+              <a href="unit-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                Unit Converter
+              </a>
+              <a href="percentage-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                Percentage Calculator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/calorie-calculator.js"></script>
+  <script>initCalorieCalculator();</script>
+
+</body>
+</html>
