@@ -81,13 +81,11 @@ function initQrCodeReader() {
     var file = e.dataTransfer.files[0];
     decodeImageFile(file);
   });
-  dropZone.addEventListener('click', function() { fileInput.click(); });
-
   // Camera scanning
   if (cameraBtn) {
     cameraBtn.addEventListener('click', function() {
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        showError('Camera access is not supported in this browser.');
+        showError('Camera access requires HTTPS. Please use the file upload option instead, or visit the live site at allyourtools.net.');
         return;
       }
       navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })

@@ -93,8 +93,7 @@ function initScientificCalculator() {
   }
 
   // Attach button listeners
-  document.querySelectorAll('.sc-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
+  function handleBtn() {
       var action = this.dataset.action;
       var val    = this.dataset.val;
 
@@ -166,7 +165,14 @@ function initScientificCalculator() {
           if (degRadBtn) degRadBtn.textContent = isDeg ? 'DEG' : 'RAD';
           break;
       }
-    });
+  }
+
+  document.querySelectorAll('.sc-btn').forEach(function(btn) {
+    btn.addEventListener('click', handleBtn);
+    btn.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      handleBtn.call(this);
+    }, { passive: false });
   });
 
   // Keyboard support
