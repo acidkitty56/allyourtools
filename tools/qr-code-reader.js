@@ -17,7 +17,7 @@ function initQrCodeReader() {
 
   function showError(msg) {
     errorEl.textContent = msg;
-    errorEl.style.display = '';
+    errorEl.style.display = 'block';
   }
 
   function clearError() {
@@ -27,7 +27,7 @@ function initQrCodeReader() {
 
   function showResult(text) {
     resultText.value = text;
-    resultBox.style.display = '';
+    resultBox.style.display = 'block';
     clearError();
   }
 
@@ -68,32 +68,35 @@ function initQrCodeReader() {
   });
 
   // Drag and drop
-  dropZone.addEventListener('dragover', function(e) {
-    e.preventDefault();
-    dropZone.classList.add('qr-drop--over');
-  });
-  dropZone.addEventListener('dragleave', function() {
-    dropZone.classList.remove('qr-drop--over');
-  });
-  dropZone.addEventListener('drop', function(e) {
-    e.preventDefault();
-    dropZone.classList.remove('qr-drop--over');
-    var file = e.dataTransfer.files[0];
-    decodeImageFile(file);
-  });
+  if (dropZone) {
+    dropZone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      dropZone.classList.add('qr-drop--over');
+    });
+    dropZone.addEventListener('dragleave', function() {
+      dropZone.classList.remove('qr-drop--over');
+    });
+    dropZone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      dropZone.classList.remove('qr-drop--over');
+      var file = e.dataTransfer.files[0];
+      decodeImageFile(file);
+    });
+  }
+
   // Camera scanning
   if (cameraBtn) {
     cameraBtn.addEventListener('click', function() {
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        showError('Camera access requires HTTPS. Please use the file upload option instead, or visit the live site at allyourtools.net.');
+        showError('Camera access requires HTTPS. Please use the file upload option, or visit allyourtools.net.');
         return;
       }
       navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
         .then(function(s) {
           stream = s;
           video.srcObject = stream;
-          video.style.display = '';
-          stopCamBtn.style.display = '';
+          video.style.display = 'block';
+          stopCamBtn.style.display = 'inline-block';
           cameraBtn.style.display = 'none';
           video.play();
           scanLoop = setInterval(function() {
@@ -127,14 +130,16 @@ function initQrCodeReader() {
     }
     video.style.display = 'none';
     stopCamBtn.style.display = 'none';
-    cameraBtn.style.display = '';
+    cameraBtn.style.display = 'inline-block';
   }
 
   if (stopCamBtn) {
     stopCamBtn.addEventListener('click', stopCamera);
   }
 
-  copyBtn.addEventListener('click', function() {
-    copyToClipboard(resultText.value, copyBtn);
-  });
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function() {
+      copyToClipboard(resultText.value, copyBtn);
+    });
+  }
 }
