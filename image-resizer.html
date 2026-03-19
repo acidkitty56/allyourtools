@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Image Resizer – Resize Images Online Without Uploading | All Your Tools</title>
+  <meta name="description" content="Free online image resizer. Upload an image, set new dimensions with optional aspect ratio lock, preview, and download. All processing happens in your browser.">
+  <link rel="canonical" href="https://allyourtools.net/image-resizer.html">
+  <meta property="og:title" content="Free Image Resizer | All Your Tools">
+  <meta property="og:description" content="Resize any image in your browser. Set width and height, lock aspect ratio, preview the result, and download.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/image-resizer.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Image Resizer | All Your Tools">
+  <meta name="twitter:description" content="Resize any image online. Set dimensions, lock aspect ratio, download the result — no upload required.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Image Resizer",
+    "url": "https://allyourtools.net/image-resizer.html",
+    "description": "Free online image resizer. Upload, set dimensions, preview, and download — all in the browser.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .ir-upload-area {
+      border: 2px dashed #d1d5db;
+      border-radius: 0.75rem;
+      padding: 2rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 1.25rem;
+      color: #6b7280;
+    }
+    .ir-upload-area:hover { border-color: #2563eb; background: #f0f6ff; }
+    .ir-upload-area svg { margin-bottom: 0.5rem; display: block; margin-left: auto; margin-right: auto; }
+    .ir-info {
+      font-size: 0.85rem;
+      color: #6b7280;
+      text-align: center;
+      margin-bottom: 1rem;
+      min-height: 1.2em;
+    }
+    .ir-dims {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .ir-dim-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .ir-dim-field label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+    }
+    .ir-dim-field input {
+      width: 5.5rem;
+      padding: 0.5rem 0.5rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      text-align: center;
+    }
+    .ir-lock--active {
+      background: #2563eb !important;
+      border-color: #2563eb !important;
+      color: #fff !important;
+    }
+    .ir-preview {
+      display: none;
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb;
+      margin: 0 auto 1rem;
+      display: block;
+    }
+    .ir-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+    .ir-download {
+      display: none;
+    }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item category-nav__item--active">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="design-utilities.html">Design &amp; Utilities</a>
+        <span aria-hidden="true">›</span>
+        <span>Image Resizer</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Image Resizer</h1>
+          <p class="tool-tagline">Upload an image, set new dimensions, preview, and download. Runs entirely in your browser.</p>
+
+          <input type="file" id="ir-file" accept="image/*" style="display:none;">
+          <div class="ir-upload-area" id="ir-drop">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="40" height="40"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p style="margin:0;font-weight:600;">Click or drag &amp; drop an image here</p>
+            <p style="margin:0.25rem 0 0;font-size:0.85rem;">PNG, JPG, GIF, WebP supported</p>
+          </div>
+
+          <div class="ir-info" id="ir-info"></div>
+
+          <div class="ir-dims">
+            <div class="ir-dim-field">
+              <label for="ir-width">Width (px)</label>
+              <input type="number" id="ir-width" min="1" max="10000" placeholder="Width">
+            </div>
+            <div style="align-self:flex-end;padding-bottom:0.5rem;">
+              <button id="ir-lock" class="btn-secondary" type="button" title="Lock/unlock aspect ratio">&#128274; Locked</button>
+            </div>
+            <div class="ir-dim-field">
+              <label for="ir-height">Height (px)</label>
+              <input type="number" id="ir-height" min="1" max="10000" placeholder="Height">
+            </div>
+          </div>
+
+          <img id="ir-preview" class="ir-preview" alt="Preview" style="display:none;">
+          <canvas id="ir-canvas" style="display:none;"></canvas>
+
+          <div class="ir-actions">
+            <button id="ir-resize" class="btn-primary">Resize Image</button>
+            <a id="ir-download" class="btn-secondary ir-download" download="resized-image.png">&#11123; Download</a>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>About this image resizer</h2>
+          <p>This free online image resizer uses the browser's <strong>Canvas API</strong> to draw your image at the new dimensions and export it as a PNG file — entirely on your device. No image data is ever uploaded to a server. You can upload PNG, JPG, GIF, or WebP files and download the result as a high-quality PNG. The <strong>aspect ratio lock</strong> automatically adjusts the opposite dimension whenever you change width or height, so you never accidentally stretch or squash your image.</p>
+
+          <h2>How to resize an image</h2>
+          <p>Click the upload area (or drag and drop your image onto it) to load an image. The original dimensions are shown automatically and pre-filled into the width and height fields. Enter your desired width or height — the other dimension updates automatically if the aspect ratio lock is on. Click <strong>Resize Image</strong> to generate the resized preview, then click <strong>Download</strong> to save it. To turn off proportional resizing and set width and height independently, click the lock button to unlock.</p>
+
+          <h2>Common use cases</h2>
+          <p>Resizing images is one of the most frequent tasks in web development and content creation. Reducing a large photo to a web-friendly size before uploading to a CMS or social media saves bandwidth and improves page load speed. Designers resize mockup screenshots to fit presentation slides. Developers resize placeholder images to exact dimensions required by a layout. The browser-based approach means you can resize images quickly without opening Photoshop or any other desktop software.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="image-to-base64.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Image to Base64
+              </a>
+              <a href="aspect-ratio-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M8 6V4M16 6V4"/></svg>
+                Aspect Ratio Calculator
+              </a>
+              <a href="color-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                Color Converter
+              </a>
+              <a href="color-palette-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+                Color Palette Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/image-resizer.js"></script>
+  <script>initImageResizer();</script>
+
+</body>
+</html>

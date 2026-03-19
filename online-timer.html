@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Online Timer – Countdown by Minutes &amp; Seconds | All Your Tools</title>
+  <meta name="description" content="Free online timer. Set minutes and seconds, press Start, and get an alert when time is up. Simple countdown timer for cooking, study, workouts, and more.">
+  <link rel="canonical" href="https://allyourtools.net/online-timer.html">
+  <meta property="og:title" content="Free Online Timer | All Your Tools">
+  <meta property="og:description" content="Set minutes and seconds and start a countdown. Visual alert when time is up. Free, browser-based, no login.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/online-timer.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Online Timer | All Your Tools">
+  <meta name="twitter:description" content="Set minutes and seconds and start a countdown timer. Visual alert when time is up.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Online Timer",
+    "url": "https://allyourtools.net/online-timer.html",
+    "description": "Free online countdown timer. Set minutes and seconds, start the timer, get an alert when time is up.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .ot-inputs {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: flex-end;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .ot-field {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .ot-field label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+    }
+    .ot-field input {
+      width: 6rem;
+      padding: 0.55rem 0.5rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1.25rem;
+      text-align: center;
+      color: #111827;
+    }
+    .ot-display {
+      font-size: clamp(3rem, 12vw, 6rem);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      font-family: 'Courier New', monospace;
+      color: #111827;
+      text-align: center;
+      line-height: 1;
+      padding: 1rem 0 0.5rem;
+      transition: color 0.3s;
+    }
+    .ot-display.ot-flash {
+      color: #dc2626;
+      animation: ot-pulse 0.6s ease;
+    }
+    @keyframes ot-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .ot-progress-bar {
+      width: 100%;
+      max-width: 28rem;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      margin: 0 auto 1.25rem;
+      overflow: hidden;
+    }
+    .ot-progress-fill {
+      height: 100%;
+      background: #2563eb;
+      border-radius: 4px;
+      width: 100%;
+      transition: width 0.5s linear;
+    }
+    .ot-timesup {
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #dc2626;
+      min-height: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .ot-controls {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .ot-controls button { min-width: 7rem; }
+    .ot-running { background: #dc2626 !important; border-color: #dc2626 !important; }
+    .ot-running:hover { background: #b91c1c !important; border-color: #b91c1c !important; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item category-nav__item--active">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Online Timer</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Online Timer</h1>
+          <p class="tool-tagline">Set minutes and seconds and start a countdown. Visual alert when time's up.</p>
+
+          <div class="ot-inputs">
+            <div class="ot-field">
+              <label for="ot-minutes">Minutes</label>
+              <input type="number" id="ot-minutes" min="0" max="999" value="5" placeholder="0">
+            </div>
+            <div class="ot-field">
+              <label for="ot-seconds">Seconds</label>
+              <input type="number" id="ot-seconds" min="0" max="59" value="0" placeholder="0">
+            </div>
+          </div>
+
+          <div class="ot-progress-bar">
+            <div class="ot-progress-fill" id="ot-progress"></div>
+          </div>
+
+          <div class="ot-display" id="ot-display" aria-live="polite">05:00</div>
+
+          <div class="ot-timesup" id="ot-timesup"></div>
+
+          <div class="ot-controls">
+            <button id="ot-start" class="btn-primary">Start</button>
+            <button id="ot-reset" class="btn-secondary">Reset</button>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>About this online timer</h2>
+          <p>This free online timer counts down from any number of minutes and seconds you enter. Press <strong>Start</strong> to begin the countdown, <strong>Pause</strong> to freeze it, and <strong>Resume</strong> to continue from where you left off. When the timer reaches zero, the display flashes red and a "Time's up!" message appears. The blue progress bar gives you a visual sense of how much time remains at a glance. Unlike a stopwatch, this tool counts <em>down</em> — perfect for knowing exactly when something is done.</p>
+
+          <h2>How to use the timer</h2>
+          <p>Enter the number of minutes and seconds you need, then press <strong>Start</strong>. You can also press Enter in either input field to start immediately. Press <strong>Pause</strong> to stop the countdown without resetting it, and <strong>Resume</strong> to pick up again. Press <strong>Reset</strong> at any time to return to the values in the input fields. You can change the time while the timer is paused by pressing Reset and entering a new value.</p>
+
+          <h2>Common uses for an online timer</h2>
+          <p>An online timer is useful anywhere a fixed time window is needed: boiling eggs, resting dough, timed writing exercises, classroom activities, sprint intervals during a workout, or any task where you want to know the moment time is up without watching a clock. Having the countdown visible in a browser tab means it's always in view alongside your other work.</p>
+
+          <h2>Runs entirely in your browser</h2>
+          <p>This timer uses JavaScript's <code>setInterval</code> to tick every second. No data is sent to any server — your timer settings remain on your device only. The timer works correctly even if you switch tabs, because remaining time is tracked in memory, not by counting individual ticks. For precision tasks, note that browser tabs may throttle background timers; keep the tab visible for best accuracy.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="countdown-timer.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 8 14"/></svg>
+                Countdown Timer
+              </a>
+              <a href="pomodoro-timer.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Pomodoro Timer
+              </a>
+              <a href="stopwatch.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Stopwatch
+              </a>
+              <a href="days-between-dates.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Days Between Dates
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/online-timer.js"></script>
+  <script>initOnlineTimer();</script>
+
+</body>
+</html>

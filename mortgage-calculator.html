@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Mortgage Calculator – Monthly Payment, Total Interest | All Your Tools</title>
+  <meta name="description" content="Free online mortgage calculator. Enter loan amount, interest rate, and term to instantly see monthly payment, total repayment, and total interest paid.">
+  <link rel="canonical" href="https://allyourtools.net/mortgage-calculator.html">
+  <meta property="og:title" content="Free Mortgage Calculator | All Your Tools">
+  <meta property="og:description" content="Calculate monthly mortgage payment, total repayment, and total interest from loan amount, rate, and term.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/mortgage-calculator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Mortgage Calculator | All Your Tools">
+  <meta name="twitter:description" content="Calculate monthly mortgage payments, total repayment, and total interest instantly in your browser.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mortgage Calculator",
+    "url": "https://allyourtools.net/mortgage-calculator.html",
+    "description": "Free online mortgage calculator. Calculate monthly payment, total repayment, and total interest from loan amount, interest rate, and loan term.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .mc-form {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      max-width: 28rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .mc-field label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.35rem;
+    }
+    .mc-field input {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      color: #111827;
+      box-sizing: border-box;
+    }
+    .mc-field input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+    .mc-result {
+      display: none;
+      background: #f0fdf4;
+      border: 1.5px solid #bbf7d0;
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      max-width: 28rem;
+      margin: 0 auto 1rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+    .mc-result--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .mc-result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #d1fae5;
+    }
+    .mc-result-row:last-child { border-bottom: none; }
+    .mc-result-label { font-size: 0.9rem; color: #374151; }
+    .mc-result-value { font-size: 1.1rem; font-weight: 700; color: #166534; }
+    .mc-result-value.mc-monthly { font-size: 1.5rem; color: #15803d; }
+    .mc-hint {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item category-nav__item--active">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Mortgage Calculator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Mortgage Calculator</h1>
+          <p class="tool-tagline">Calculate monthly payment, total repayment, and total interest on any mortgage.</p>
+
+          <div class="mc-form">
+            <div class="mc-field">
+              <label for="mc-loan-amount">Loan Amount ($)</label>
+              <input type="number" id="mc-loan-amount" min="1000" step="1000" value="300000" placeholder="e.g. 300000">
+            </div>
+            <div class="mc-field">
+              <label for="mc-rate">Annual Interest Rate (%)</label>
+              <input type="number" id="mc-rate" min="0.01" max="50" step="0.01" value="6.5" placeholder="e.g. 6.5">
+            </div>
+            <div class="mc-field">
+              <label for="mc-term">Loan Term (years)</label>
+              <input type="number" id="mc-term" min="1" max="50" step="1" value="30" placeholder="e.g. 30">
+            </div>
+          </div>
+
+          <div style="text-align:center;margin-bottom:1.25rem;">
+            <button id="mc-calc" class="btn-primary">Calculate</button>
+          </div>
+
+          <div id="mc-result" class="mc-result">
+            <div class="mc-result-row">
+              <span class="mc-result-label">Monthly Payment</span>
+              <span class="mc-result-value mc-monthly" id="mc-monthly">–</span>
+            </div>
+            <div class="mc-result-row">
+              <span class="mc-result-label">Total Repayment</span>
+              <span class="mc-result-value" id="mc-total">–</span>
+            </div>
+            <div class="mc-result-row">
+              <span class="mc-result-label">Total Interest Paid</span>
+              <span class="mc-result-value" id="mc-interest">–</span>
+            </div>
+          </div>
+
+          <p class="mc-hint">Results are estimates based on a fixed-rate amortization formula. Consult a financial advisor for personalised advice.</p>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>How the mortgage calculator works</h2>
+          <p>This calculator uses the standard fixed-rate amortization formula: <code>M = P × [r(1+r)^n] / [(1+r)^n − 1]</code>, where <em>P</em> is the principal loan amount, <em>r</em> is the monthly interest rate (annual rate divided by 12), and <em>n</em> is the total number of monthly payments (years × 12). The result is your fixed monthly payment. Total repayment is simply monthly payment multiplied by the number of payments, and total interest is total repayment minus the original loan amount.</p>
+
+          <h2>What the results mean</h2>
+          <p>The <strong>monthly payment</strong> is the fixed amount you pay each month for the entire loan term — it covers both principal and interest. Early payments are mostly interest; later payments are mostly principal. The <strong>total repayment</strong> is the sum of all monthly payments over the life of the loan. The <strong>total interest paid</strong> shows the full cost of borrowing, which can often exceed the original loan amount on long-term mortgages. Comparing these figures across different loan amounts, rates, and terms is the most effective way to evaluate mortgage options.</p>
+
+          <h2>Tips for reducing your mortgage costs</h2>
+          <p>A higher down payment reduces the principal and therefore the total interest paid. Choosing a shorter loan term (e.g., 15 years instead of 30) significantly reduces total interest even though monthly payments are higher. Even a small reduction in the annual interest rate — by shopping lenders or improving your credit score — can save tens of thousands of dollars over the life of a 30-year mortgage. Making extra principal payments whenever possible also shortens the effective loan term.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="loan-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                Loan Calculator
+              </a>
+              <a href="percentage-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                Percentage Calculator
+              </a>
+              <a href="tip-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Tip Calculator
+              </a>
+              <a href="discount-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                Discount Calculator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/mortgage-calculator.js"></script>
+  <script>initMortgageCalculator();</script>
+
+</body>
+</html>

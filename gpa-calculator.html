@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free GPA Calculator – Calculate Cumulative GPA Online | All Your Tools</title>
+  <meta name="description" content="Free online GPA calculator. Add courses with credits and letter grades to calculate your cumulative GPA. Uses the standard 4.0 scale. Add or remove rows dynamically.">
+  <link rel="canonical" href="https://allyourtools.net/gpa-calculator.html">
+  <meta property="og:title" content="Free GPA Calculator | All Your Tools">
+  <meta property="og:description" content="Calculate your cumulative GPA using a 4.0 scale. Enter course name, credits, and letter grade for each course.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/gpa-calculator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free GPA Calculator | All Your Tools">
+  <meta name="twitter:description" content="Free GPA calculator for students. Enter courses, credits, and grades to get your cumulative GPA.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GPA Calculator",
+    "url": "https://allyourtools.net/gpa-calculator.html",
+    "description": "Free online GPA calculator. Add courses with credits and letter grades to calculate cumulative GPA on a 4.0 scale.",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gpa-table-wrap {
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+    .gpa-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 380px;
+    }
+    .gpa-table th {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      padding: 0.5rem 0.5rem;
+      border-bottom: 2px solid #e5e7eb;
+      text-align: left;
+    }
+    .gpa-table td {
+      padding: 0.4rem 0.5rem;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .gpa-course, .gpa-credit {
+      width: 100%;
+      padding: 0.4rem 0.6rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.4rem;
+      font-size: 0.9rem;
+      color: #111827;
+      box-sizing: border-box;
+    }
+    .gpa-credit { width: 5rem; text-align: center; }
+    .gpa-grade {
+      padding: 0.4rem 0.5rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.4rem;
+      font-size: 0.9rem;
+      color: #111827;
+      background: #fff;
+      cursor: pointer;
+    }
+    .gpa-remove {
+      padding: 0.3rem 0.6rem !important;
+      font-size: 0.8rem !important;
+      min-width: 0 !important;
+    }
+    .gpa-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .gpa-result {
+      display: none;
+      background: #f0fdf4;
+      border: 1.5px solid #bbf7d0;
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      max-width: 22rem;
+      margin: 0 auto;
+    }
+    .gpa-result-gpa {
+      font-size: 3rem;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .gpa-result-label {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7280;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+    .gpa-stats {
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+    }
+    .gpa-stat {
+      text-align: center;
+    }
+    .gpa-stat-val {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #166534;
+    }
+    .gpa-stat-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 0.15rem;
+    }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item category-nav__item--active">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>GPA Calculator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>GPA Calculator</h1>
+          <p class="tool-tagline">Enter your courses, credit hours, and letter grades to calculate your cumulative GPA.</p>
+
+          <div class="gpa-table-wrap">
+            <table class="gpa-table">
+              <thead>
+                <tr>
+                  <th>Course Name</th>
+                  <th>Credits</th>
+                  <th>Grade</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="gpa-rows"></tbody>
+            </table>
+          </div>
+
+          <div class="gpa-actions">
+            <button id="gpa-add"  class="btn-secondary">+ Add Course</button>
+            <button id="gpa-calc" class="btn-primary">Calculate GPA</button>
+          </div>
+
+          <div id="gpa-result" class="gpa-result">
+            <div class="gpa-result-gpa" id="gpa-value">0.00</div>
+            <div class="gpa-result-label">Cumulative GPA (4.0 scale)</div>
+            <div class="gpa-stats">
+              <div class="gpa-stat">
+                <div class="gpa-stat-val" id="gpa-credits">0</div>
+                <div class="gpa-stat-label">Total Credits</div>
+              </div>
+              <div class="gpa-stat">
+                <div class="gpa-stat-val" id="gpa-points">0.00</div>
+                <div class="gpa-stat-label">Grade Points</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>How GPA is calculated</h2>
+          <p>GPA (Grade Point Average) is calculated by multiplying each course's credit hours by its grade point value, summing all those products (quality points), and dividing by the total number of credit hours. For example, an A in a 3-credit course contributes 12 quality points (3 × 4.0), while a B+ contributes 9.9 quality points (3 × 3.3). The result is a weighted average on the 4.0 scale, where a perfect GPA is 4.0 and anything above 3.5 is typically considered honours-level academic performance.</p>
+
+          <h2>Grade point values used</h2>
+          <p>This calculator uses the standard 4.0 scale: A+/A = 4.0, A- = 3.7, B+ = 3.3, B = 3.0, B- = 2.7, C+ = 2.3, C = 2.0, C- = 1.7, D+ = 1.3, D = 1.0, D- = 0.7, F = 0.0. Note that individual institutions may use slightly different scales — some give A+ a value above 4.0, and some do not include ± modifiers. Always check your school's official grading policy for precise grade point values.</p>
+
+          <h2>Tips for improving your GPA</h2>
+          <p>Because GPA is credit-weighted, courses worth more credits have a larger impact. Retaking a course with a low grade (if your institution allows grade replacement) is one of the most effective ways to raise a GPA, especially if it was a high-credit course. Focusing on high-credit courses where you have the best chance of an A also makes a disproportionate positive impact. Some institutions exclude certain courses (pass/fail, remedial) from the GPA calculation — check your transcript policies for details.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="percentage-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                Percentage Calculator
+              </a>
+              <a href="age-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Age Calculator
+              </a>
+              <a href="days-between-dates.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Days Between Dates
+              </a>
+              <a href="scientific-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>
+                Scientific Calculator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/gpa-calculator.js"></script>
+  <script>initGpaCalculator();</script>
+
+</body>
+</html>

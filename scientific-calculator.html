@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Scientific Calculator Online – sin, cos, log, sqrt &amp; More | All Your Tools</title>
+  <meta name="description" content="Free online scientific calculator with trig functions (sin, cos, tan), sqrt, log, ln, power, pi, e, memory functions, and degree/radian toggle. Full keyboard support.">
+  <link rel="canonical" href="https://allyourtools.net/scientific-calculator.html">
+  <meta property="og:title" content="Free Scientific Calculator Online | All Your Tools">
+  <meta property="og:description" content="Scientific calculator with sin, cos, tan, sqrt, log, ln, power, pi, e, memory, and degree/radian toggle.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/scientific-calculator.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Scientific Calculator Online | All Your Tools">
+  <meta name="twitter:description" content="Full scientific calculator: trig, log, sqrt, power, memory, degree/radian toggle. Keyboard support.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Scientific Calculator",
+    "url": "https://allyourtools.net/scientific-calculator.html",
+    "description": "Free online scientific calculator with trigonometry, logarithms, roots, powers, memory functions, and degree/radian toggle.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .sc-wrap {
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    .sc-screen {
+      background: #111827;
+      border-radius: 0.75rem 0.75rem 0 0;
+      padding: 0.75rem 1rem 0.5rem;
+      min-height: 4rem;
+    }
+    .sc-history {
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: right;
+      min-height: 1.2em;
+      font-family: 'Courier New', monospace;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .sc-display {
+      font-size: clamp(1.8rem, 6vw, 2.5rem);
+      font-weight: 700;
+      font-family: 'Courier New', monospace;
+      color: #f9fafb;
+      text-align: right;
+      word-break: break-all;
+      line-height: 1.1;
+    }
+    .sc-error {
+      font-size: 0.75rem;
+      color: #f87171;
+      text-align: right;
+      min-height: 1em;
+    }
+    .sc-keypad {
+      background: #1f2937;
+      border-radius: 0 0 0.75rem 0.75rem;
+      padding: 0.5rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.35rem;
+    }
+    .sc-btn {
+      padding: 0.55rem 0.1rem;
+      border: none;
+      border-radius: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: filter 0.1s, transform 0.05s;
+      background: #374151;
+      color: #f9fafb;
+      min-width: 0;
+      min-height: 2.4rem;
+    }
+    .sc-btn:hover  { filter: brightness(1.2); }
+    .sc-btn:active { transform: scale(0.96); }
+    .sc-btn--op    { background: #2563eb; }
+    .sc-btn--equals { background: #16a34a; color: #fff; grid-column: span 1; }
+    .sc-btn--clear { background: #dc2626; }
+    .sc-btn--fn    { background: #4b5563; font-size: 0.72rem; }
+    .sc-btn--mem   { background: #6d28d9; font-size: 0.72rem; }
+    .sc-btn--wide  { grid-column: span 2; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item category-nav__item--active">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Scientific Calculator</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Scientific Calculator</h1>
+          <p class="tool-tagline">Full-featured scientific calculator with trig, log, memory, and keyboard support.</p>
+
+          <div class="sc-wrap">
+            <div class="sc-screen">
+              <div class="sc-history" id="sc-history"></div>
+              <div class="sc-display" id="sc-display" aria-live="polite">0</div>
+              <div class="sc-error" id="sc-error"></div>
+            </div>
+            <div class="sc-keypad">
+              <!-- Row 1: DEG/RAD, (, ), M+, M- -->
+              <button class="sc-btn sc-btn--fn" id="sc-deg-rad" data-action="deg-rad">DEG</button>
+              <button class="sc-btn sc-btn--fn" data-val="(">(</button>
+              <button class="sc-btn sc-btn--fn" data-val=")">)</button>
+              <button class="sc-btn sc-btn--mem" data-action="m-plus">M+</button>
+              <button class="sc-btn sc-btn--mem" data-action="m-minus">M-</button>
+              <!-- Row 2: MR, MC, x², xʸ, √ -->
+              <button class="sc-btn sc-btn--mem" data-action="mr">MR</button>
+              <button class="sc-btn sc-btn--mem" data-action="mc">MC</button>
+              <button class="sc-btn sc-btn--fn" data-action="sq">x²</button>
+              <button class="sc-btn sc-btn--fn" data-action="pow">xʸ</button>
+              <button class="sc-btn sc-btn--fn" data-action="sqrt">√</button>
+              <!-- Row 3: sin, cos, tan, log, ln -->
+              <button class="sc-btn sc-btn--fn" data-action="sin">sin</button>
+              <button class="sc-btn sc-btn--fn" data-action="cos">cos</button>
+              <button class="sc-btn sc-btn--fn" data-action="tan">tan</button>
+              <button class="sc-btn sc-btn--fn" data-action="log">log</button>
+              <button class="sc-btn sc-btn--fn" data-action="ln">ln</button>
+              <!-- Row 4: AC, +/-, %, ÷, × -->
+              <button class="sc-btn sc-btn--clear" data-action="clear">AC</button>
+              <button class="sc-btn sc-btn--fn" data-action="negate">+/−</button>
+              <button class="sc-btn sc-btn--fn" data-action="percent">%</button>
+              <button class="sc-btn sc-btn--op"  data-val="÷">÷</button>
+              <button class="sc-btn sc-btn--fn"  data-action="back">⌫</button>
+              <!-- Row 5: 7, 8, 9, ×, π -->
+              <button class="sc-btn" data-val="7">7</button>
+              <button class="sc-btn" data-val="8">8</button>
+              <button class="sc-btn" data-val="9">9</button>
+              <button class="sc-btn sc-btn--op" data-val="×">×</button>
+              <button class="sc-btn sc-btn--fn" data-action="pi">π</button>
+              <!-- Row 6: 4, 5, 6, −, e -->
+              <button class="sc-btn" data-val="4">4</button>
+              <button class="sc-btn" data-val="5">5</button>
+              <button class="sc-btn" data-val="6">6</button>
+              <button class="sc-btn sc-btn--op" data-val="-">−</button>
+              <button class="sc-btn sc-btn--fn" data-action="e">e</button>
+              <!-- Row 7: 1, 2, 3, +, abs -->
+              <button class="sc-btn" data-val="1">1</button>
+              <button class="sc-btn" data-val="2">2</button>
+              <button class="sc-btn" data-val="3">3</button>
+              <button class="sc-btn sc-btn--op" data-val="+">+</button>
+              <button class="sc-btn sc-btn--fn" data-action="abs">|x|</button>
+              <!-- Row 8: 0 (wide), ., =, inv -->
+              <button class="sc-btn sc-btn--wide" data-val="0">0</button>
+              <button class="sc-btn" data-val=".">.</button>
+              <button class="sc-btn sc-btn--equals" data-action="equals">=</button>
+              <button class="sc-btn sc-btn--fn" data-action="inv">1/x</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>About this scientific calculator</h2>
+          <p>This free online scientific calculator provides all the functions of a standard scientific calculator in your browser. It supports basic arithmetic (addition, subtraction, multiplication, division), trigonometric functions (sin, cos, tan) with a degree/radian toggle, inverse trig (via expression chaining), square, power (xʸ), square root, logarithm base-10 (log), natural logarithm (ln), absolute value, reciprocal (1/x), percentage, negation, and the mathematical constants π and e. A four-function memory (M+, M−, MR, MC) lets you store and recall intermediate values. Full keyboard input is supported — press numbers, operators, Enter to calculate, and Backspace to delete.</p>
+
+          <h2>How to use the calculator</h2>
+          <p>Click buttons or type using your keyboard to build an expression. The display shows the current expression as you enter it. Press <strong>=</strong> or Enter to evaluate. The previous expression is shown in grey above the result as history. Use parentheses for grouping: for example, <code>sin(30)</code> in degree mode gives 0.5. Chain multiple operations in a single expression: <code>sqrt(9) + 2^3</code> evaluates correctly. Press <strong>AC</strong> to clear everything or <strong>⌫</strong> to delete the last character. The <strong>DEG/RAD</strong> button toggles whether trig functions use degrees or radians.</p>
+
+          <h2>When a scientific calculator is useful</h2>
+          <p>Scientific calculators are essential for STEM education and research: physics problems involving angles and vectors, chemistry calculations with scientific notation and logarithms, engineering formulas, statistics involving natural logarithms, and financial mathematics using exponential growth models. Having a reliable scientific calculator in the browser means you can perform these calculations quickly alongside reference materials, without switching to a physical calculator or a separate application.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="percentage-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                Percentage Calculator
+              </a>
+              <a href="gpa-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                GPA Calculator
+              </a>
+              <a href="bmi-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-3-3.87M4 21v-2a4 4 0 0 1 3-3.87m3-9.13a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg>
+                BMI Calculator
+              </a>
+              <a href="mortgage-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                Mortgage Calculator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/scientific-calculator.js"></script>
+  <script>initScientificCalculator();</script>
+
+</body>
+</html>

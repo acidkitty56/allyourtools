@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free QR Code Reader – Decode QR Codes Online | All Your Tools</title>
+  <meta name="description" content="Free online QR code reader. Upload an image or use your camera to decode any QR code instantly. Results displayed in the browser — no app needed.">
+  <link rel="canonical" href="https://allyourtools.net/qr-code-reader.html">
+  <meta property="og:title" content="Free QR Code Reader | All Your Tools">
+  <meta property="og:description" content="Upload an image or use your camera to decode QR codes instantly in your browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/qr-code-reader.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free QR Code Reader | All Your Tools">
+  <meta name="twitter:description" content="Decode QR codes from uploaded images or live camera. Free, browser-based, no login.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "QR Code Reader",
+    "url": "https://allyourtools.net/qr-code-reader.html",
+    "description": "Free online QR code reader. Upload an image or use your camera to decode any QR code instantly.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .qr-drop {
+      border: 2px dashed #d1d5db;
+      border-radius: 0.75rem;
+      padding: 2rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 1rem;
+      color: #6b7280;
+    }
+    .qr-drop:hover, .qr-drop--over {
+      border-color: #2563eb;
+      background: #f0f6ff;
+    }
+    .qr-drop svg { display: block; margin: 0 auto 0.5rem; }
+    .qr-error {
+      display: none;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #dc2626;
+      border-radius: 0.5rem;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .qr-result {
+      display: none;
+      margin-top: 1rem;
+    }
+    .qr-result label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.4rem;
+    }
+    .qr-result textarea {
+      width: 100%;
+      min-height: 80px;
+      padding: 0.6rem 0.85rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+      font-family: 'Courier New', monospace;
+      color: #111827;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+    .qr-cam-row {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    #qr-video {
+      display: none;
+      width: 100%;
+      max-width: 360px;
+      border-radius: 0.5rem;
+      margin: 0 auto 1rem;
+      border: 2px solid #2563eb;
+    }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item category-nav__item--active">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="developer-tools.html">Developer Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>QR Code Reader</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>QR Code Reader</h1>
+          <p class="tool-tagline">Upload an image or use your camera to decode any QR code instantly.</p>
+
+          <input type="file" id="qr-file" accept="image/*" style="display:none;">
+          <canvas id="qr-canvas" style="display:none;"></canvas>
+
+          <div class="qr-drop" id="qr-drop">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="40" height="40"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            <p style="margin:0;font-weight:600;">Click or drag &amp; drop a QR code image here</p>
+            <p style="margin:0.25rem 0 0;font-size:0.85rem;">PNG, JPG, GIF, WebP supported</p>
+          </div>
+
+          <div class="qr-cam-row">
+            <button id="qr-camera-btn" class="btn-secondary">&#128247; Use Camera</button>
+            <button id="qr-stop-cam" class="btn-secondary" style="display:none;">&#9209; Stop Camera</button>
+          </div>
+
+          <video id="qr-video" autoplay playsinline muted></video>
+
+          <div class="qr-error" id="qr-error"></div>
+
+          <div class="qr-result" id="qr-result">
+            <label for="qr-result-text">Decoded content:</label>
+            <textarea id="qr-result-text" readonly></textarea>
+            <div style="margin-top:0.75rem;text-align:right;">
+              <button id="qr-copy" class="btn-primary">Copy Result</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>About this QR code reader</h2>
+          <p>This free online QR code reader uses the <strong>jsQR</strong> library to decode QR codes entirely in your browser. You can upload any image file (PNG, JPG, GIF, WebP) containing a QR code, or use your device's camera for live scanning. The decoded text — which might be a URL, plain text, contact information, or any other QR-encoded data — is displayed immediately and can be copied with one click. No image data is sent to any server.</p>
+
+          <h2>How to decode a QR code</h2>
+          <p>To decode from a saved image, click the upload area or drag and drop your QR code image onto it. The reader will scan the image and display the decoded text. For live scanning on a mobile device or laptop with a webcam, click <strong>Use Camera</strong>, grant camera permission, and point the camera at the QR code — the reader detects it automatically and stops the camera once decoded. You can then copy the result to your clipboard.</p>
+
+          <h2>What QR codes contain</h2>
+          <p>QR codes can encode a wide variety of data types: website URLs, plain text messages, Wi-Fi network credentials (SSID, password, security type), contact cards (vCard format), calendar events, email addresses, phone numbers, payment information, and more. Decoding a QR code before following a link is a good security practice — it lets you inspect the URL or data before your browser or app acts on it.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="url-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                URL Encoder
+              </a>
+              <a href="base64-encoder.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                Base64 Encoder
+              </a>
+              <a href="image-to-base64.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Image to Base64
+              </a>
+              <a href="hash-generator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+                Hash Generator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+  <script src="script.js"></script>
+  <script src="tools/qr-code-reader.js"></script>
+  <script>initQrCodeReader();</script>
+
+</body>
+</html>

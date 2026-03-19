@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Pomodoro Timer – 25/5 Productivity Timer Online | All Your Tools</title>
+  <meta name="description" content="Free online Pomodoro timer. 25-minute focus sessions with 5-minute and 15-minute breaks. Session counter, progress ring, and mode switching. No login needed.">
+  <link rel="canonical" href="https://allyourtools.net/pomodoro-timer.html">
+  <meta property="og:title" content="Free Pomodoro Timer | All Your Tools">
+  <meta property="og:description" content="25-minute focus sessions, 5-minute short breaks, 15-minute long breaks. Session counter and progress ring.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/pomodoro-timer.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Pomodoro Timer | All Your Tools">
+  <meta name="twitter:description" content="Free Pomodoro timer: 25-minute work sessions and 5/15-minute breaks. Runs in your browser.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Pomodoro Timer",
+    "url": "https://allyourtools.net/pomodoro-timer.html",
+    "description": "Free online Pomodoro timer with 25-minute work sessions, 5-minute short breaks, and 15-minute long breaks.",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pt-modes {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .pt-mode-btn {
+      padding: 0.45rem 1.1rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 2rem;
+      background: #fff;
+      color: #374151;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pt-mode-btn.active {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #fff;
+    }
+    .pt-ring-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .pt-ring-svg { transform: rotate(-90deg); }
+    .pt-ring-bg  { fill: none; stroke: #e5e7eb; stroke-width: 8; }
+    .pt-ring-fg  {
+      fill: none;
+      stroke: #2563eb;
+      stroke-width: 8;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s linear;
+    }
+    .pt-ring-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .pt-display {
+      font-size: clamp(2.5rem, 8vw, 3.5rem);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      font-family: 'Courier New', monospace;
+      color: #111827;
+      line-height: 1;
+    }
+    .pt-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .pt-sessions {
+      text-align: center;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+    .pt-sessions span { font-weight: 700; color: #2563eb; }
+    .pt-timesup {
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #16a34a;
+      min-height: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .pt-controls {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .pt-controls button { min-width: 7rem; }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item category-nav__item--active">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="calculators.html">Calculators</a>
+        <span aria-hidden="true">›</span>
+        <span>Pomodoro Timer</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Pomodoro Timer</h1>
+          <p class="tool-tagline">Stay focused with 25-minute work sessions and structured breaks.</p>
+
+          <div class="pt-modes">
+            <button id="pt-btn-work"  class="pt-mode-btn active">Work (25 min)</button>
+            <button id="pt-btn-short" class="pt-mode-btn">Short Break (5 min)</button>
+            <button id="pt-btn-long"  class="pt-mode-btn">Long Break (15 min)</button>
+          </div>
+
+          <div class="pt-ring-wrap">
+            <svg class="pt-ring-svg" width="160" height="160" viewBox="0 0 160 160" aria-hidden="true">
+              <circle class="pt-ring-bg" cx="80" cy="80" r="45"/>
+              <circle class="pt-ring-fg" id="pt-ring" cx="80" cy="80" r="45"/>
+            </svg>
+            <div class="pt-ring-text">
+              <div class="pt-display" id="pt-display" aria-live="polite">25:00</div>
+              <div class="pt-label" id="pt-label">Focus Time</div>
+            </div>
+          </div>
+
+          <div class="pt-sessions">
+            Completed sessions: <span id="pt-sessions">0</span>
+          </div>
+
+          <div class="pt-timesup" id="pt-timesup"></div>
+
+          <div class="pt-controls">
+            <button id="pt-start" class="btn-primary">Start</button>
+            <button id="pt-reset" class="btn-secondary">Reset</button>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>What is the Pomodoro Technique?</h2>
+          <p>The Pomodoro Technique is a time-management method developed by Francesco Cirillo in the late 1980s. It divides work into focused 25-minute intervals — called "pomodoros" — separated by short 5-minute breaks. After completing four pomodoros, you take a longer 15-minute break to recharge. This rhythm prevents mental fatigue, maintains focus, and makes large tasks feel manageable by breaking them into fixed-length chunks. The technique is widely used by developers, writers, students, and knowledge workers.</p>
+
+          <h2>How to use this Pomodoro timer</h2>
+          <p>Select a mode — <strong>Work</strong> (25 min), <strong>Short Break</strong> (5 min), or <strong>Long Break</strong> (15 min) — then press <strong>Start</strong>. The circular progress ring counts down and displays the remaining time. When the timer finishes, a message appears telling you what to do next. Press <strong>Pause</strong> to pause and <strong>Resume</strong> to continue. Press <strong>Reset</strong> to restart the current mode. Completed work sessions are counted at the top — after four, switch to a Long Break.</p>
+
+          <h2>Why the Pomodoro Technique works</h2>
+          <p>Research on focused work shows that most people sustain peak concentration for 20–30 minutes before attention begins to drift. Committing to a fixed short interval reduces the resistance to starting a task ("I only need to focus for 25 minutes"). Scheduled breaks prevent mental exhaustion from prolonged, uninterrupted effort. The session counter creates a small sense of achievement with each completed pomodoro, which motivates continued progress throughout a work day.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="online-timer.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Online Timer
+              </a>
+              <a href="countdown-timer.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 8 14"/></svg>
+                Countdown Timer
+              </a>
+              <a href="stopwatch.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Stopwatch
+              </a>
+              <a href="age-calculator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Age Calculator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/pomodoro-timer.js"></script>
+  <script>initPomodoroTimer();</script>
+
+</body>
+</html>

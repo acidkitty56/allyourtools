@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Text Repeater – Repeat Any Text Online | All Your Tools</title>
+  <meta name="description" content="Free online text repeater. Enter text, set the number of repetitions, choose a separator (newline, space, comma, or custom), and copy the output instantly.">
+  <link rel="canonical" href="https://allyourtools.net/text-repeater.html">
+  <meta property="og:title" content="Free Text Repeater | All Your Tools">
+  <meta property="og:description" content="Repeat any text a chosen number of times with a separator of your choice. Copy the result in one click.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/text-repeater.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Text Repeater | All Your Tools">
+  <meta name="twitter:description" content="Repeat text any number of times with newline, space, comma, or a custom separator.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Text Repeater",
+    "url": "https://allyourtools.net/text-repeater.html",
+    "description": "Free online text repeater. Enter text, choose repetitions and separator, copy the output.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tr-form {
+      display: grid;
+      gap: 1rem;
+      max-width: 28rem;
+      margin: 0 auto 1.25rem;
+    }
+    .tr-field label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.35rem;
+    }
+    .tr-field input,
+    .tr-field select,
+    .tr-field textarea {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      color: #111827;
+      box-sizing: border-box;
+    }
+    .tr-field textarea { min-height: 80px; resize: vertical; }
+    .tr-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .tr-row .tr-field { flex: 1; min-width: 9rem; }
+    #tr-custom-sep { display: none; }
+    .tr-output-area {
+      width: 100%;
+      min-height: 130px;
+      padding: 0.6rem 0.85rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      font-family: 'Courier New', monospace;
+      color: #111827;
+      box-sizing: border-box;
+      resize: vertical;
+      background: #f9fafb;
+    }
+    .tr-stats {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .tr-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item category-nav__item--active">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="text-tools.html">Text Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>Text Repeater</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>Text Repeater</h1>
+          <p class="tool-tagline">Repeat any text a set number of times with your choice of separator.</p>
+
+          <div class="tr-form">
+            <div class="tr-field">
+              <label for="tr-text">Text to Repeat</label>
+              <textarea id="tr-text" placeholder="Enter the text you want to repeat..."></textarea>
+            </div>
+            <div class="tr-row">
+              <div class="tr-field">
+                <label for="tr-count">Repetitions</label>
+                <input type="number" id="tr-count" min="1" max="10000" value="5" placeholder="5">
+              </div>
+              <div class="tr-field">
+                <label for="tr-sep">Separator</label>
+                <select id="tr-sep">
+                  <option value="newline">New Line</option>
+                  <option value="space">Space</option>
+                  <option value="comma">Comma</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </div>
+            </div>
+            <div class="tr-field" id="tr-custom-sep-wrap" style="display:none;">
+              <label for="tr-custom-sep">Custom Separator</label>
+              <input type="text" id="tr-custom-sep" placeholder="e.g. | or --- or ;">
+            </div>
+          </div>
+
+          <div style="text-align:center;margin-bottom:1rem;">
+            <button id="tr-generate" class="btn-primary">Generate</button>
+          </div>
+
+          <div class="tr-field" style="max-width:100%;">
+            <label for="tr-output">Output</label>
+            <textarea id="tr-output" class="tr-output-area" readonly placeholder="Repeated text appears here..."></textarea>
+          </div>
+
+          <div class="tr-stats">
+            <span id="tr-char-count">0 characters</span>
+            <span id="tr-word-count">0 words</span>
+          </div>
+
+          <div class="tr-actions">
+            <button id="tr-copy"  class="btn-secondary">Copy Output</button>
+            <button id="tr-clear" class="btn-secondary">Clear</button>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>About this text repeater</h2>
+          <p>The text repeater takes any text you enter and repeats it a specified number of times, joining the copies with a separator of your choice — a new line, a space, a comma, or any custom string you type in. The output is shown in a scrollable text area with a character count and word count. You can copy the entire result to your clipboard with one click. There is no limit enforced on input length, but for very large outputs (millions of characters), browser memory constraints may apply.</p>
+
+          <h2>Common uses for a text repeater</h2>
+          <p>Developers use text repeaters to generate test data quickly — repeating a placeholder string hundreds of times to fill a database field, create a long list, or simulate Lorem Ipsum-style dummy content. Writers and designers use it to generate filler text for layout testing. QA testers use it to create strings of known lengths to test input validation and character limits. Data analysts use it to build CSV rows or simple patterns for parsing tests. The separator option makes it easy to produce comma-separated lists, newline-delimited lists, or pipe-delimited records in one step.</p>
+
+          <h2>Using the custom separator</h2>
+          <p>Select <strong>Custom</strong> from the separator dropdown and type any string into the custom field. You can use multi-character separators like <code> | </code>, <code> → </code>, or <code>\n\n</code> (note: these are treated as literal strings, not escape sequences). For a double newline between repetitions (paragraph-style), use the custom separator and type two actual newlines into the field. For no separator at all, leave the custom field blank.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="word-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                Word Counter
+              </a>
+              <a href="character-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                Character Counter
+              </a>
+              <a href="text-case-converter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Text Case Converter
+              </a>
+              <a href="duplicate-line-remover.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Duplicate Line Remover
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/text-repeater.js"></script>
+  <script>
+    initTextRepeater();
+    // Wire up custom sep visibility
+    document.getElementById('tr-sep').addEventListener('change', function() {
+      document.getElementById('tr-custom-sep-wrap').style.display = this.value === 'custom' ? '' : 'none';
+    });
+  </script>
+
+</body>
+</html>

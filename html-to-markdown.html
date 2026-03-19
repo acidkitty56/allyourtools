@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free HTML to Markdown Converter – Convert HTML Online | All Your Tools</title>
+  <meta name="description" content="Free online HTML to Markdown converter. Paste HTML and instantly get clean Markdown output. Handles headings, lists, links, code blocks, tables, and more.">
+  <link rel="canonical" href="https://allyourtools.net/html-to-markdown.html">
+  <meta property="og:title" content="Free HTML to Markdown Converter | All Your Tools">
+  <meta property="og:description" content="Convert HTML to Markdown instantly. Handles h1-h6, lists, links, code, blockquotes, tables, and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/html-to-markdown.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free HTML to Markdown Converter | All Your Tools">
+  <meta name="twitter:description" content="Paste HTML, get Markdown. Handles headings, lists, links, images, code blocks, tables. Browser-based.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HTML to Markdown Converter",
+    "url": "https://allyourtools.net/html-to-markdown.html",
+    "description": "Free online converter from HTML to Markdown. Handles headings, lists, links, images, code blocks, blockquotes, and tables.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .htm-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 600px) {
+      .htm-layout { grid-template-columns: 1fr; }
+    }
+    .htm-panel label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.35rem;
+    }
+    .htm-panel textarea {
+      width: 100%;
+      min-height: 220px;
+      padding: 0.6rem 0.85rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      font-family: 'Courier New', monospace;
+      color: #111827;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+    .htm-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">&#9889; All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="category-nav" aria-label="Tool categories">
+    <div class="container">
+      <div class="category-nav__list">
+        <a href="index.html#popular"    class="category-nav__item">&#11088; Most Popular</a>
+        <a href="generators.html"       class="category-nav__item">Generators</a>
+        <a href="text-tools.html"       class="category-nav__item">Text Tools</a>
+        <a href="developer-tools.html"  class="category-nav__item category-nav__item--active">Developer Tools</a>
+        <a href="design-utilities.html" class="category-nav__item">Design &amp; Utilities</a>
+        <a href="fun-tools.html"        class="category-nav__item">Fun Tools</a>
+        <a href="calculators.html"      class="category-nav__item">Calculators</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TOOL PAGE ===== -->
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="developer-tools.html">Developer Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>HTML to Markdown</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <!-- ===== Tool Interface Card ===== -->
+        <section class="tool-interface-card">
+          <h1>HTML to Markdown</h1>
+          <p class="tool-tagline">Paste HTML and instantly convert it to clean Markdown — headings, lists, links, code, and more.</p>
+
+          <div class="htm-layout">
+            <div class="htm-panel">
+              <label for="htm-input">HTML Input</label>
+              <textarea id="htm-input" placeholder="Paste your HTML here...&#10;&#10;Example:&#10;&lt;h1&gt;Title&lt;/h1&gt;&#10;&lt;p&gt;Hello &lt;strong&gt;world&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;li&gt;Item 2&lt;/li&gt;&lt;/ul&gt;"></textarea>
+            </div>
+            <div class="htm-panel">
+              <label for="htm-output">Markdown Output</label>
+              <textarea id="htm-output" readonly placeholder="Markdown appears here..."></textarea>
+            </div>
+          </div>
+
+          <div class="htm-actions">
+            <button id="htm-convert" class="btn-primary">Convert to Markdown</button>
+            <button id="htm-copy"    class="btn-secondary">Copy Markdown</button>
+            <button id="htm-clear"   class="btn-secondary">Clear</button>
+          </div>
+        </section>
+
+        <!-- Ad slot 1 -->
+        <div class="ad-slot"></div>
+
+        <!-- ===== SEO Content ===== -->
+        <article class="tool-seo">
+          <h2>About this HTML to Markdown converter</h2>
+          <p>This tool converts HTML into Markdown entirely in your browser using JavaScript's DOM parser — no server calls required. It handles the most common HTML elements used in documents and web pages: headings (<code>h1</code>–<code>h6</code>), paragraphs, bold and italic text (<code>strong</code>, <code>em</code>, <code>b</code>, <code>i</code>), strikethrough, links with optional titles, images, ordered and unordered lists, code spans and code blocks (with optional language hints), blockquotes, horizontal rules, tables with header separators, and generic block containers like <code>div</code>, <code>section</code>, and <code>article</code>.</p>
+
+          <h2>When to convert HTML to Markdown</h2>
+          <p>Developers often need to convert HTML to Markdown when migrating content from a CMS that stores content as HTML (e.g., WordPress) to a static site generator or documentation system that uses Markdown (e.g., Hugo, Jekyll, Docusaurus, Notion, GitHub Wikis). Writers and content editors use it to convert pasted web content into clean Markdown for documentation or note-taking. Developers also use it when extracting content from HTML pages to store in a more portable, human-readable format.</p>
+
+          <h2>Supported HTML elements</h2>
+          <p>The converter handles: <code>h1</code>–<code>h6</code> → <code>#</code>–<code>######</code> headings; <code>p</code> → paragraphs; <code>strong</code>/<code>b</code> → <code>**bold**</code>; <code>em</code>/<code>i</code> → <code>_italic_</code>; <code>del</code>/<code>s</code> → <code>~~strikethrough~~</code>; <code>code</code> → inline code; <code>pre</code> → fenced code blocks; <code>a</code> → <code>[text](url)</code>; <code>img</code> → <code>![alt](src)</code>; <code>ul</code>/<code>ol</code>/<code>li</code> → lists; <code>blockquote</code> → <code>&gt;</code> quotes; <code>hr</code> → <code>---</code>; <code>br</code> → line break; and <code>table</code>/<code>thead</code>/<code>tbody</code>/<code>tr</code>/<code>th</code>/<code>td</code> → Markdown tables.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="markdown-preview.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Markdown Preview
+              </a>
+              <a href="html-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                HTML Formatter
+              </a>
+              <a href="html-entities.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                HTML Entities
+              </a>
+              <a href="xml-formatter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                XML Formatter
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad slot 2 -->
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/html-to-markdown.js"></script>
+  <script>initHtmlToMarkdown();</script>
+
+</body>
+</html>
