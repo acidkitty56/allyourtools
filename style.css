@@ -262,6 +262,11 @@ img {
   transform: translateY(-1px);
   color: var(--color-primary-dark);
 }
+.btn-inactive {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
 .btn-ghost {
   display: inline-flex;

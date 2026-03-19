@@ -146,14 +146,14 @@
           <h1>QR Code Reader</h1>
           <p class="tool-tagline">Upload an image or use your camera to decode any QR code instantly.</p>
 
-          <input type="file" id="qr-file" accept="image/*" style="display:none;">
           <canvas id="qr-canvas" style="display:none;"></canvas>
 
-          <div class="qr-drop" id="qr-drop">
+          <label for="qr-file" class="qr-drop" id="qr-drop">
+            <input type="file" id="qr-file" accept="image/*" style="display:none;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="40" height="40"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
             <p style="margin:0;font-weight:600;">Click or drag &amp; drop a QR code image here</p>
             <p style="margin:0.25rem 0 0;font-size:0.85rem;">PNG, JPG, GIF, WebP supported</p>
-          </div>
+          </label>
 
           <div class="qr-cam-row">
             <button id="qr-camera-btn" class="btn-secondary">&#128247; Use Camera</button>
