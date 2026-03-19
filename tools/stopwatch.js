@@ -30,7 +30,7 @@ function initStopwatch() {
     running = true;
     btnStart.textContent = 'Stop';
     btnStart.classList.add('btn-stop');
-    btnLap.disabled = false;
+    btnLap.classList.remove('btn-inactive');
   }
 
   function stop() {
@@ -39,7 +39,7 @@ function initStopwatch() {
     running = false;
     btnStart.textContent = 'Start';
     btnStart.classList.remove('btn-stop');
-    btnLap.disabled = true;
+    btnLap.classList.add('btn-inactive');
   }
 
   function reset() {
@@ -48,7 +48,7 @@ function initStopwatch() {
     lapCount = 0;
     display.textContent = '00:00.00';
     lapList.innerHTML = '';
-    btnLap.disabled = true;
+    btnLap.classList.add('btn-inactive');
     btnStart.textContent = 'Start';
   }
 
@@ -65,5 +65,5 @@ function initStopwatch() {
   btnLap.addEventListener('click', lap);
   btnReset.addEventListener('click', reset);
 
-  btnLap.disabled = true;
+  btnLap.classList.add('btn-inactive');
 }
