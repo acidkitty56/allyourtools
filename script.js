@@ -239,11 +239,69 @@ document.addEventListener('DOMContentLoaded', () => {
   initDynamicYear();
   initCategoryNav();
   initCookieConsent();
+  initCategorySearch();
   // If previously accepted, load AdSense immediately
   if (localStorage.getItem(AYT_CONSENT_KEY) === 'accepted') {
     loadAdSense();
   }
 });
+
+function initCategorySearch() {
+  var searchInput = document.querySelector('.category-search');
+  var pills       = document.querySelectorAll('.filter-pill');
+  var cards       = document.querySelectorAll('.tool-card[data-name]');
+  var noResults   = document.querySelector('.category-no-results');
+  if (!searchInput && !pills.length) return;
+
+  var currentFilter = 'all';
+  var currentSearch = '';
+
+  function wordMatch(text, query) {
+    return text.split(/\s+/).some(function(word) { return word.startsWith(query); });
+  }
+
+  function applyFilter() {
+    var visible = 0;
+    cards.forEach(function(card) {
+      var name = (card.getAttribute('data-name') || '').toLowerCase();
+      var tags = (card.getAttribute('data-tags') || '').toLowerCase();
+      var matchSearch = !currentSearch || wordMatch(name, currentSearch) || wordMatch(tags, currentSearch);
+      var matchPill   = currentFilter === 'all' || tags.split(' ').indexOf(currentFilter) !== -1;
+      var show = matchSearch && matchPill;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    if (noResults) noResults.style.display = visible === 0 ? '' : 'none';
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      currentSearch = this.value.toLowerCase().trim();
+      applyFilter();
+    });
+  }
+
+  pills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      pills.forEach(function(p) { p.classList.remove('active'); });
+      this.classList.add('active');
+      currentFilter = this.getAttribute('data-filter');
+      applyFilter();
+    });
+  });
+
+  var clearBtn = document.querySelector('.category-no-results__clear');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', function() {
+      if (searchInput) { searchInput.value = ''; currentSearch = ''; }
+      pills.forEach(function(p) { p.classList.remove('active'); });
+      var allPill = document.querySelector('.filter-pill[data-filter="all"]');
+      if (allPill) allPill.classList.add('active');
+      currentFilter = 'all';
+      applyFilter();
+    });
+  }
+}
 
 /**
  * Render an array of string results as a styled list,

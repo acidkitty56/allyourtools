@@ -88,9 +88,20 @@
     <!-- Tool Grid -->
     <section style="padding: 3rem 0;">
       <div class="container">
+
+        <div class="category-search-bar">
+          <input type="text" class="category-search" placeholder="🔍  Search tools..." aria-label="Search tools">
+          <div class="filter-pills">
+          <button class="filter-pill active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="json">JSON</button>
+          <button class="filter-pill" data-filter="encoding">Encoding</button>
+          <button class="filter-pill" data-filter="html-css">HTML & CSS</button>
+          <button class="filter-pill" data-filter="converter">Converters</button>
+          </div>
+        </div>
         <div class="tool-grid">
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="JSON Formatter" data-tags="json formatting">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
             </div>
@@ -99,7 +110,7 @@
             <a href="json-formatter.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="Base64 Encoder" data-tags="base64 encoding">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </div>
@@ -108,7 +119,7 @@
             <a href="base64-encoder.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="URL Encoder" data-tags="url encoding">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
             </div>
@@ -117,7 +128,7 @@
             <a href="url-encoder.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="Timestamp Converter" data-tags="timestamp converter">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
@@ -126,7 +137,7 @@
             <a href="timestamp-converter.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="Hash Generator" data-tags="hash encoding security">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
             </div>
@@ -135,7 +146,7 @@
             <a href="hash-generator.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="Regex Tester" data-tags="regex developer">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
             </div>
@@ -144,7 +155,7 @@
             <a href="regex-tester.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="JWT Decoder" data-tags="jwt encoding security">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </div>
@@ -153,7 +164,7 @@
             <a href="jwt-decoder.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="Number Base Converter" data-tags="number converter">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h1v6"/><path d="M14 9h2v2h-2v2h2v2h-2"/></svg>
             </div>
@@ -162,7 +173,7 @@
             <a href="number-base-converter.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="HTML Entities" data-tags="html-css encoding">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
@@ -171,7 +182,7 @@
             <a href="html-entities.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="JSON Minifier" data-tags="json formatting">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             </div>
@@ -180,7 +191,7 @@
             <a href="json-minifier.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="URL Decoder" data-tags="url encoding">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
             </div>
@@ -189,7 +200,7 @@
             <a href="url-decoder.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="HTML Formatter" data-tags="html-css formatting">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
@@ -198,7 +209,7 @@
             <a href="html-formatter.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="Meta Tag Generator" data-tags="html-css meta">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
             </div>
@@ -207,7 +218,7 @@
             <a href="meta-tag-generator.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="JSON to CSV" data-tags="json csv converter">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
             </div>
@@ -216,7 +227,7 @@
             <a href="json-to-csv.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="CSV to JSON" data-tags="csv json converter">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
             </div>
@@ -225,7 +236,7 @@
             <a href="csv-to-json.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="SQL Formatter" data-tags="sql formatting">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
             </div>
@@ -234,7 +245,7 @@
             <a href="sql-formatter.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="YAML to JSON" data-tags="yaml converter">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
@@ -243,7 +254,7 @@
             <a href="yaml-to-json.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="JSON to YAML" data-tags="json yaml converter">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 2 12 8 18"/><polyline points="16 18 22 12 16 6"/></svg>
             </div>
@@ -252,7 +263,7 @@
             <a href="json-to-yaml.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="CSS Minifier" data-tags="html-css css">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
             </div>
@@ -261,7 +272,7 @@
             <a href="css-minifier.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="Image to Base64" data-tags="image encoding">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             </div>
@@ -270,7 +281,7 @@
             <a href="image-to-base64.html" class="btn-primary">Open Tool</a>
           </div>
 
-          <div class="tool-card">
+          <div class="tool-card" data-name="JSON Validator" data-tags="json validator">
             <div class="tool-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
             </div>
