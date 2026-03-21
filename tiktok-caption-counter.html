@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Caption Counter – Character Limit Checker | All Your Tools</title>
+  <meta name="description" content="Count TikTok characters in real time. Track caption (2,200), bio (80), and username (24) limits as you type — free, no login required.">
+  <link rel="canonical" href="https://allyourtools.net/tiktok-caption-counter.html">
+  <meta property="og:title" content="TikTok Caption Counter – Character Limit Checker | All Your Tools">
+  <meta property="og:description" content="Count TikTok characters in real time. Track caption, bio, and username limits as you type.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/tiktok-caption-counter.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="TikTok Caption Counter | All Your Tools">
+  <meta name="twitter:description" content="Count TikTok characters in real time — caption, bio, and username limits.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "TikTok Caption Counter",
+    "url": "https://allyourtools.net/tiktok-caption-counter.html",
+    "description": "Count TikTok characters in real time. Track caption, bio, and username limits as you type.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+  <style>
+    .sm-field { margin-bottom: 1.75rem; }
+    .sm-field__header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.25rem; }
+    .sm-field__label { font-weight: 600; font-size: 0.95rem; color: #1e293b; }
+    .sm-field__label small { font-weight: 400; color: #6b7280; }
+    .sm-field__count { font-size: 0.875rem; font-weight: 700; color: #2563eb; }
+    .sm-field__count--warn { color: #f59e0b; }
+    .sm-field__count--over { color: #ef4444; }
+    .sm-field__bar { height: 5px; background: #e5e7eb; border-radius: 3px; margin-top: 0.5rem; overflow: hidden; }
+    .sm-field__fill { height: 100%; border-radius: 3px; transition: width 0.1s, background-color 0.1s; background: #22c55e; width: 0%; }
+    .sm-field__hint { font-size: 0.78rem; color: #6b7280; margin-top: 0.3rem; }
+    .sm-field__hint--warn { color: #f59e0b; }
+    .sm-field__hint--over { color: #ef4444; font-weight: 600; }
+    .sm-field textarea { width: 100%; border: 1.5px solid #d1d5db; border-radius: 0.75rem; padding: 0.75rem 1rem; font-size: 0.95rem; font-family: inherit; resize: vertical; background: #fff; color: #1e293b; outline: none; transition: border-color 0.15s; box-sizing: border-box; }
+    .sm-field textarea:focus { border-color: #2563eb; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="text-tools.html">Text Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>TikTok Caption Counter</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <section class="tool-interface-card">
+          <h1>TikTok Caption Counter</h1>
+          <p class="tool-tagline">Type or paste your TikTok content below — each field tracks its character limit in real time.</p>
+
+          <div class="sm-field">
+            <div class="sm-field__header">
+              <label class="sm-field__label" for="tt-caption">Caption <small>— max 2,200 chars</small></label>
+              <span class="sm-field__count" id="tt-caption-count">0 / 2200</span>
+            </div>
+            <textarea id="tt-caption" rows="5" placeholder="Write your TikTok caption and hashtags here..."></textarea>
+            <div class="sm-field__bar"><div class="sm-field__fill" id="tt-caption-bar"></div></div>
+            <div class="sm-field__hint" id="tt-caption-hint">2200 characters remaining</div>
+          </div>
+
+          <div class="sm-field">
+            <div class="sm-field__header">
+              <label class="sm-field__label" for="tt-bio">Bio <small>— max 80 chars</small></label>
+              <span class="sm-field__count" id="tt-bio-count">0 / 80</span>
+            </div>
+            <textarea id="tt-bio" rows="2" placeholder="Your TikTok bio..."></textarea>
+            <div class="sm-field__bar"><div class="sm-field__fill" id="tt-bio-bar"></div></div>
+            <div class="sm-field__hint" id="tt-bio-hint">80 characters remaining</div>
+          </div>
+
+          <div class="sm-field">
+            <div class="sm-field__header">
+              <label class="sm-field__label" for="tt-username">Username <small>— max 24 chars</small></label>
+              <span class="sm-field__count" id="tt-username-count">0 / 24</span>
+            </div>
+            <textarea id="tt-username" rows="1" placeholder="@yourusername"></textarea>
+            <div class="sm-field__bar"><div class="sm-field__fill" id="tt-username-bar"></div></div>
+            <div class="sm-field__hint" id="tt-username-hint">24 characters remaining</div>
+          </div>
+        </section>
+
+        <div class="ad-slot"></div>
+
+        <article class="tool-seo">
+          <h2>TikTok character limits explained</h2>
+          <p>TikTok allows up to 2,200 characters in a video caption, which is shared between your actual caption text and your hashtags. However, TikTok truncates captions in the feed after approximately 100 characters — everything beyond that is hidden behind a "more" tap. This makes the opening line of your caption the most important real estate for driving engagement. Your profile bio is tightly limited to just 80 characters, and usernames can be up to 24 characters.</p>
+
+          <h2>Writing captions that get tapped</h2>
+          <p>Because TikTok's feed shows only the first ~100 characters before the "more" cut-off, treat your caption opener like a headline: ask a question, tease the punchline, or state the value immediately. Save your hashtags for the end of the caption — they contribute to discovery but don't need to appear before the fold. A good TikTok caption is direct, relatable, and invites interaction (comments, shares, duets).</p>
+
+          <h2>Optimising your TikTok bio</h2>
+          <p>With only 80 characters, your TikTok bio has less room than a tweet. Focus on your niche and a single call to action — "Follow for daily [topic]" or "DM for collabs" is often enough. Emoji can convey tone efficiently within the character budget. Line breaks count toward your limit, so use them only where they genuinely improve readability. Draft here, then paste directly into the TikTok app.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="instagram-caption-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Instagram Counter
+              </a>
+              <a href="twitter-character-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.4 5.4 3.9 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                Twitter/X Counter
+              </a>
+              <a href="character-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Character Counter
+              </a>
+              <a href="word-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                Word Counter
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">&copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/tiktok-caption-counter.js"></script>
+  <script>initTiktokCaptionCounter();</script>
+
+</body>
+</html>

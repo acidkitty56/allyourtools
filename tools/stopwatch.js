@@ -6,7 +6,7 @@ function initStopwatch() {
   var btnReset   = document.getElementById('sw-reset');
   if (!display || !btnStart) return;
 
-  var startTime = 0, elapsed = 0, timerID = null, running = false, lapCount = 0;
+  var startTime = 0, elapsed = 0, timerID = null, running = false, lapCount = 0, lastLapTime = 0;
 
   function pad(n, len) { return String(n).padStart(len || 2, '0'); }
 
@@ -46,6 +46,7 @@ function initStopwatch() {
     stop();
     elapsed = 0;
     lapCount = 0;
+    lastLapTime = 0;
     display.textContent = '00:00.00';
     lapList.innerHTML = '';
     btnLap.classList.add('btn-inactive');
@@ -55,9 +56,11 @@ function initStopwatch() {
   function lap() {
     if (!running) return;
     lapCount++;
+    var lapTime = elapsed - lastLapTime;
+    lastLapTime = elapsed;
     var li = document.createElement('li');
     li.className = 'sw-lap-item';
-    li.innerHTML = '<span class="sw-lap-num">Lap ' + lapCount + '</span><span class="sw-lap-time">' + format(elapsed) + '</span>';
+    li.innerHTML = '<span class="sw-lap-num">Lap ' + lapCount + '</span><span class="sw-lap-time">' + format(lapTime) + '</span>';
     lapList.insertBefore(li, lapList.firstChild);
   }
 

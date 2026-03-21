@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Title &amp; Description Checker – Character Limit Tool | All Your Tools</title>
+  <meta name="description" content="Check YouTube title, description, and tags character limits in real time. Get SEO warnings when your title exceeds Google's 60-char search snippet cutoff.">
+  <link rel="canonical" href="https://allyourtools.net/youtube-title-checker.html">
+  <meta property="og:title" content="YouTube Title &amp; Description Checker – Character Limit Tool | All Your Tools">
+  <meta property="og:description" content="Check YouTube title, description, and tags character limits in real time with SEO warnings.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://allyourtools.net/youtube-title-checker.html">
+  <meta property="og:site_name" content="All Your Tools">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="YouTube Title &amp; Description Checker | All Your Tools">
+  <meta name="twitter:description" content="Check YouTube title, description, and tags character limits in real time.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "YouTube Title & Description Checker",
+    "url": "https://allyourtools.net/youtube-title-checker.html",
+    "description": "Check YouTube title, description, and tags character limits in real time with SEO warnings.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "All Your Tools", "url": "https://allyourtools.net/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google AdSense: loaded via script.js after cookie consent -->
+  <style>
+    .sm-field { margin-bottom: 1.75rem; }
+    .sm-field__header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.25rem; }
+    .sm-field__label { font-weight: 600; font-size: 0.95rem; color: #1e293b; }
+    .sm-field__label small { font-weight: 400; color: #6b7280; }
+    .sm-field__count { font-size: 0.875rem; font-weight: 700; color: #2563eb; }
+    .sm-field__count--warn { color: #f59e0b; }
+    .sm-field__count--over { color: #ef4444; }
+    .sm-field__bar { height: 5px; background: #e5e7eb; border-radius: 3px; margin-top: 0.5rem; overflow: hidden; }
+    .sm-field__fill { height: 100%; border-radius: 3px; transition: width 0.1s, background-color 0.1s; background: #22c55e; width: 0%; }
+    .sm-field__hint { font-size: 0.78rem; color: #6b7280; margin-top: 0.3rem; }
+    .sm-field__hint--warn { color: #f59e0b; }
+    .sm-field__hint--over { color: #ef4444; font-weight: 600; }
+    .sm-field__note { display: none; font-size: 0.8rem; color: #b45309; background: #fffbeb; border: 1px solid #fde68a; border-radius: 0.5rem; padding: 0.5rem 0.75rem; margin-top: 0.5rem; }
+    .sm-field textarea { width: 100%; border: 1.5px solid #d1d5db; border-radius: 0.75rem; padding: 0.75rem 1rem; font-size: 0.95rem; font-family: inherit; resize: vertical; background: #fff; color: #1e293b; outline: none; transition: border-color 0.15s; box-sizing: border-box; }
+    .sm-field textarea:focus { border-color: #2563eb; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">⚡ All Your Tools</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="text-tools.html">Text Tools</a>
+        <span aria-hidden="true">›</span>
+        <span>YouTube Title &amp; Description Checker</span>
+      </nav>
+
+      <div class="tool-page__layout">
+
+        <section class="tool-interface-card">
+          <h1>YouTube Title &amp; Description Checker</h1>
+          <p class="tool-tagline">Check your YouTube title, description, and tags against platform limits — with SEO warnings when you go past Google's display cutoffs.</p>
+
+          <div class="sm-field">
+            <div class="sm-field__header">
+              <label class="sm-field__label" for="yt-title">Title <small>— max 100 chars (Google shows ~60)</small></label>
+              <span class="sm-field__count" id="yt-title-count">0 / 100</span>
+            </div>
+            <textarea id="yt-title" rows="2" placeholder="Your YouTube video title..."></textarea>
+            <div class="sm-field__bar"><div class="sm-field__fill" id="yt-title-bar"></div></div>
+            <div class="sm-field__hint" id="yt-title-hint">100 characters remaining</div>
+            <div class="sm-field__note" id="yt-title-note"></div>
+          </div>
+
+          <div class="sm-field">
+            <div class="sm-field__header">
+              <label class="sm-field__label" for="yt-desc">Description <small>— max 5,000 chars (Google snippet: ~157)</small></label>
+              <span class="sm-field__count" id="yt-desc-count">0 / 5000</span>
+            </div>
+            <textarea id="yt-desc" rows="6" placeholder="Your YouTube video description..."></textarea>
+            <div class="sm-field__bar"><div class="sm-field__fill" id="yt-desc-bar"></div></div>
+            <div class="sm-field__hint" id="yt-desc-hint">5000 characters remaining</div>
+            <div class="sm-field__note" id="yt-desc-note"></div>
+          </div>
+
+          <div class="sm-field">
+            <div class="sm-field__header">
+              <label class="sm-field__label" for="yt-tags">Tags <small>— max 500 chars total</small></label>
+              <span class="sm-field__count" id="yt-tags-count">0 / 500</span>
+            </div>
+            <textarea id="yt-tags" rows="3" placeholder="gaming, tutorial, how to, minecraft..."></textarea>
+            <div class="sm-field__bar"><div class="sm-field__fill" id="yt-tags-bar"></div></div>
+            <div class="sm-field__hint" id="yt-tags-hint">500 characters remaining</div>
+          </div>
+        </section>
+
+        <div class="ad-slot"></div>
+
+        <article class="tool-seo">
+          <h2>YouTube character limits explained</h2>
+          <p>YouTube allows up to 100 characters for a video title, but Google's search results truncate titles at approximately 60 characters. This means your most important keywords and the core subject of the video should appear in the first 60 characters to avoid being cut off in search. Descriptions support up to 5,000 characters — but only the first 157 characters appear in Google search snippets, so front-load your keywords and main value proposition. Tags are limited to 500 characters total across all tags combined.</p>
+
+          <h2>SEO best practices for YouTube titles</h2>
+          <p>The ideal YouTube title length for SEO is between 40 and 60 characters — long enough to be descriptive, short enough to display in full across Google search, YouTube search, and mobile notifications. Place your primary keyword near the beginning of the title. Use numbers, brackets, and action words to improve click-through rate. Avoid keyword stuffing — YouTube's algorithm penalises titles that read as spam.</p>
+
+          <h2>Writing an effective description</h2>
+          <p>Think of the first 150 characters of your description as a meta description — they appear in Google search results and YouTube search previews. Include your primary keyword naturally in the first sentence. Use the rest of the description for timestamps, links, relevant keywords, and supplementary information. YouTube's algorithm reads the full description, so a thorough 300–500 character description outperforms a one-liner.</p>
+
+          <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="related-tools__grid">
+              <a href="twitter-character-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.4 5.4 3.9 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                Twitter/X Counter
+              </a>
+              <a href="tiktok-caption-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                TikTok Counter
+              </a>
+              <a href="character-counter.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                Character Counter
+              </a>
+              <a href="reading-time-estimator.html" class="related-tool-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Reading Time Estimator
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="ad-slot"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand-name">&#9889; All Your Tools</div>
+          <p class="footer__brand-desc">A growing collection of fast, free, browser-based tools for developers, designers, and everyday users.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Generators</div>
+          <ul class="footer__links">
+            <li><a href="username-generator.html">Username Generator</a></li>
+            <li><a href="random-name-generator.html">Name Generator</a></li>
+            <li><a href="random-number-generator.html">Random Number Generator</a></li>
+            <li><a href="password-strength-checker.html">Password Strength Checker</a></li>
+            <li><a href="generators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Developer Tools</div>
+          <ul class="footer__links">
+            <li><a href="url-encoder.html">URL Encoder</a></li>
+            <li><a href="hash-generator.html">Hash Generator</a></li>
+            <li><a href="jwt-decoder.html">JWT Decoder</a></li>
+            <li><a href="regex-tester.html">Regex Tester</a></li>
+            <li><a href="timestamp-converter.html">Timestamp Converter</a></li>
+            <li><a href="developer-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Text &amp; Design</div>
+          <ul class="footer__links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="text-case-converter.html">Text Case Converter</a></li>
+            <li><a href="character-counter.html">Character Counter</a></li>
+            <li><a href="diff-checker.html">Diff Checker</a></li>
+            <li><a href="color-converter.html">Color Converter</a></li>
+            <li><a href="text-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Fun Tools</div>
+          <ul class="footer__links">
+            <li><a href="fancy-text-generator.html">Fancy Text Generator</a></li>
+            <li><a href="coin-flip.html">Coin Flip</a></li>
+            <li><a href="morse-code-converter.html">Morse Code Converter</a></li>
+            <li><a href="emoji-picker.html">Emoji Picker</a></li>
+            <li><a href="rot13-encoder.html">ROT13 Encoder</a></li>
+            <li><a href="fun-tools.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Calculators</div>
+          <ul class="footer__links">
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="days-between-dates.html">Days Between Dates</a></li>
+            <li><a href="tip-calculator.html">Tip Calculator</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="calculators.html"><em>More &rarr;</em></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">About</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+          <p class="footer__tagline">Built with care for the web. No tracking, no nonsense &mdash; just useful tools that work.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">&copy; <span class="footer__year">2025</span> All Your Tools. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tools/youtube-title-checker.js"></script>
+  <script>initYoutubeTitleChecker();</script>
+
+</body>
+</html>

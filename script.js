@@ -247,37 +247,95 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initCategorySearch() {
-  var searchInput = document.querySelector('.category-search');
-  var pills       = document.querySelectorAll('.filter-pill');
-  var cards       = document.querySelectorAll('.tool-card[data-name]');
-  var noResults   = document.querySelector('.category-no-results');
+  var searchInput  = document.querySelector('.category-search');
+  var pills        = document.querySelectorAll('.filter-pill');
+  var cards        = Array.from(document.querySelectorAll('.tool-card[data-name]'));
+  var noResults    = document.querySelector('.category-no-results');
   if (!searchInput && !pills.length) return;
 
+  var BATCH         = 9;
+  var loadedCount   = Math.min(BATCH, cards.length);
   var currentFilter = 'all';
   var currentSearch = '';
 
+  // ── Load More button (injected dynamically — no HTML changes needed) ───────
+  var loadMoreWrap = null;
+  var loadMoreBtn  = null;
+  var grid         = document.querySelector('.tool-grid');
+
+  if (grid && cards.length > BATCH) {
+    loadMoreWrap = document.createElement('div');
+    loadMoreWrap.className = 'load-more-wrap';
+
+    loadMoreBtn = document.createElement('button');
+    loadMoreBtn.className = 'btn-load-more';
+    loadMoreBtn.setAttribute('type', 'button');
+    loadMoreWrap.appendChild(loadMoreBtn);
+    grid.parentNode.insertBefore(loadMoreWrap, grid.nextSibling);
+
+    loadMoreBtn.addEventListener('click', function() {
+      var prev    = loadedCount;
+      loadedCount = Math.min(loadedCount + BATCH, cards.length);
+      renderCards();
+      // Fade-in newly revealed cards on next paint
+      requestAnimationFrame(function() {
+        for (var i = prev; i < loadedCount; i++) {
+          (function(card) {
+            card.classList.add('card--reveal');
+            setTimeout(function() { card.classList.remove('card--reveal'); }, 350);
+          })(cards[i]);
+        }
+      });
+    });
+  }
+
+  function updateButtonLabel() {
+    if (!loadMoreBtn) return;
+    var remaining = cards.length - loadedCount;
+    var next      = Math.min(remaining, BATCH);
+    loadMoreBtn.textContent = 'Load ' + next + ' more tool' + (next !== 1 ? 's' : '');
+  }
+
+  // ── Shared utilities ──────────────────────────────────────────────────────
   function wordMatch(text, query) {
     return text.split(/\s+/).some(function(word) { return word.startsWith(query); });
   }
 
-  function applyFilter() {
-    var visible = 0;
-    cards.forEach(function(card) {
-      var name = (card.getAttribute('data-name') || '').toLowerCase();
-      var tags = (card.getAttribute('data-tags') || '').toLowerCase();
-      var matchSearch = !currentSearch || wordMatch(name, currentSearch) || wordMatch(tags, currentSearch);
-      var matchPill   = currentFilter === 'all' || tags.split(' ').indexOf(currentFilter) !== -1;
-      var show = matchSearch && matchPill;
-      card.style.display = show ? '' : 'none';
+  function renderCards() {
+    var filtering = currentSearch !== '' || currentFilter !== 'all';
+    var visible   = 0;
+
+    cards.forEach(function(card, i) {
+      var show;
+      if (filtering) {
+        // Search overrides load-more — match against ALL cards
+        var name        = (card.getAttribute('data-name') || '').toLowerCase();
+        var tags        = (card.getAttribute('data-tags') || '').toLowerCase();
+        var matchSearch = !currentSearch || wordMatch(name, currentSearch) || wordMatch(tags, currentSearch);
+        var matchPill   = currentFilter === 'all' || tags.split(' ').indexOf(currentFilter) !== -1;
+        show = matchSearch && matchPill;
+      } else {
+        // No search active — respect load-more state
+        show = i < loadedCount;
+      }
+      card.style.display = show ? 'block' : 'none';
       if (show) visible++;
     });
-    if (noResults) noResults.style.display = visible === 0 ? '' : 'none';
+
+    // Show/hide Load More button
+    if (loadMoreWrap) {
+      loadMoreWrap.style.display = (!filtering && loadedCount < cards.length) ? 'block' : 'none';
+      updateButtonLabel();
+    }
+
+    if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
   }
 
+  // ── Event listeners ───────────────────────────────────────────────────────
   if (searchInput) {
     searchInput.addEventListener('input', function() {
       currentSearch = this.value.toLowerCase().trim();
-      applyFilter();
+      renderCards();
     });
   }
 
@@ -286,7 +344,7 @@ function initCategorySearch() {
       pills.forEach(function(p) { p.classList.remove('active'); });
       this.classList.add('active');
       currentFilter = this.getAttribute('data-filter');
-      applyFilter();
+      renderCards();
     });
   });
 
@@ -298,9 +356,11 @@ function initCategorySearch() {
       var allPill = document.querySelector('.filter-pill[data-filter="all"]');
       if (allPill) allPill.classList.add('active');
       currentFilter = 'all';
-      applyFilter();
+      renderCards();
     });
   }
+
+  renderCards();
 }
 
 /**
