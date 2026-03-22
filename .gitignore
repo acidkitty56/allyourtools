@@ -1,0 +1,9 @@
+# Local working files — never push to GitHub
+CLAUDE.md
+growth.md
+
+# Claude Code local config
+.claude/
+
+# Mockup files (local design experiments)
+mockup-*.html
