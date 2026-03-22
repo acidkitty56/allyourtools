@@ -45,6 +45,19 @@
     .sm-field__hint--over { color: #ef4444; font-weight: 600; }
     .sm-field textarea { width: 100%; border: 1.5px solid #d1d5db; border-radius: 0.75rem; padding: 0.75rem 1rem; font-size: 0.95rem; font-family: inherit; resize: vertical; background: #fff; color: #1e293b; outline: none; transition: border-color 0.15s; box-sizing: border-box; }
     .sm-field textarea:focus { border-color: #2563eb; }
+
+    /* ── Platform comparison table ── */
+    .platform-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-size: 0.9rem; }
+    .platform-table th { background: #f1f5f9; font-weight: 700; color: #374151; text-align: left; padding: 0.6rem 0.85rem; border-bottom: 2px solid #e5e7eb; white-space: nowrap; }
+    .platform-table td { padding: 0.6rem 0.85rem; border-bottom: 1px solid #f1f5f9; color: #374151; vertical-align: middle; }
+    .platform-table tr:last-child td { border-bottom: none; }
+    .platform-table tr.pt-active td { background: #eff6ff; font-weight: 600; color: #1d4ed8; }
+    .platform-table a { color: #2563eb; text-decoration: none; }
+    .platform-table a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      .platform-table { font-size: 0.78rem; }
+      .platform-table th, .platform-table td { padding: 0.45rem 0.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -124,13 +137,82 @@
 
         <article class="tool-seo">
           <h2>LinkedIn character limits explained</h2>
-          <p>LinkedIn enforces character limits on every content field to keep profiles and posts readable. Posts are capped at 3,000 characters — enough for a detailed article-style update but short enough to maintain attention. The headline shown below your name is limited to 220 characters, which is your primary professional pitch visible across the platform. Your About section allows 2,600 characters for a longer personal narrative, while connection request notes are limited to just 300 characters.</p>
+          <p>LinkedIn enforces strict character limits across all content fields to keep profiles and posts readable. The four key limits you need to know: posts (3,000 characters), headline (220 characters), About section (2,600 characters), and connection request messages (300 characters). Understanding each limit — and where the hidden folds sit within them — is the difference between content that lands and copy that gets cut off mid-sentence.</p>
 
-          <h2>Why hitting the limit matters</h2>
-          <p>LinkedIn does not warn you until you actually hit the limit — it simply stops accepting input. If you draft your content outside LinkedIn (in a document or email) and paste it in, you may silently lose the end of your text. Using this counter before pasting lets you confirm you're within the limit and adjust your copy without any surprises.</p>
+          <h2>LinkedIn post character limit: 3,000 characters</h2>
+          <p>At 3,000 characters, LinkedIn gives you more room than almost any other major social platform for a single post. That is roughly 500–600 words — equivalent to a short blog post. Despite the generous limit, the vast majority of LinkedIn posts are read in the first two to three lines before the "see more" button appears at around 210 characters. Your opening hook carries more weight than everything that follows it.</p>
 
-          <h2>Tips for staying within limits</h2>
-          <p>For posts, the "see more" fold appears around 210 characters — put your strongest hook in the first two lines. Headlines should lead with your most searchable role or skill since LinkedIn's algorithm uses them for search ranking. In your About section, the first 300 characters are shown before the "see more" button, so treat them like a meta description for your profile.</p>
+          <h3>Writing the first 210 characters</h3>
+          <p>Think of the text before the "see more" fold as your subject line. It needs to create enough curiosity or deliver enough value that a reader stops scrolling and taps to read more. Avoid starting with "I" — posts that open with a direct observation, a question, or a bold claim consistently outperform self-referential openers. Use this counter to check exactly how much of your text falls before the fold, and refine that section last.</p>
+
+          <h3>How LinkedIn counts characters</h3>
+          <p>LinkedIn counts every character including spaces, punctuation, and line breaks. Emoji typically count as 1–2 characters depending on the character set used. URLs are not shortened by LinkedIn — a long URL counts in full toward your 3,000-character limit, which is a common reason posts exceed the limit unexpectedly when drafted elsewhere and pasted in.</p>
+
+          <h2>LinkedIn headline character limit: 220 characters</h2>
+          <p>Your LinkedIn headline is visible next to your name in every search result, connection request, comment, and notification across the platform. With 220 characters, you have space for a role title, two or three key skills, and a short value statement. LinkedIn's search algorithm uses your headline for keyword matching, so including the exact job titles and skills that people search for directly improves your profile's discoverability. Every character should work — filler phrases like "results-driven professional" add length without adding signal.</p>
+
+          <h2>LinkedIn About section: making 2,600 characters count</h2>
+          <p>The About section gives you 2,600 characters to tell your professional story in full. The first 300 characters are visible without clicking "see more" — treat that opening paragraph as a standalone pitch that works even if no one ever expands it. The full 2,600 characters is enough for a complete narrative: your background, the problems you solve, specific achievements with numbers, and a closing call to action. Draft your About section in this counter, refine it to the right length and tone, then paste it directly into LinkedIn.</p>
+
+          <h2>Connection request message limit: 300 characters</h2>
+          <p>When sending a connection request with a personalised note, LinkedIn caps you at 300 characters — roughly two sentences. The most effective connection messages are specific: reference how you found the person, a shared connection, a piece of their work you genuinely found valuable, or a clear reason you want to connect. Generic messages are routinely ignored. A concise, specific 300-character message dramatically outperforms a longer one that reads like a template.</p>
+
+          <h2>Tips for every LinkedIn character limit</h2>
+          <p>Write your post body first, then craft the opening 210 characters as a deliberate hook — not whatever happens to come first. Front-load your headline with searchable keywords rather than status phrases like "Open to opportunities." In the About section, use line breaks to create visual breathing room — each break counts as one character but makes long text far easier to scan. Always draft connection messages outside LinkedIn so you can edit within the 300-character limit before sending. Check all four fields periodically: LinkedIn occasionally adjusts display rules without updating the documented character limits.</p>
+
+
+          <h2>Social media character limits: full comparison</h2>
+          <p>Character limits vary significantly across platforms. Use this table as a quick reference — click any platform name to open its dedicated counter.</p>
+          <div style="overflow-x:auto;">
+            <table class="platform-table">
+              <thead>
+                <tr>
+                  <th>Platform</th>
+                  <th>Post / Caption</th>
+                  <th>Bio</th>
+                  <th>Username</th>
+                  <th>Other limits</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="pt-active">
+                  <td>LinkedIn</td>
+                  <td>3,000</td>
+                  <td>2,600 (About)</td>
+                  <td>—</td>
+                  <td>Headline: 220 · Message: 300</td>
+                </tr>
+                <tr>
+                  <td><a href="twitter-character-counter.html">Twitter / X</a></td>
+                  <td>280</td>
+                  <td>160</td>
+                  <td>15</td>
+                  <td>Display name: 50</td>
+                </tr>
+                <tr>
+                  <td><a href="instagram-caption-counter.html">Instagram</a></td>
+                  <td>2,200</td>
+                  <td>150</td>
+                  <td>30</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><a href="youtube-title-checker.html">YouTube</a></td>
+                  <td>5,000 (desc.)</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td>Title: 100 · Tags: 500</td>
+                </tr>
+                <tr>
+                  <td><a href="tiktok-caption-counter.html">TikTok</a></td>
+                  <td>2,200</td>
+                  <td>80</td>
+                  <td>24</td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <div class="related-tools">
             <h2>Related Tools</h2>

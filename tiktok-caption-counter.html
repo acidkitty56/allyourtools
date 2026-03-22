@@ -45,6 +45,19 @@
     .sm-field__hint--over { color: #ef4444; font-weight: 600; }
     .sm-field textarea { width: 100%; border: 1.5px solid #d1d5db; border-radius: 0.75rem; padding: 0.75rem 1rem; font-size: 0.95rem; font-family: inherit; resize: vertical; background: #fff; color: #1e293b; outline: none; transition: border-color 0.15s; box-sizing: border-box; }
     .sm-field textarea:focus { border-color: #2563eb; }
+
+    /* ── Platform comparison table ── */
+    .platform-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-size: 0.9rem; }
+    .platform-table th { background: #f1f5f9; font-weight: 700; color: #374151; text-align: left; padding: 0.6rem 0.85rem; border-bottom: 2px solid #e5e7eb; white-space: nowrap; }
+    .platform-table td { padding: 0.6rem 0.85rem; border-bottom: 1px solid #f1f5f9; color: #374151; vertical-align: middle; }
+    .platform-table tr:last-child td { border-bottom: none; }
+    .platform-table tr.pt-active td { background: #eff6ff; font-weight: 600; color: #1d4ed8; }
+    .platform-table a { color: #2563eb; text-decoration: none; }
+    .platform-table a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      .platform-table { font-size: 0.78rem; }
+      .platform-table th, .platform-table td { padding: 0.45rem 0.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -121,6 +134,60 @@
 
           <h2>Optimising your TikTok bio</h2>
           <p>With only 80 characters, your TikTok bio has less room than a tweet. Focus on your niche and a single call to action — "Follow for daily [topic]" or "DM for collabs" is often enough. Emoji can convey tone efficiently within the character budget. Line breaks count toward your limit, so use them only where they genuinely improve readability. Draft here, then paste directly into the TikTok app.</p>
+
+
+          <h2>Social media character limits: full comparison</h2>
+          <p>Character limits vary significantly across platforms. Use this table as a quick reference — click any platform name to open its dedicated counter.</p>
+          <div style="overflow-x:auto;">
+            <table class="platform-table">
+              <thead>
+                <tr>
+                  <th>Platform</th>
+                  <th>Post / Caption</th>
+                  <th>Bio</th>
+                  <th>Username</th>
+                  <th>Other limits</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="linkedin-character-counter.html">LinkedIn</a></td>
+                  <td>3,000</td>
+                  <td>2,600 (About)</td>
+                  <td>—</td>
+                  <td>Headline: 220 · Message: 300</td>
+                </tr>
+                <tr>
+                  <td><a href="twitter-character-counter.html">Twitter / X</a></td>
+                  <td>280</td>
+                  <td>160</td>
+                  <td>15</td>
+                  <td>Display name: 50</td>
+                </tr>
+                <tr>
+                  <td><a href="instagram-caption-counter.html">Instagram</a></td>
+                  <td>2,200</td>
+                  <td>150</td>
+                  <td>30</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><a href="youtube-title-checker.html">YouTube</a></td>
+                  <td>5,000 (desc.)</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td>Title: 100 · Tags: 500</td>
+                </tr>
+                <tr class="pt-active">
+                  <td>TikTok</td>
+                  <td>2,200</td>
+                  <td>80</td>
+                  <td>24</td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <div class="related-tools">
             <h2>Related Tools</h2>

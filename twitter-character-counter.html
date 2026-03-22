@@ -45,6 +45,19 @@
     .sm-field__hint--over { color: #ef4444; font-weight: 600; }
     .sm-field textarea { width: 100%; border: 1.5px solid #d1d5db; border-radius: 0.75rem; padding: 0.75rem 1rem; font-size: 0.95rem; font-family: inherit; resize: vertical; background: #fff; color: #1e293b; outline: none; transition: border-color 0.15s; box-sizing: border-box; }
     .sm-field textarea:focus { border-color: #2563eb; }
+
+    /* ── Platform comparison table ── */
+    .platform-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-size: 0.9rem; }
+    .platform-table th { background: #f1f5f9; font-weight: 700; color: #374151; text-align: left; padding: 0.6rem 0.85rem; border-bottom: 2px solid #e5e7eb; white-space: nowrap; }
+    .platform-table td { padding: 0.6rem 0.85rem; border-bottom: 1px solid #f1f5f9; color: #374151; vertical-align: middle; }
+    .platform-table tr:last-child td { border-bottom: none; }
+    .platform-table tr.pt-active td { background: #eff6ff; font-weight: 600; color: #1d4ed8; }
+    .platform-table a { color: #2563eb; text-decoration: none; }
+    .platform-table a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      .platform-table { font-size: 0.78rem; }
+      .platform-table th, .platform-table td { padding: 0.45rem 0.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -114,13 +127,86 @@
 
         <article class="tool-seo">
           <h2>Twitter/X character limits explained</h2>
-          <p>Twitter/X allows up to 280 characters per tweet — doubled from the original 140-character limit introduced in 2017. URLs, regardless of length, are wrapped by Twitter's t.co shortener and count as exactly 23 characters. Your bio is limited to 160 characters, which is enough for two or three short sentences. The display name (the bold name shown above your @handle) is capped at 50 characters.</p>
+          <p>Twitter/X uses a 280-character limit for standard tweets — doubled from the original 140-character limit that defined the platform from its launch until 2017. X Premium subscribers have access to longer posts, but the overwhelming majority of engagement on the platform happens in the standard 280-character format. Your bio allows 160 characters, your display name is capped at 50 characters, and your location field is limited to 30 characters.</p>
 
-          <h2>How to make the most of 280 characters</h2>
-          <p>Short tweets (under 100 characters) historically get more engagement because they leave room for a quoted reply. Front-load your most important point — the first 20–30 characters are what appears in notifications and link previews. Emoji count as 2 characters each on some platforms, though Twitter/X counts most as 1. When in doubt, count before you post.</p>
+          <h2>How Twitter/X counts your 280 characters</h2>
+          <p>Understanding what counts and what does not is essential for writing tweets that do not get cut off unexpectedly. The rules are different from what most people assume.</p>
 
-          <h2>When does character count matter most?</h2>
-          <p>Character count matters most when drafting tweets in a document, planning a thread in advance, or writing a bio without being logged in. Drafting offline avoids the frustration of having Twitter silently cut your text when pasting. This counter gives you an accurate character count before you ever open the app.</p>
+          <h3>URLs always count as 23 characters</h3>
+          <p>Regardless of how short or long a URL is, Twitter/X wraps it in a t.co shortener and counts it as exactly 23 characters. A five-character URL and a 200-character URL both cost the same 23 characters. This means you always know precisely how many characters a link takes — there are no surprises when you add a URL to a tweet.</p>
+
+          <h3>Images, polls, and quoted tweets</h3>
+          <p>Attaching an image, GIF, or video to a tweet does not reduce your character count — media attachments are handled separately. Polls do not consume characters either. A quoted tweet, however, does consume characters because it includes the t.co link to the original tweet, which counts as 23 characters. If you quote a tweet and add commentary, your usable text space is effectively 257 characters.</p>
+
+          <h2>Twitter/X bio: 160 characters to define yourself</h2>
+          <p>160 characters is roughly two short sentences — enough to state who you are, what you do, and optionally a relevant hashtag or location. Unlike a LinkedIn headline, the Twitter bio is visible in full on your profile page and in hover cards, so there is no fold to worry about. Strong bios lead with a concrete, specific description rather than an abstract label. "Data journalist covering AI, climate, and finance" outperforms "Passionate storyteller and change-maker" in both clarity and search discoverability.</p>
+
+          <h2>Display name limit: 50 characters</h2>
+          <p>Your display name — the bold text shown above your @handle — can be up to 50 characters and can include spaces, emoji, and special characters, unlike the @handle itself. Many creators and brands use this field to add a credential, a location flag, or a relevant emoji. Keep in mind the display name is the first text a viewer reads, so clarity should take priority over cleverness.</p>
+
+          <h2>Writing tweets that work within 280 characters</h2>
+          <h3>The case for keeping it short</h3>
+          <p>Analysis of high-engagement tweets consistently shows that posts under 100 characters attract more retweets and replies than longer ones. Shorter tweets leave visible whitespace in the feed, making them easier to process while scrolling. They also leave room for quoted replies without requiring expansion. When you have said everything you need to say in 80 characters, do not pad it to 200.</p>
+
+          <h3>Thread strategy: each tweet as a standalone</h3>
+          <p>When your content genuinely needs more than 280 characters, a thread is the right format. The most effective threads are written so every tweet makes sense independently — readers often encounter a thread mid-stream, not from the first tweet. Number your tweets (1/7, 2/7…) so readers understand context, and ensure each tweet delivers a complete thought. Draft each tweet in this counter in isolation before composing the thread.</p>
+
+          <h2>When a Twitter character counter is most useful</h2>
+          <p>A character counter is most valuable when drafting content in a notes app or document before posting, writing a new bio without being logged in, or planning tweets in advance as part of a content calendar. Counting before you open the app eliminates the frustration of discovering you are over the limit only when the post button is blocked. Paste your text here, hit the exact count, and post with confidence.</p>
+
+
+          <h2>Social media character limits: full comparison</h2>
+          <p>Character limits vary significantly across platforms. Use this table as a quick reference — click any platform name to open its dedicated counter.</p>
+          <div style="overflow-x:auto;">
+            <table class="platform-table">
+              <thead>
+                <tr>
+                  <th>Platform</th>
+                  <th>Post / Caption</th>
+                  <th>Bio</th>
+                  <th>Username</th>
+                  <th>Other limits</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="linkedin-character-counter.html">LinkedIn</a></td>
+                  <td>3,000</td>
+                  <td>2,600 (About)</td>
+                  <td>—</td>
+                  <td>Headline: 220 · Message: 300</td>
+                </tr>
+                <tr class="pt-active">
+                  <td>Twitter / X</td>
+                  <td>280</td>
+                  <td>160</td>
+                  <td>15</td>
+                  <td>Display name: 50</td>
+                </tr>
+                <tr>
+                  <td><a href="instagram-caption-counter.html">Instagram</a></td>
+                  <td>2,200</td>
+                  <td>150</td>
+                  <td>30</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><a href="youtube-title-checker.html">YouTube</a></td>
+                  <td>5,000 (desc.)</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td>Title: 100 · Tags: 500</td>
+                </tr>
+                <tr>
+                  <td><a href="tiktok-caption-counter.html">TikTok</a></td>
+                  <td>2,200</td>
+                  <td>80</td>
+                  <td>24</td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <div class="related-tools">
             <h2>Related Tools</h2>
