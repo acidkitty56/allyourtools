@@ -169,14 +169,28 @@ function initCategoryNav() {
 }
 
 /* ============================================================
-   Cookie Consent + AdSense
+   Google Consent Mode v2 + Cookie Consent + AdSense
    ============================================================ */
+
+// Set up dataLayer and gtag for Consent Mode v2.
+// Default: all consent denied until user explicitly accepts.
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  ad_storage:           'denied',
+  ad_user_data:         'denied',
+  ad_personalization:   'denied',
+  analytics_storage:    'denied',
+  wait_for_update:      500
+});
 
 var AYT_CONSENT_KEY = 'ayt_consent';
 
 /**
- * Dynamically inject the AdSense script after user consent.
- * Safe to call multiple times — checks for existing script first.
+ * Inject the AdSense script unconditionally so Google's review crawler
+ * always sees it. Consent Mode v2 controls what data is collected —
+ * without consent, Google serves non-personalised ads and sets no
+ * user-identifying cookies. Safe to call multiple times.
  */
 function loadAdSense() {
   if (window.location.hostname !== 'allyourtools.net') return;
@@ -191,9 +205,25 @@ function loadAdSense() {
 /**
  * Show a cookie consent banner on first visit.
  * Stores choice in localStorage so it only appears once.
+ * On accept: upgrades Consent Mode signals to granted.
+ * On decline: signals stay denied (non-personalised ads only).
  */
 function initCookieConsent() {
-  if (localStorage.getItem(AYT_CONSENT_KEY)) return;
+  // Always load AdSense — Consent Mode handles data restrictions.
+  loadAdSense();
+
+  // If already decided, honour previous choice immediately.
+  var stored = localStorage.getItem(AYT_CONSENT_KEY);
+  if (stored === 'accepted') {
+    gtag('consent', 'update', {
+      ad_storage:         'granted',
+      ad_user_data:       'granted',
+      ad_personalization: 'granted',
+      analytics_storage:  'granted'
+    });
+    return;
+  }
+  if (stored === 'declined') return;
 
   var banner = document.createElement('div');
   banner.className = 'cookie-banner';
@@ -222,8 +252,13 @@ function initCookieConsent() {
 
   banner.querySelector('.cookie-banner__btn--accept').addEventListener('click', function () {
     localStorage.setItem(AYT_CONSENT_KEY, 'accepted');
+    gtag('consent', 'update', {
+      ad_storage:         'granted',
+      ad_user_data:       'granted',
+      ad_personalization: 'granted',
+      analytics_storage:  'granted'
+    });
     hideBanner();
-    loadAdSense();
   });
 
   banner.querySelector('.cookie-banner__btn--decline').addEventListener('click', function () {
@@ -251,13 +286,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveNavLink();
   initDynamicYear();
   initCategoryNav();
-  initCookieConsent();
+  initCookieConsent(); // also calls loadAdSense() and handles Consent Mode
   initCategorySearch();
   initContactLinks();
-  // If previously accepted, load AdSense immediately
-  if (localStorage.getItem(AYT_CONSENT_KEY) === 'accepted') {
-    loadAdSense();
-  }
 });
 
 function initCategorySearch() {
