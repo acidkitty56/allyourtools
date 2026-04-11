@@ -232,6 +232,19 @@ function initCookieConsent() {
   });
 }
 
+/**
+ * Decode and inject the contact email into .contact-email-link elements.
+ * Stored as char codes to keep the address out of the HTML source and search indexes.
+ */
+function initContactLinks() {
+  var c = [103,95,105,103,95,97,95,64,104,111,116,109,97,105,108,46,99,111,109];
+  var email = c.map(function(n) { return String.fromCharCode(n); }).join('');
+  document.querySelectorAll('.contact-email-link').forEach(function(el) {
+    el.href = 'mailto:' + email;
+    el.textContent = email;
+  });
+}
+
 // Auto-init on every page
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
@@ -240,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCategoryNav();
   initCookieConsent();
   initCategorySearch();
+  initContactLinks();
   // If previously accepted, load AdSense immediately
   if (localStorage.getItem(AYT_CONSENT_KEY) === 'accepted') {
     loadAdSense();
