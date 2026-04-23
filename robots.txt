@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://allyourtools.com/sitemap.xml
+Sitemap: https://allyourtools.net/sitemap.xml
